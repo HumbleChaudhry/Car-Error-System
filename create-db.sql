@@ -128,7 +128,8 @@ CREATE TABLE 'transmission_table'(
     'make' varchar(50) NOT NULL,
     'model' varchar(50) NOT NULL,
     'year' int(4) NOT NULL,
-    'transmission' varchar(50) NOT NULL, 
+    'transmission' varchar(50) NOT NULL,
+    'drivetrain' varchar(50) NOT NULL,
     FOREIGN KEY ('make') REFERENCES 'car' ('make'),
     FOREIGN KEY ('model') REFERENCES 'car' ('model'),
     FOREIGN KEY ('year') REFERENCES 'car' ('year')   
