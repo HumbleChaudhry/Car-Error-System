@@ -22,6 +22,208 @@ CREATE TABLE '' (
 
 */
 
+CREATE TABLE 'retailer' (
+    'name' varchar(50) NOT NULL,
+    'phone_no' varchar(15) NOT NULL,
+    'rating' int(2),
+    'warehouse_location' varchar(255) NOT NULL,
+    PRIMARY KEY ('name')
+)
+
+CREATE TABLE 'car_part' (
+    'id' varchar(20) NOT NULL,
+    'name' varchar(50) NOT NULL,
+    'price' decimal(10) NOT NULL,
+    'rating' int(2),
+    'title' varchar(20) NOT NULL,
+    'category' varchar(20) NOT NULL,
+    PRIMARY KEY ('id'),
+    FOREIGN KEY ('category') REFERENCES 'category' ('title')
+
+)
+
+CREATE TABLE 'account' (
+    'id' varchar(20) NOT NULL,
+    'name' varchar(50) NOT NULL,
+    'date_of_creation' varchar(20) NOT NULL,
+    PRIMARY KEY ('id')
+)
+
+CREATE TABLE 'admin' (
+    'id' varchar(20) NOT NULL,
+    PRIMARY KEY ('id')
+    FOREIGN KEY ('id') REFERENCES 'account' ('id')
+)
+
+CREATE TABLE 'mechanic' (
+    'id' varchar(20) NOT NULL,
+    'shipping_address' varchar(255) NOT NULL,
+    PRIMARY KEY ('id'),
+    FOREIGN KEY ('id') REFERENCES 'account' ('id')
+)
+
+CREATE TABLE 'professional' (
+    'id' varchar(20) NOT NULL,
+    'certification' varchar(255) NOT NULL,
+    'shop_name' varchar(255) NOT NULL,
+    PRIMARY KEY ('id'),
+    FOREIGN KEY ('id') REFERENCES 'mechanic' ('id')
+)
+
+CREATE TABLE 'amateur' (
+    'id' varchar(20) NOT NULL,
+    PRIMARY KEY ('id'),
+    FOREIGN KEY ('id') REFERENCES 'mechanic' ('id')
+)
+
+CREATE TABLE 'guide' (
+    'avg_rate' decimal(10) NOT NULL,
+    'title' varchar(50) NOT NULL,
+    'Article' varchar(255),
+    'video' varchar(255),
+    'pro_id' varchar(20) NOT NULL,
+    'admin_id' varchar(20) NOT NULL,
+    'issue_name' varchar(50) NOT NULL,
+    PRIMARY KEY ('title'),
+    FOREIGN KEY ('pro_id') REFERENCES 'professional' ('id'),
+    FOREIGN KEY ('admin_id') REFERENCES 'admin' ('id'),    
+)
+
+CREATE TABLE 'step' (
+    'title' varchar(50) NOT NULL,
+    'number' int(5) NOT NULL,
+    'description' varchar(255),
+    PRIMARY KEY ('title'),
+    PRIMARY KEY ('step'),
+    FOREIGN KEY ('step') REFERENCES 'guide' ('title')
+)
+
+CREATE TABLE 'category'(
+    'title' varchar(50) NOT NULL,
+    PRIMARY KEY ('title'), 
+    FOREIGN KEY ('title') REFERENCES 'category' ('title')
+)
+
+CREATE TABLE 'car'(
+    'make' varchar(50) NOT NULL,
+    'model' varchar(50) NOT NULL,
+    'year' int(4) NOT NULL,
+    PRIMARY KEY ('make'),
+    PRIMARY KEY ('model'),
+    PRIMARY KEY ('year')
+)
+
+CREATE TABLE 'chassis_table'(
+    'make' varchar(50) NOT NULL,
+    'model' varchar(50) NOT NULL,
+    'year' int(4) NOT NULL,
+    'chassis' varchar(50) NOT NULL,
+    FOREIGN KEY ('make') REFERENCES 'car' ('make'),
+    FOREIGN KEY ('model') REFERENCES 'car' ('model'),
+    FOREIGN KEY ('year') REFERENCES 'car' ('year')
+
+)
+
+CREATE TABLE 'transmission_table'(
+    'make' varchar(50) NOT NULL,
+    'model' varchar(50) NOT NULL,
+    'year' int(4) NOT NULL,
+    'transmission' varchar(50) NOT NULL, 
+    FOREIGN KEY ('make') REFERENCES 'car' ('make'),
+    FOREIGN KEY ('model') REFERENCES 'car' ('model'),
+    FOREIGN KEY ('year') REFERENCES 'car' ('year')   
+)
+
+CREATE TABLE 'engine_table'(
+    'make' varchar(50) NOT NULL,
+    'model' varchar(50) NOT NULL,
+    'year' int(4) NOT NULL,
+    'engine' varchar(50) NOT NULL, 
+    FOREIGN KEY ('make') REFERENCES 'car' ('make'),
+    FOREIGN KEY ('model') REFERENCES 'car' ('model'),
+    FOREIGN KEY ('year') REFERENCES 'car' ('year') 
+)
+
+CREATE TABLE 'dtc'(
+    'code' varchar(50) NOT NULL,
+    'description' varchar(255) NOT NULL,
+    PRIMARY KEY ('code') 
+)
+
+CREATE TABLE 'issue'(
+    'issue_name' varchar(50) NOT NULL,
+    'commoness' int(2) NOT NULL,
+    'severity' int(2) NOT NULL,
+    'description' varchar(255) NOT NULL,
+    'difficulty' int(2),
+    'part_id' varchar(20) NOT NULL,
+    PRIMARY KEY ('make'),
+    FOREIGN KEY ('issue_name') REFERENCES 'guide' ('issue_name'),
+    FOREIGN KEY ('part_id') REFERENCES 'car_part' ('id'),
+    
+)
+
+CREATE TABLE 'symptoms'(
+    'name' varchar(50) NOT NULL,
+    'symptoms' varchar(255) NOT NULL,
+    FOREIGN KEY ('name') REFERENCES 'issue' ('issue_name')
+
+)
+
+CREATE TABLE 'keyword'(
+    'name' varchar(50) NOT NULL,
+    'keywords' varchar(50) NOT NULL,
+    FOREIGN KEY ('name') REFERENCES 'issue' ('issue_name')
+)
+
+CREATE TABLE 'purchases'(
+    'part_id' varchar(20) NOT NULL,
+    'retailer_name' varchar(50) NOT NULL,
+    'account_id' varchar(20) NOT NULL,
+    'date' varchar(10),
+    'tracking_no' varchar(10),
+    'transaction_no' varchar(10),
+    FOREIGN KEY ('part_id') REFERENCES 'car_part' ('id')
+    FOREIGN KEY ('retailer_name') REFERENCES 'retailer' ('name')
+    FOREIGN KEY ('account_id') REFERENCES 'account' ('id')
+
+)
+
+CREATE TABLE 'fits'(
+    'part_id' varchar(20) NOT NULL,
+    'make' varchar(50) NOT NULL,
+    'model' varchar(50) NOT NULL,
+    'year' int(4) NOT NULL,
+    FOREIGN KEY ('part_id') REFERENCES 'car_part' ('id')
+    FOREIGN KEY ('make') REFERENCES 'car' ('make'),
+    FOREIGN KEY ('model') REFERENCES 'car' ('model'),
+    FOREIGN KEY ('year') REFERENCES 'car' ('year') 
+
+)
+
+CREATE TABLE 'has'(
+    'make' varchar(50) NOT NULL,
+    'model' varchar(50) NOT NULL,
+    'year' int(4) NOT NULL,
+    'code' varchar(50) NOT NULL,
+    'name' varchar(50) NOT NULL,
+    FOREIGN KEY ('make') REFERENCES 'car' ('make'),
+    FOREIGN KEY ('model') REFERENCES 'car' ('model'),
+    FOREIGN KEY ('year') REFERENCES 'car' ('year'),
+    FOREIGN KEY ('code') REFERENCES 'dtc' ('code')
+    FOREIGN KEY ('name') REFERENCES 'issue' ('issue_name'),
+    
+)
+
+CREATE TABLE 'rate'(
+    'mechanic_id' varchar(20) NOT NULL,
+    'guide_title' varchar(50) NOT NULL,
+    FOREIGN KEY ('mechanic_id') REFERENCES 'mechanic' ('id'),
+    FOREIGN KEY ('guide_title') REFERENCES 'guide' ('title')
+
+)
+
+
 
 /*Table Insertions:
  Model : INSERT INTO '' VALUES ();
