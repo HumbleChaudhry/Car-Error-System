@@ -1,0 +1,358 @@
+Endpoint 1: 
+Description: Gets the main page
+URL: localhost/main.php 
+Method: GET
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 2: 
+Description: Gets the login page
+URL: localhost/login.php
+Method: GET
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 3: 
+Description: Gets the register page 
+URL: localhost/register.php
+Method: GET
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 4: 
+Description: Adds data to the accounts table
+URL: localhost/register/accounts.php
+Method: POST
+Input: Name
+Output: [{
+"AccountID": int
+
+}]
+
+Endpoint 5: 
+Description: Edits data in the accounts table
+URL: localhost/register/accounts.php
+Method: PUT
+Input: Name
+Output: [{
+"AccountID": int
+
+}]
+
+Endpoint 6: 
+Description: Deletes an account in accounts table
+URL: localhost/register/accounts.php
+Method: DELETE
+Input: Name
+Output: [{
+"AccountID": int
+
+}]
+
+Endpoint 7: 
+Description: Gets the parts page
+URL: localhost/parts.php
+Method: GET
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 8: 
+Description: Gets the solutions page
+URL: localhost/solutions.php
+Method: GET
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 9: 
+Description: Gets admin account from accounts
+URL: localhost/accounts/admin.php
+Method: GET
+Input: AdminID
+Output: [{
+"AccountID":int
+"Name" : string
+"Date of Creation": date
+
+}]
+
+Endpoint 10: 
+Description: Adds an admin account 
+URL: localhost/accounts/admin.php
+Method: POST
+Input: 
+Output: [{
+
+
+}]
+
+
+Endpoint 11: 
+Description: Deletes an admin account 
+URL: localhost/accounts/admin.php
+Method: DELETE
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 12: 
+Description: Edits an admin account 
+URL: localhost/accounts/admin.php
+Method: PUT
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 13: 
+Description: Views the parts for specific login 
+URL: localhost/login/viewparts.php
+Method: GET
+Input: AdminID
+Output: [{
+"AccountID":int
+"Name" : string
+"Date of Creation": date
+
+}]
+
+Endpoint 14: 
+Description: Gets the solutions from the issues
+URL: localhost/solutions/issues.php
+Method: GET
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 15: 
+Description: Gets the solutions for cars
+URL: localhost/solutions/cars.php
+Method: GET
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 16: 
+Description: Gets list of accounts in database
+URL: localhost/accounts.php
+Method: GET
+Input: Name
+Output: [{
+"AccountID": int
+
+}]
+
+Endpoint 17: 
+Description: Adds a part to parts 
+URL: localhost/parts.php
+Method: POST
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 18: 
+Description: Deletes a part in parts 
+URL: localhost/parts.php
+Method: DELETE
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 19: 
+Description: Updates a part in parts 
+URL: localhost/parts.php
+Method: PUT
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 20: 
+Description: Gets the Guide for a certain issue
+URL: localhost/solutions/issues/guides.php
+Method: GET
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 21: 
+Description: Gets the varification for the current guide
+URL: localhost/solutions/issues/guides/guideVarification.php
+Method: GET
+Input: 
+Output: [{
+
+
+}]
+
+
+Endpoint 22: 
+Description: Gets the user info of login
+URL: localhost/login/user.php
+Method: GET
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 23: 
+Description: Gets the user info of register
+URL: localhost/login/user.php
+Method: GET
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 24: 
+Description: Edits the user info of login
+URL: localhost/login/user.php
+Method: PUT
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 25: 
+Description: Adds to user info of login
+URL: localhost/login/user.php
+Method: POST
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 26: 
+Description: Removes the user info of login
+URL: localhost/login/user.php
+Method: DELETE
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 27: 
+Description: Adds an issue to issues database
+URL: localhost/solutions/issues.php
+Method: POST
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 28: 
+Description: Deletes an issue in the issues database
+URL: localhost/solutions/issues.php
+Method: DELETE
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 29: 
+Description: Edits an issue in the issues database
+URL: localhost/solutions/issues.php
+Method: PUT
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 30: 
+Description: Adds a car to car database
+URL: localhost/solutions/cars.php
+Method: POST
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 31: 
+Description: Deletes a car in the car database
+URL: localhost/solutions/cars.php
+Method: DELETE
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 32: 
+Description: Edits a car in the car database
+URL: localhost/solutions/cars.php
+Method: PUT
+Input: 
+Output: [{
+
+
+}]
+
+
+Endpoint 33: 
+Description: Adds a Guide for a certain issue
+URL: localhost/solutions/issues/guides.php
+Method: POST
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 34: 
+Description: Deletes a Guide for a certain issue
+URL: localhost/solutions/issues/guides.php
+Method: DELETE
+Input: 
+Output: [{
+
+
+}]
+
+Endpoint 35: 
+Description: Edits a Guide for a certain issue
+URL: localhost/solutions/issues/guides.php
+Method: PUT
+Input: 
+Output: [{
+
+
+}]
+
+
