@@ -38,13 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Perform your AJAX/Fetch login
 
-        setFormMessage(loginForm, "error", "Invalid username/password combination");
+        setFormMessage(loginForm, "error", "Invalid ID/password combination");
     });
 
     document.querySelectorAll(".form__input").forEach(inputElement => {
         inputElement.addEventListener("blur", e => {
-            if (e.target.id === "signupUsername" && e.target.value.length > 0 && e.target.value.length < 10) {
-                setInputError(inputElement, "Username must be at least 10 characters in length");
+            if (e.target.id === "signupID" && e.target.value.length > 0 && e.target.value.length > 20) {
+                setInputError(inputElement, "AccountID must be less than 20 characters in length");
             }
         });
 
