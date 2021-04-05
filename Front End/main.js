@@ -22,3 +22,7 @@ menuIcon.addEventListener('click', function () {
       slideoutMenu.style.pointerEvents = 'auto';
     }
   })
+
+
+
+
