@@ -17,11 +17,6 @@ function clearInputError(inputElement) {
     inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
 }
 
-async function loadUsers(){
-    const response = await fetch("data/user.json");
-
-    console.log(response);
-}
 
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.querySelector("#login");
@@ -43,6 +38,18 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
 
         // Perform your AJAX/Fetch login
+        const formData = new FormData(loginForm); 
+
+        fetch('./API/api/account/login.php', {
+            method: 'post',
+            body: formData
+        }).then(function (response){
+            return response.text();
+        }).then(function (text){
+            console.log(text);
+        }).catch(function (error){
+            console.error(error);
+        })
 
         setFormMessage(loginForm, "error", "Invalid ID/password combination");
     });
@@ -69,9 +76,11 @@ searchIcon.addEventListener('click', function () {
   if (searchBox.style.top == '150px') {
     searchBox.style.top = '24px';
     searchBox.style.pointerEvents = 'none';
+    searchIcon.style.color = 'darkgreen'; 
   } else {
     searchBox.style.top = '150px';
-    searchBox.style.pointerEvents = 'auto';
+    searchBox.style.pointerEvents = 'auto'; 
+    searchIcon.style.color = 'orchid'; 
   }
 });
 

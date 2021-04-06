@@ -14,7 +14,9 @@
       href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Slab"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" />
+
     <title>Solutions</title>
   </head>
   <body>
@@ -40,7 +42,7 @@
 
     <nav>
       <div id="logo-img">
-        <a href="#">
+        <a href="index.html">
           <img src="img/Car Error System Logo.png" alt="CES Logo" />
         </a>
       </div>
@@ -49,7 +51,7 @@
       </div>
       <ul>
         <li>
-          <a  href="index.html">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
           <a class="active" href="Solutions.html">Solutions</a>
@@ -58,7 +60,9 @@
           <a href="Parts.html">Parts</a>
         </li>
         <li>
-          <a href="Login.html">Login</a>
+          <div id="user-icon">
+            <a href="Login.html"><i class="glyphicon glyphicon-user"></i></a>
+          </div>
         </li>
         <li>
           <div id="search-icon">
@@ -73,45 +77,25 @@
     </div>
 
     <div id="banner">
-      <h1>Car Error System</h1>
-      <h3>Fix That Ride!</h3>
+      <div id="banner">
+        <div id="parts-container">
+          <div class="container-style">
+        <form  class="form" id="searchParts">
+          <h1 class="form__title">Solution Search</h1>
+          <div class="form__input-group">
+            <select name="partCategories" id="partCategories">
+              <option value="Engines">Issue</option>
+              <option value="Chassis">Car</option>
+            </select>
+          </div>
+          <button class="partSearch__button" type="partSearchSubmit">Continue</button>
+      </form>
+    </div>
+  </div>
+      </div>
     </div>
 
     <main>
-      <a href="#">
-        <h2 class="section-heading">All Parts</h2>
-      </a>
-      <section>
-        <div class="card">
-          <div class="card-image">
-            <a href="#">
-              <img src="img/sportcars.jpg" alt="Sport Car Image" />
-            </a>
-          </div>
-
-          <div class="card-description">
-            <a href="#">
-              <h3>Parts Descriptions</h3>
-            </a>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
-              atque error numquam dolorem dicta totam ratione recusandae
-              repudiandae quia quos excepturi, autem odit perferendis! Illo
-              veniam autem quam a porro?
-            </p>
-            <a href="#" class="btn-readmore">Read More</a>
-          </div>
-        </div>
-      </section>
-
-      <h2 class="section-heading">Solutions</h2>
-
-      <section id = "section-solutions">
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio illo, quas voluptas quos aliquam cupiditate maiores deserunt ipsam unde tenetur omnis voluptate ducimus nihil ex reprehenderit cumque nulla nesciunt? Totam! fswf sdf sdf sdf sdf sdf sdaf sdaf sdaf dssdgsd dsgdsgdsgdsgdsagdsagdsagsdagsdagsdagsdagsdagdsa Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate quae beatae architecto asperiores necessitatibus quo magni, eveniet ullam amet nesciunt. Ipsam, laudantium impedit. Hic, at earum porro voluptas perspiciatis minima!
-        </p>
-        <a href="#" class="btn-readmore">More Solutions</a>
-      </section>
-
       <footer>
         <div id="left-footer">
           <h3>Quick Links</h3>
