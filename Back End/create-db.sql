@@ -33,7 +33,8 @@ CREATE TABLE IF NOT EXISTS `car_part` (
 
 CREATE TABLE IF NOT EXISTS `account` (
     `id` int(2) NOT NULL,
-    `name` varchar(50) NOT NULL,
+    `password` varchar(50) NOT NULL,
+    `email` varchar(50) NOT NULL,
     `date_of_creation` varchar(20) NOT NULL,
     PRIMARY KEY (`id`)
 );
