@@ -166,6 +166,7 @@ nav ul {
   color: black;
   display: none;
   align-items: center;
+  margin-right: auto;
 }
 
 /* Account Icon */
@@ -178,6 +179,7 @@ nav ul {
   position: relative;
   left: 980px;
   height: 40px;
+  display: flex;
 }
 
 #user-icon:hover {
@@ -193,6 +195,7 @@ nav ul {
   transition: 0.2s;
   position: relative;
   left: 920px;
+  display: flex;
 }
 
 #search-icon:hover {
@@ -363,7 +366,15 @@ footer #right-footer {
     flex-direction: column;
   }
 
-  .card .card .card-image img {
+  .card
+    .card
+    .card-image
+    img
+    .slider
+    .slide
+    img
+    .navigation-manual
+    .navigation-auto {
     width: 100%;
   }
 
@@ -415,7 +426,7 @@ footer #right-footer {
   .card {
     width: 45%;
   }
-  .card .card-image img {
+  .card .card-image img .slider .slide img .navigation-manual .navigation-auto {
     width: 100%;
   }
 }
