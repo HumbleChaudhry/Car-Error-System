@@ -5,12 +5,12 @@ const searchBox = document.getElementById("searchbox");
 
 
 searchIcon.addEventListener('click', function () {
-    if (searchBox.style.top == '150px') {
+    if (searchBox.style.top == '72px') {
       searchBox.style.top = '24px';
       searchBox.style.pointerEvents = 'none';
       searchIcon.style.color = 'darkgreen'; 
     } else {
-      searchBox.style.top = '150px';
+      searchBox.style.top = '72px';
       searchBox.style.pointerEvents = 'auto'; 
       searchIcon.style.color = 'orchid'; 
     }
