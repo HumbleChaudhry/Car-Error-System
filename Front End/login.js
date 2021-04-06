@@ -17,6 +17,12 @@ function clearInputError(inputElement) {
     inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
 }
 
+async function loadUsers(){
+    const response = await fetch("data/user.json");
+
+    console.log(response);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.querySelector("#login");
     const registerForm = document.querySelector("#register");
