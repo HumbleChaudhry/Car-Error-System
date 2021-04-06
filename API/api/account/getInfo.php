@@ -16,7 +16,7 @@ $db = $database->connect();
 $account = new Account($db);
 
 //Sanitize inputs
-$this->id = isset($_GET['un']) ? $_GET(['un']) : die();
+$account->id = isset($_GET['un']) ? $_GET(['un']) : die();
 
 $result = $account->getPurchases();
 

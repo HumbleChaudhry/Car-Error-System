@@ -46,4 +46,17 @@ class Issue
 
         return $stmt;
     }
+    public function getGuide()
+    {
+        $query = 'CALL get_guide(?)';
+
+        $stmt = $this->conn->prepare($query);
+
+        //Bind inputs
+        $stmt->bindParam(1, $this->name);
+
+        $stmt->execute();
+
+        return $stmt;
+    }
 }

@@ -16,12 +16,12 @@ $db = $database->connect();
 $account = new Account($db);
 
 //Sanitize inputs
-$this->id = isset($_GET['un']) ? $_GET['un'] : die();
-$this->email = isset($_GET['email']) ? $_GET['email'] : die();
-$this->date_of_creation = date("Y/m/d");
-$this->address = isset($_GET['address']) ? $_GET['address'] : die();
-$this->cert = isset($_GET['cert']) ? $_GET['cert'] : 'nil';
-$this->shop_name = isset($_GET['shop']) ? $_GET['shop'] : 'nil';
+$account->id = isset($_GET['un']) ? $_GET['un'] : die();
+$account->email = isset($_GET['email']) ? $_GET['email'] : die();
+$account->date_of_creation = date("Y/m/d");
+$account->address = isset($_GET['address']) ? $_GET['address'] : die();
+$account->cert = isset($_GET['cert']) ? $_GET['cert'] : 'nil';
+$account->shop_name = isset($_GET['shop']) ? $_GET['shop'] : 'nil';
 
 $result = $account->createAccount();
 

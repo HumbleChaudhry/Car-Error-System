@@ -21,13 +21,9 @@ $car->year = (int)$car->year;
 $car->$drivetrain = isset($_GET['dt']) ? $_GET['dt'] : die();
 $car->$transmission = isset($_GET['trans']) ? $_GET['trans'] : die();
 $car->$engine = isset($_GET['engine']) ? $_GET['engine'] : die();
-$car->chassis = isset($_GET['chassis']) ? $_GET['chassis'] : die();
+$car->$chassis = isset($_GET['chassis']) ? $_GET['chassis'] : die();
 
 
 $result = $car->insertCar();
 
-if ($result) {
-    return true;
-} else {
-    return false;
-}
+return $result;

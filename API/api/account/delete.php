@@ -16,7 +16,7 @@ $db = $database->connect();
 $account = new Account($db);
 
 //Sanitize inputs
-$this->id = isset($_GET['id']) ? $_GET(['id']) : die();
+$account->id = isset($_GET['id']) ? $_GET(['id']) : die();
 
 $result = $account->deleteAccount();
 
