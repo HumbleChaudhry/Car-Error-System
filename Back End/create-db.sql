@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `category`(
 );
 
 CREATE TABLE IF NOT EXISTS `car_part` (
-    `id` int(2) NOT NULL,
+    `id` varchar(30) NOT NULL,
     `name` varchar(50) NOT NULL,
     `price` decimal(10) NOT NULL,
     `rating` int(3),
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `car_part` (
     PRIMARY KEY (`id`, `name`),
     FOREIGN KEY (`category`) REFERENCES `category` (`title`),
     FOREIGN KEY (`retailer`) REFERENCES `retailer` (`name`)
-    );
+);
 
 CREATE TABLE IF NOT EXISTS `account` (
     `id` varchar(30) NOT NULL,
@@ -40,20 +40,20 @@ CREATE TABLE IF NOT EXISTS `account` (
 );
 
 CREATE TABLE IF NOT EXISTS `admin` (
-    `id` int(2) NOT NULL,
+    `id` varchar(30) NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id`) REFERENCES `account` (`id`)
 );
 
 CREATE TABLE IF NOT EXISTS `mechanic` (
-    `id` int(2) NOT NULL,
+    `id` varchar(30) NOT NULL,
     `shipping_address` varchar(255) NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id`) REFERENCES `account` (`id`)
 );
 
 CREATE TABLE IF NOT EXISTS `professional` (
-    `id` int(2) NOT NULL,
+    `id` varchar(30) NOT NULL,
     `certification` varchar(255) NOT NULL,
     `shop_name` varchar(255) NOT NULL,
     PRIMARY KEY (`id`),
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `professional` (
 );
 
 CREATE TABLE IF NOT EXISTS `amateur` (
-    `id` int(2) NOT NULL,
+    `id` varchar(30) NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id`) REFERENCES `mechanic` (`id`)
 );
@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `symptoms`(
 CREATE TABLE IF NOT EXISTS `purchases`(
     `part_id` int(2) NOT NULL,
     `retailer_name` varchar(50) NOT NULL,
-    `account_id` int(2) NOT NULL,
+    `account_id` varchar(30) NOT NULL,
     `date` varchar(10),
     `tracking_no` varchar(10),
     `transaction_no` varchar(10),
@@ -185,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `has`(
 );
 
 CREATE TABLE IF NOT EXISTS `rate`(
-    `mechanic_id` int(2) NOT NULL,
+    `mechanic_id` varchar(30) NOT NULL,
     `guide_title` varchar(50) NOT NULL,
     FOREIGN KEY (`mechanic_id`) REFERENCES `mechanic` (`id`),
     FOREIGN KEY (`guide_title`) REFERENCES `guide` (`title`)
@@ -338,6 +338,7 @@ INSERT INTO `fits` VALUES(13, 'Honda', 'Prelude', 1992);
 INSERT INTO `fits` VALUES(13, 'Honda', 'Civic', 2000);
 INSERT INTO `fits` VALUES(14, 'Ford', 'Focus', 2015);
 
+
 INSERT INTO `has` VALUES('Mazda', 'Mazda3', 2007,'P0627','No fuel to engine');
 INSERT INTO `has` VALUES('Honda', 'Accord',2002, NULL, 'Worn Brakes');
 INSERT INTO `has` VALUES('Honda', 'Accord',2002,'P0505','Faulty IAC');
@@ -345,6 +346,43 @@ INSERT INTO `has` VALUES('Honda', 'Civic', 2000,'P0440','EVAP System Leak');
 INSERT INTO `has` VALUES('Honda', 'Civic', 2000, NULL, 'Worn Wheel Bearing');
 INSERT INTO `has` VALUES('Ford', 'Focus', 2015,'P0300','Worn Spark Plugs');
 INSERT INTO `has` VALUES('Ford','Escape',2012,'P0562','Dead Battery');
+
+INSERT INTO `account` VALUES('John123', 'pa$$word', 'john123@gmail.com', '10-06-2019');
+INSERT INTO `account` VALUES('Reus11', 'dortmund', 'marcoreus11@gmail.com', '11-09-2017');
+INSERT INTO `account` VALUES('JamesBond007', 'astonmartin', 'bond007@gmail.com', '26-06-2007');
+INSERT INTO `account` VALUES('Humdizzle', 'kobe81', 'humdizzle@gmail.com', '24-06-2006');
+INSERT INTO `account` VALUES('Schumacher', 'ferrari7', 'msc@gmail.com', '13-05-2007');
+INSERT INTO `account` VALUES('Starplatinum', 'cocopuffs', 'star@gmail.com', '23-01-2008')
+INSERT INTO `account` VALUES('Hamilton', 'vegan44', 'lh44@gmail.com', '16-05-2007' );
+INSERT INTO `account` VALUES('Dylan', `admin`, 'dylan@gmail.com', '17-02-2015');
+INSERT INTO `account` VALUES('Roshan', 'admin2', 'rosh@gmail.com', '19-08-2004');
+
+INSERT INTO `admin` VALUES('Dylan');
+INSERT INTO `admin` VALUES('Humdizzle');
+INSERT INTO `admin` VALUES('Roshan');
+
+INSERT INTO `mechanic` VALUES('John123', '3616  Morris Street, Victoria, BC');
+INSERT INTO `mechanic` VALUES('Reus11', '245 Prince Edward Street, Calgary, AB');
+INSERT INTO `mechanic` VALUES('JamesBond007', '77 Baker Street, Toronto, ON');
+INSERT INTO `mechanic` VALUES('Schumacher', '91 White Hart Lane, Vancouver, BC');
+INSERT INTO `mechanic` VALUES('Starplatinum', '404 Green Land, Saskatoon, SK');
+INSERT INTO `mechanic` VALUES('Hamilton', '167 Reapers Hideout, Edmonton, AB');
+
+INSERT INTO `professional` VALUES('Schumacher', 'certification', 'Ferrari Garage');
+INSERT INTO `professional` VALUES('Hamilton', 'certification', 'Mercedes Garage');
+INSERT INTO `professional` VALUES('JamesBond007', 'certification', 'Aston Garage');
+
+INSERT INTO `amateur` VALUES('John123');
+INSERT INTO `amateur` VALUES('Reus11');
+INSERT INTO `amateur` VALUES('Starplatinum');
+
+INSERT INTO `purchases` VALUES(1, 'Fuel Me Up', 'Schumacher', '09-09-2020', '12345', '1789');
+INSERT INTO `purchases` VALUES(2, 'Fast and Fuel-ious', 'JamesBond007', '08-07-2020', '13456', '0989');
+INSERT INTO `purchases` VALUES(3, 'Good Air Day', 'John123', '23-07-2020', '14560', '0764');
+INSERT INTO `purchases` VALUES(4, 'Fuel Me Up', 'Reus11', '12-09-2020', '34589', '0934');
+INSERT INTO `purchases` VALUES(10, 'Giver Some Gasket', 'Reus11', '03-01-2019', '56789', '8903');
+INSERT INTO `purchases` VALUES(12, 'Spark It Like Its Hot', 'Hamilton', '07-05-2020', '82343', '7245');
+INSERT INTO `purchases` VALUES(13, 'Armed Battery', 'Hamilton', '07-05-2020'. '82343', '7245');
 
 INSERT INTO `guide` VALUES(3, 'How To Change Brake Pads', NULL,'https://www.youtube.com/watch?v=lU6OKQxSg8U',2,1,'Worn Brakes');
 
@@ -359,42 +397,15 @@ INSERT INTO `step` 	VALUES('Reinstall Caliper', 6,'Place the caplier back on. Ti
 INSERT INTO `step` 	VALUES('Put Wheel On and Lower Car', 7, 'Place the wheel on the lugs, and hand tighten the lug nuts, in a criss-cross alternating pattern. Jack the car off the Jack stands, remove jackstands, and lower the car','How To Change Brake Pads');
 INSERT INTO `step` 	VALUES('Tighten Lug Nuts',8, 'Using a torque bar, tighten the lug nuts to torque spec, in a criss-cross alternating pattern. Remove the chalks from the other wheel', 'How To Change Brake Pads');
 
-INSERT INTO `account` VALUES('John123', 'pa$$word', 'john123@gmail.com', '10-06-2019');
-INSERT INTO 'account' VALUES('Reus11', 'dortmund', 'marcoreus11@gmail.com', '11-09-2017');
-INSERT INTO 'account' VALUES('JamesBond007', 'astonmartin', 'bond007@gmail.com', '26-06-2007');
-INSERT INTO 'account' VALUES('Humdizzle', 'kobe81', 'humdizzle@gmail.com', '24-06-2006');
-INSERT INTO 'account' VALUES('Schumacher', 'ferrari7', 'msc@gmail.com', '13-05-2007');
-INSERT INTO 'account' VALUES('Starplatinum', 'cocopuffs', 'star@gmail.com', '23-01-2008')
-INSERT INTO 'account' VALUES('Hamilton', 'vegan44', 'lh44@gmail.com', '16-05-2007' );
-INSERT INTO 'account' VALUES('Dylan', 'admin', 'dylan@gmail.com', '17-02-2015');
-INSERT INTO 'account' VALUES('Roshan', 'admin2', 'rosh@gmail.com', '19-08-2004');
 
-INSERT INTO 'admin' VALUES('Dylan');
-INSERT INTO 'admin' VALUES('Humdizzle');
-INSERT INTO 'admin' VALUES('Roshan');
 
-INSERT INTO 'mechanic' VALUES('John123', '3616  Morris Street, Victoria, BC');
-INSERT INTO 'mechanic' VALUES('Reus11', '245 Prince Edward Street, Calgary, AB');
-INSERT INTO 'mechanic' VALUES('JamesBond007', '77 Baker Street, Toronto, ON');
-INSERT INTO 'mechanic' VALUES('Schumacher', '91 White Hart Lane, Vancouver, BC');
-INSERT INTO 'mechanic' VALUES('Starplatinum', '404 Green Land, Saskatoon, SK');
-INSERT INTO 'mechanic' VALUES('Hamilton', '167 Reapers Hideout, Edmonton, AB');
 
-INSERT INTO 'professional' VALUES('Schumacher', 'certification', 'Ferrari Garage');
-INSERT INTO 'professional' VALUES('Hamilton', 'certification', 'Mercedes Garage');
-INSERT INTO 'professional' VALUES('JamesBond007', 'certification', 'Aston Garage');
 
-INSERT INTO 'amateur' VALUES('John123');
-INSERT INTO 'amateur' VALUES('Reus11');
-INSERT INTO 'amateur' VALUES('Starplatinum');
 
-INSERT INTO 'purchases' VALUES(1, 'Fuel Me Up', 'Schumacher', '09-09-2020', '12345', '1789');
-INSERT INTO 'purchases' VALUES(2, 'Fast and Fuel-ious', 'JamesBond007', '08-07-2020', '13456', '0989');
-INSERT INTO 'purchases' VALUES(3, 'Good Air Day', 'John123', '23-07-2020', '14560', '0764');
-INSERT INTO 'purchases' VALUES(4, 'Fuel Me Up', 'Reus11', '12-09-2020', '34589', '0934');
-INSERT INTO 'purchases' VALUES(10, 'Giver Some Gasket', 'Reus11', '03-01-2019', '56789', '8903');
-INSERT INTO 'purchases' VALUES(12, 'Spark It Like Its Hot', 'Hamilton', '07-05-2020', '82343', '7245');
-INSERT INTO 'purchases' VALUES(13, 'Armed Battery', 'Hamilton', '07-05-2020'. '82343', '7245');
+
+
+
+
 
 
 
