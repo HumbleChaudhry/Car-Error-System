@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `category`(
 );
 
 CREATE TABLE IF NOT EXISTS `car_part` (
-    `id` varchar(30) NOT NULL,
+    `id` int(2) NOT NULL,
     `name` varchar(50) NOT NULL,
     `price` decimal(10) NOT NULL,
     `rating` int(3),
