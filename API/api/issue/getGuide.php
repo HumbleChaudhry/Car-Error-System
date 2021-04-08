@@ -28,4 +28,4 @@ $ish = array(
     'issue name' => $issue->name
 );
 
-print_r(json_encode($ish));
+echo (json_encode($ish));

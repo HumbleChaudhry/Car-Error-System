@@ -16,17 +16,12 @@ $db = $database->connect();
 $account = new Account($db);
 
 //Sanitize inputs
-$account->id = isset($_GET['id']) ? $_GET(['id']) : die();
+$account->id = isset($_GET['id']) ? $_GET['id'] : die();
 
 $result = $account->deleteAccount();
 
-
 if ($result) {
-    echo json_encode(
-        array('message' => 'Success')
-    );
+    echo json_encode(array('Result' => 'True'));
 } else {
-    echo json_encode(
-        array('message' => 'Failed')
-    );
+    echo json_encode(array('Result' => 'False'));
 }

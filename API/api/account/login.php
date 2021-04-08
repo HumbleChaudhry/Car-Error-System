@@ -16,10 +16,13 @@ $db = $database->connect();
 $account = new Account($db);
 
 //Inputs
-$account->id = isset($_GET['un']) ? $_GET(['un']) : die();
-$pass = isset($_GET['pass']) ? $_GET(['pass']) : die();
+$account->id = isset($_GET['un']) ? $_GET['un'] : die();
+$pass = isset($_GET['pass']) ? $_GET['pass'] : die();
 
 $result = $account->login($pass);
 
-echo json_encode($result);
-return $result;
+if ($result) {
+    echo json_encode(array('Result' => 'True'));
+} else {
+    echo json_encode(array('Result' => 'False'));
+}

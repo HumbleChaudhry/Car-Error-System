@@ -27,4 +27,4 @@ $ish = array(
     'related part' => $part_id
 );
 
-print_r(json_encode($ish));
+echo (json_encode($ish));

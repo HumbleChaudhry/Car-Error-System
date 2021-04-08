@@ -23,4 +23,9 @@ $part->$retailer = isset($_GET['retailer']) ? $_GET['retailer'] : die();
 
 $result = $part->insertPart();
 
-return $result;
+
+if ($result) {
+    echo json_encode(array('Result' => 'True'));
+} else {
+    echo json_encode(array('Result' => 'False'));
+}
