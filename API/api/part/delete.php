@@ -19,4 +19,8 @@ $part->name = isset($_GET['name']) ? $_GET['name'] : die();
 
 $result = $part->deletePart();
 
-return $result;
+if ($result) {
+    echo json_encode(array('Result' => 'True'));
+} else {
+    echo json_encode(array('Result' => 'False'));
+}

@@ -16,8 +16,8 @@ $db = $database->connect();
 $account = new Account($db);
 
 //Inputs
-$account->id = isset($_GET['un']) ? $_GET(['un']) : die();
-$pass = isset($_GET['pass']) ? $_GET(['pass']) : die();
+$account->id = isset($_GET['un']) ? $_GET['un'] : die();
+$pass = isset($_GET['pass']) ? $_GET['pass'] : die();
 
 $result = $account->login($pass);
 

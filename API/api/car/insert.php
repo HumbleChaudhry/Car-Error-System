@@ -26,4 +26,8 @@ $car->$chassis = isset($_GET['chassis']) ? $_GET['chassis'] : die();
 
 $result = $car->insertCar();
 
-return $result;
+if ($result) {
+    echo json_encode(array('Result' => 'True'));
+} else {
+    echo json_encode(array('Result' => 'False'));
+}

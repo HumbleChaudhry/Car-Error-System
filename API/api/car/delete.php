@@ -21,4 +21,8 @@ $car->year = (int)$year;
 
 $result = $car->deleteCar();
 
-return $result;
+if ($result) {
+    echo json_encode(array('Result' => 'True'));
+} else {
+    echo json_encode(array('Result' => 'False'));
+}
