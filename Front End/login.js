@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const formData = new FormData(loginForm); 
 
         fetch('./API/api/account/login.php', {
-            method: 'post',
+            method: 'get',
             body: formData
         }).then(function (response){
             return response.text();

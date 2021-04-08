@@ -14,8 +14,10 @@
       href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Slab"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="slider.css" />
 
 
     <title>Car Error System</title>
@@ -51,6 +53,7 @@
         <i class="fas fa-bars"></i>
       </div>
       <ul>
+        
         <li>
           <a class="active" href="index.html">Home</a>
         </li>
@@ -60,82 +63,69 @@
         <li>
           <a href="Parts.html">Parts</a>
         </li>
-        <li>
+        <li >
           <div id="user-icon">
             <a href="Login.html"><i class="glyphicon glyphicon-user"></i></a>
           </div>
         </li>
-        <li>
+        <li >
           <div id="search-icon">
             <i class="fas fa-search"></i>
           </div>
         </li>
       </ul>
     </nav>
-
     <div id="searchbox">
       <input type="text" placeholder="Search Here" />
     </div>
     
-
-    <div id="banner-home">
-      <!-- <h1>Car Error System</h1>
-      <h3>Fix That Ride!</h3> -->
-          <!--image slider start-->
+    
     <div class="slider">
       <div class="slides">
-        <!--radio buttons start-->
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio2">
-        <input type="radio" name="radio-btn" id="radio3">
-        <input type="radio" name="radio-btn" id="radio4">
-        <!--radio buttons end-->
-        <!--slide images start-->
-        <div class="slide first">
-          <img src="img/solutions.jpg" alt="">
+          <div class="slide">
+              <div class="slide-data">
+                  <h1>We Have The SOLUTION For You</h1>
+                  <p>                      </p>
+                  <button>SEE MORE</button>
+              </div>
+          </div>
+          <div class="slide">
+            <div class="slide-data">
+                <h1>REV UP THOSE ENGINES</h1>
+                <p>                  </p>
+                <button>SEE MORE</button>
+            </div>
         </div>
-        <div class="slide">
-          <img src="img/engines.jpg" alt="">
-        </div>
-        <div class="slide">
-          <img src="img/transmission.jpg" alt="">
-        </div>
-        <div class="slide">
-          <img src="img/chassis.jpg" alt="">
-        </div>
-        <!--slide images end-->
-        <!--automatic navigation start-->
-        <div class="navigation-auto">
-          <div class="auto-btn1"></div>
-          <div class="auto-btn2"></div>
-          <div class="auto-btn3"></div>
-          <div class="auto-btn4"></div>
-        </div>
-        <!--automatic navigation end-->
+          <div class="slide">
+              <div class="slide-data">
+                  <h1>Most Reliable Transmissions in the World</h1>
+                  <p>                    </p>
+                  <button>SEE MORE</button>
+              </div>
+          </div>
+          <div class="slide">
+              <div class="slide-data">
+                  <h1>First Class Chassis</h1>
+                  <p>                      </p>
+                  <button>SEE MORE</button>
+              </div>
+          </div>
       </div>
-      <!--manual navigation start-->
-      <div class="navigation-manual">
-        <label for="radio1" class="manual-btn"></label>
-        <label for="radio2" class="manual-btn"></label>
-        <label for="radio3" class="manual-btn"></label>
-        <label for="radio4" class="manual-btn"></label>
-      </div>
-      <!--manual navigation end-->
-    </div>
-    <!--image slider end-->
 
-    <script type="text/javascript">
-    document.getElementById('radio1').checked = true;
-    var counter = 2;
-    setInterval(function(){
-      document.getElementById('radio' + counter).checked = true;
-      counter++;
-      if(counter > 4){
-        counter = 1;
-      }
-    }, 7000);
-    </script>
-    </div>
+      <button class="arrows prev" onclick="plusslide(-1)">
+          <span><i class="fas fa-angle-left"></i></span>
+      </button>
+      <button class="arrows next" onclick="plusslide(1)">
+          <span><i class="fas fa-angle-right"></i></span>
+      </button>
+
+      <div class="dots">
+          <span onclick="currentslide(1)"></span>
+          <span onclick="currentslide(2)"></span>
+          <span onclick="currentslide(3)"></span>
+          <span onclick="currentslide(4)"></span>
+      </div>
+  </div>
 
     <main>
       <a href="#">
@@ -197,6 +187,9 @@
         </div>
       </footer>
     </main>
+
+    
     <script src="main.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

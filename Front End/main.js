@@ -26,6 +26,17 @@ menuIcon.addEventListener('click', function () {
     }
   })
 
+  $(document).ready(function(){
+  $('.home-slider').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    items:1,
+    autoplay:true
+});
+
+
+});
 
 
 
