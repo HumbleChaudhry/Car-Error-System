@@ -21,5 +21,8 @@ $pass = isset($_GET['pass']) ? $_GET(['pass']) : die();
 
 $result = $account->login($pass);
 
-echo json_encode($result);
-return $result;
+if ($result) {
+    echo json_encode(array('Result' => 'True'));
+} else {
+    echo json_encode(array('Result' => 'False'));
+}
