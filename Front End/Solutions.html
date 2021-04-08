@@ -16,6 +16,7 @@
     />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href ="selector.css" />
 
     <title>Solutions</title>
   </head>
@@ -80,13 +81,35 @@
       <div id="banner">
         <div id="parts-container">
           <div class="container-style">
+            <h1 class="form__title">Solution Search</h1>
+            <div class="container-selector">
+
+              <div class="select-box">
+                <div class="options-container">
+                  <div class="option">
+                    <input
+                      type="radio"
+                      class="radio"
+                      id="automobiles"
+                      name="category"
+                    />
+                    <label for="automobiles">Issue</label>
+                  </div>
+        
+                  <div class="option">
+                    <input type="radio" class="radio" id="film" name="category" />
+                    <label for="film">Car</label>
+                  </div>
+                </div>
+        
+                <div class="selected">
+                  Select Solution
+                </div>
+              </div>
+            </div>
         <form  class="form" id="searchParts">
-          <h1 class="form__title">Solution Search</h1>
+          
           <div class="form__input-group">
-            <select name="partCategories" id="partCategories">
-              <option value="Engines">Issue</option>
-              <option value="Chassis">Car</option>
-            </select>
           </div>
           <button class="partSearch__button" type="partSearchSubmit">Continue</button>
       </form>
@@ -95,7 +118,7 @@
       </div>
     </div>
 
-    <main>
+  
       <footer>
         <div id="left-footer">
           <h3>Quick Links</h3>
@@ -120,7 +143,8 @@
           </p>
         </div>
       </footer>
-    </main>
+
+    <script src="selector.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

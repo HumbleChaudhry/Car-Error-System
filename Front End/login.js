@@ -67,6 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+/*menu stuff*/
+
 const menuIcon = document.getElementById("menu-icon");
 const slideoutMenu = document.getElementById("slideout-menu");
 const searchIcon = document.getElementById("search-icon");

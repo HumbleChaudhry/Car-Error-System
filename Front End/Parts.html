@@ -16,6 +16,7 @@
     />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href ="selector.css" />
 
     <title>Parts</title>
   </head>
@@ -79,23 +80,55 @@
     <div id="banner">
       <div id="parts-container">
         <div class="container-style">
+          <h1 class="form__title">Part Search</h1>
+          <div class="container-selector">
+
+            <div class="select-box">
+              <div class="options-container">
+                <div class="option">
+                  <input
+                    type="radio"
+                    class="radio"
+                    id="automobiles"
+                    name="category"
+                  />
+                  <label for="automobiles">Name</label>
+                </div>
+      
+                <div class="option">
+                  <input type="radio" class="radio" id="film" name="category" />
+                  <label for="film">Engine</label>
+                </div>
+
+                <div class="option">
+                  <input type="radio" class="radio" id="film" name="category" />
+                  <label for="film">Transmission</label>
+                </div>
+
+                <div class="option">
+                  <input type="radio" class="radio" id="film" name="category" />
+                  <label for="film">Chassis</label>
+                </div>
+                
+              </div>
+      
+              <div class="selected">
+                Select Part By
+              </div>
+            </div>
+          </div>
       <form  class="form" id="searchParts">
-        <h1 class="form__title">Part Search</h1>
+        
         <div class="form__input-group">
-          <select name="partCategories" id="partCategories">
-            <option value="Name">Name</option>
-            <option value="Engines">Engine</option>
-            <option value="Chassis">Chassis</option>
-            <option value="Transmission">Transmission</option>
-          </select>
         </div>
         <button class="partSearch__button" type="partSearchSubmit">Continue</button>
     </form>
   </div>
 </div>
     </div>
+  </div>
 
-    <main>
+  
       <footer>
         <div id="left-footer">
           <h3>Quick Links</h3>
@@ -120,7 +153,8 @@
           </p>
         </div>
       </footer>
-    </main>
+    
     <script src="main.js"></script>
+    <script src="selector.js"></script>
   </body>
 </html>
