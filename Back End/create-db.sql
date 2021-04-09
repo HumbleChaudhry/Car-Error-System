@@ -76,11 +76,12 @@ CREATE TABLE IF NOT EXISTS `issue`(
     `part_id` int(2),
     `part_name` varchar(50),
     PRIMARY KEY (`issue_name`),
-    FOREIGN KEY (`part_id`,`part_name`) REFERENCES `car_part` (`id`,`name`)
+    FOREIGN KEY (`part_id`) REFERENCES `car_part` (`id`)
+    FOREIGN KEY (`part_name`) REFERENCES `car_part` (`name`)
 );
 
 CREATE TABLE IF NOT EXISTS `guide` (
-    `avg_rate` decimal(3,0) NOT NULL,
+    `avg_rate` decimal(30) NOT NULL,
     `title` varchar(255) NOT NULL,
     `article` varchar(255),
     `video` varchar(255),
@@ -352,9 +353,9 @@ INSERT INTO `account` VALUES('Reus11', 'dortmund', 'marcoreus11@gmail.com', '11-
 INSERT INTO `account` VALUES('JamesBond007', 'astonmartin', 'bond007@gmail.com', '26-06-2007');
 INSERT INTO `account` VALUES('Humdizzle', 'kobe81', 'humdizzle@gmail.com', '24-06-2006');
 INSERT INTO `account` VALUES('Schumacher', 'ferrari7', 'msc@gmail.com', '13-05-2007');
-INSERT INTO `account` VALUES('Starplatinum', 'cocopuffs', 'star@gmail.com', '23-01-2008')
+INSERT INTO `account` VALUES('Starplatinum', 'cocopuffs', 'star@gmail.com', '23-01-2008');
 INSERT INTO `account` VALUES('Hamilton', 'vegan44', 'lh44@gmail.com', '16-05-2007' );
-INSERT INTO `account` VALUES('Dylan', `admin`, 'dylan@gmail.com', '17-02-2015');
+INSERT INTO `account` VALUES('Dylan', 'admin', 'dylan@gmail.com', '17-02-2015');
 INSERT INTO `account` VALUES('Roshan', 'admin2', 'rosh@gmail.com', '19-08-2004');
 
 INSERT INTO `admin` VALUES('Dylan');
@@ -382,7 +383,7 @@ INSERT INTO `purchases` VALUES(3, 'Good Air Day', 'John123', '23-07-2020', '1456
 INSERT INTO `purchases` VALUES(4, 'Fuel Me Up', 'Reus11', '12-09-2020', '34589', '0934');
 INSERT INTO `purchases` VALUES(10, 'Giver Some Gasket', 'Reus11', '03-01-2019', '56789', '8903');
 INSERT INTO `purchases` VALUES(12, 'Spark It Like Its Hot', 'Hamilton', '07-05-2020', '82343', '7245');
-INSERT INTO `purchases` VALUES(13, 'Armed Battery', 'Hamilton', '07-05-2020'. '82343', '7245');
+INSERT INTO `purchases` VALUES(13, 'Armed Battery', 'Hamilton', '07-05-2020', '82343', '7245');
 
 INSERT INTO `guide` VALUES(3, 'How To Change Brake Pads', NULL,'https://www.youtube.com/watch?v=lU6OKQxSg8U',2,1,'Worn Brakes');
 
@@ -396,14 +397,6 @@ INSERT INTO `step` 	VALUES('Return Piston on Caliper', 5,'Open the cap on the br
 INSERT INTO `step` 	VALUES('Reinstall Caliper', 6,'Place the caplier back on. Tighten bolts down to the proper torque spec, and clip the ABS harness back in', 'How To Change Brake Pads');
 INSERT INTO `step` 	VALUES('Put Wheel On and Lower Car', 7, 'Place the wheel on the lugs, and hand tighten the lug nuts, in a criss-cross alternating pattern. Jack the car off the Jack stands, remove jackstands, and lower the car','How To Change Brake Pads');
 INSERT INTO `step` 	VALUES('Tighten Lug Nuts',8, 'Using a torque bar, tighten the lug nuts to torque spec, in a criss-cross alternating pattern. Remove the chalks from the other wheel', 'How To Change Brake Pads');
-
-
-
-
-
-
-
-
 
 
 
