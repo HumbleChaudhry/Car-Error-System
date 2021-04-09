@@ -12,17 +12,23 @@ BEGIN
 INSERT INTO `account`
 VALUES(_name, _password, _email, _doc);
 
-IF _address is NOT NULL
+IF (_address is NOT NULL) THEN
 
 INSERT INTO `mechanic` VALUES (_name, _address)
 
-IF _cert AND _shop is NOT NULL
+END IF;
 
-INSERT INTO `professional` VALUES (_name, _cert, _shop);
+IF (_cert != 'NULL' AND _shop != 'NULL')
 
-IF _cert AND _shop is NULL
+THEN INSERT INTO `professional` VALUES (_name, _cert, _shop);
 
-INSERT INTO `amateur`(id) VALUES (_name);
+END IF;
 
-END;
+IF (_cert LIKE 'NULL' AND _shop LIKE 'NULL')
+
+THEN INSERT INTO `amateur`(id) VALUES (_name);
+
+END IF;
+
+END
 
