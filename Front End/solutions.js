@@ -11,6 +11,7 @@ optionsList.forEach((o) => {
   o.addEventListener("click", () => {
     selected.innerHTML = o.querySelector("label").innerHTML;
     optionsContainer.classList.remove("active");
+    document.getElementById("Car").checked == true;
   });
 });
 
@@ -65,4 +66,21 @@ optionsListYear.forEach((o) => {
     selectedYear.innerHTML = o.querySelector("label").innerHTML;
     optionsContainerYear.classList.remove("active");
   });
+});
+
+document.addEventListener("DOMContentLoaded", (e) => {
+  //   if (document.getElementById("Car").checked) {
+  //     e.preventDefault();
+  //     selectedMake.classList.remove(".form--hidden");
+  //   } else if (document.getElementById("Issue").checked) {
+  //     e.preventDefault();
+  //     selectedMake.classList.add(".form--hidden");
+  //   }
+
+  var radios = document.querySelectorAll('input[name="category"]');
+  for (var i = 0, max = radios.length; i < max; i++) {
+    radios[i].onclick = function () {
+      alert(this.value);
+    };
+  }
 });

@@ -99,6 +99,7 @@ textarea:focus {
 #searchbox {
   position: fixed;
   right: 0;
+  flex: 2 1 auto;
   top: 22px;
   width: 500px;
   pointer-events: none;
@@ -122,10 +123,11 @@ nav {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 30px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 16px 0 0;
   box-sizing: border-box;
   z-index: 100;
+  flex: 2 1 auto;
 }
 
 nav a {
@@ -152,15 +154,20 @@ nav ul {
   color: orchid;
 }
 
-.justify-content {
-  float: right;
-  justify-content: space-between;
+#links {
+  display: flex;
+  justify-content: center;
+  /* align-items: left; */
+  padding-right: 530px;
+  padding-left: 530px;
 }
 
 #logo-img {
   display: flex;
   height: 100%;
   background: orange;
+  border: 2px solid red;
+  border-radius: 5px;
   padding: 0 30px;
   align-items: center;
   color: black;
@@ -193,6 +200,9 @@ nav ul {
   transition: 0.2s;
   height: 36px;
   display: flex;
+  /* position: fixed;
+  top: 15px;
+  right: 0; */
 }
 
 #user-icon:hover {
@@ -203,10 +213,13 @@ nav ul {
 
 #search-icon {
   color: black;
-  padding: 10px 0px;
+  padding: 0px 10px;
   cursor: pointer;
   transition: 0.2s;
   display: flex;
+  /* position: fixed;
+  top: 10px;
+  right: 0; */
 }
 
 #search-icon:hover {
