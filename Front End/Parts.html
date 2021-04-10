@@ -93,23 +93,24 @@
                     type="radio"
                     class="radio"
                     id="Name"
-                    name="category"
+                    value = "Name"
+                    name="selectPartBy"
                   />
                   <label for="Name">Name</label>
                 </div>
       
                 <div class="option">
-                  <input type="radio" class="radio" id="Engine" name="category" />
+                  <input type="radio" class="radio" id="Engine" value = "Engine" name="selectPartBy" />
                   <label for="Engine">Engine</label>
                 </div>
 
                 <div class="option">
-                  <input type="radio" class="radio" id="Transmission" name="category" />
+                  <input type="radio" class="radio" id="Transmission" value = "Transmission" name="selectPartBy" />
                   <label for="Transmission">Transmission</label>
                 </div>
 
                 <div class="option">
-                  <input type="radio" class="radio" id="Chassis" name="category" />
+                  <input type="radio" class="radio" id="Chassis" value = "Chassis" name="selectPartBy" />
                   <label for="Chassis">Chassis</label>
                 </div>
                 
@@ -120,8 +121,7 @@
               </div>
             </div>
 
-
-            <div class="select-box-make">
+            <div class="select-box-make " >
               <div class="options-container-make">
                 <div class="option-make">
                   <input
@@ -150,7 +150,7 @@
                 
               </div>
       
-              <div class="selected-make">
+              <div id = "selected-make" class="form--hidden" >
                 Select Make
               </div>
             </div>
@@ -184,10 +184,11 @@
                 
               </div>
               
-              <div class="selected-model">
+              <div class="selected-model form--hidden">
                 Select Model
               </div>
               </div>
+
               <div class="select-box-year">
                 <div class="options-container-year">
                   <div class="option-year">
@@ -217,10 +218,37 @@
                   
                 </div>
                 
-                <div class="selected-year">
+                <div class="selected-year form--hidden">
                   Select year
                 </div>
                 </div>
+
+                <div class="select-box-part-name">
+                  <div class="options-container-part-name">
+                    <div class="option-part-name">
+                      <input type="radio" class="radio" id="Name" name="category" />
+                      <label for="Name">Name</label>
+                    </div>
+                
+                    <div class="option-part-name">
+                      <input type="radio" class="radio" id="Engine" name="category" />
+                      <label for="Engine">Engine</label>
+                    </div>
+                
+                    <div class="option-part-name">
+                      <input type="radio" class="radio" id="Transmission" name="category" />
+                      <label for="Transmission">Transmission</label>
+                    </div>
+                
+                    <div class="option-part-name">
+                      <input type="radio" class="radio" id="Chassis" name="category" />
+                      <label for="Chassis">Chassis</label>
+                    </div>
+                  </div>
+                
+                  <div class="selected-part-name form--hidden">Select Part Name</div>
+                </div>
+                
 
           </div>
 

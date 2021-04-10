@@ -73,7 +73,7 @@
 
 .select-box .option,
 .selected {
-  padding: 12px 24px;
+  /* padding: 12px 24px; */
   cursor: pointer;
 }
 
@@ -83,6 +83,8 @@
 
 .select-box label {
   cursor: pointer;
+  display: block;
+  padding: 12px 24px;
 }
 
 .select-box .option .radio {
@@ -109,7 +111,7 @@
   order: 1;
 }
 
-.selected-make {
+#selected-make {
   background: gold;
   border-radius: 8px;
   margin-bottom: 8px;
@@ -159,8 +161,8 @@
 }
 
 .select-box-make .option-make,
-.selected-make {
-  padding: 12px 24px;
+#selected-make {
+  /* padding: 12px 24px; */
   cursor: pointer;
 }
 
@@ -170,6 +172,8 @@
 
 .select-box-make label {
   cursor: pointer;
+  display: block;
+  padding: 12px 24px;
 }
 
 .select-box-make .option-make .radio {
@@ -247,7 +251,7 @@
 
 .select-box-model .option-model,
 .selected-model {
-  padding: 12px 24px;
+  /* padding: 12px 24px; */
   cursor: pointer;
 }
 
@@ -257,6 +261,8 @@
 
 .select-box-model label {
   cursor: pointer;
+  display: block;
+  padding: 12px 24px;
 }
 
 .select-box-model .option-model .radio {
@@ -334,7 +340,7 @@
 
 .select-box-year .option-year,
 .selected-year {
-  padding: 12px 24px;
+  /* padding: 12px 24px; */
   cursor: pointer;
 }
 
@@ -344,12 +350,122 @@
 
 .select-box-year label {
   cursor: pointer;
+  display: block;
+  padding: 12px 24px;
 }
 
 .select-box-year .option-year .radio {
   display: none;
 }
 
+.select-box-issue-name {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+}
+
+.select-box-issue-name .options-container-issue-name {
+  background: gold;
+  color: black;
+  border: 3px solid black;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 1s;
+  border-radius: 8px;
+  overflow: hidden;
+
+  order: 1;
+}
+
+.selected-issue-name {
+  background: gold;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  color: black;
+  position: relative;
+  border: 3px solid black;
+  order: 0;
+  font-weight: bold;
+}
+
+.selected-issue-name::after {
+  content: "";
+  background: url("img/arrow-down.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: black;
+  position: absolute;
+  height: 100%;
+  width: 20px;
+  right: 10px;
+  top: 20px;
+  transition: all 0.8s;
+}
+
+.select-box-issue-name .options-container-issue-name.active {
+  max-height: 240px;
+  opacity: 1;
+  overflow-y: scroll;
+}
+
+.select-box-issue-name
+  .options-container-issue-name.active
+  + .selected-issue-name::after {
+  transform: rotateX(180deg);
+  top: -20px;
+}
+
+.select-box-issue-name .options-container-issue-name::-webkit-scrollbar {
+  width: 8px;
+  background: black;
+  color: black;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box-issue-name .options-container-issue-name::-webkit-scrollbar-thumb {
+  background: black;
+  color: black;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box-issue-name .option-issue-name,
+.selected-issue-name {
+  /* padding: 12px 24px; */
+  cursor: pointer;
+}
+
+.select-box-issue-name .option-issue-name:hover {
+  background: yellow;
+}
+
+.select-box-issue-name label {
+  cursor: pointer;
+  display: block;
+  padding: 12px 24px;
+}
+
+.select-box-issue-name .option-issue-name .radio {
+  display: none;
+}
+
 .form--hidden {
   display: none;
+}
+
+.selected {
+  padding: 12px 24px;
+}
+#selected-make {
+  padding: 12px 24px;
+}
+.selected-model {
+  padding: 12px 24px;
+}
+.selected-year {
+  padding: 12px 24px;
+}
+
+.selected-issue-name {
+  padding: 12px 24px;
 }

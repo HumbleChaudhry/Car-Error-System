@@ -94,13 +94,14 @@
                       type="radio"
                       class="radio"
                       id="Issue"
+                      value="Issue"
                       name="category"
                     />
                     <label for="Issue">Issue</label>
                   </div>
         
                   <div class="option">
-                    <input type="radio" class="radio" id="Car" name="category" />
+                    <input type="radio" class="radio" id="Car" value="Car" name="category" />
                     <label for="Car">Car</label>
                   </div>
                 </div>
@@ -110,7 +111,7 @@
                 </div>
               </div>
 
-              <div class="select-box-make" >
+              <div class="select-box-make " >
                 <div class="options-container-make">
                   <div class="option-make">
                     <input
@@ -139,7 +140,7 @@
                   
                 </div>
         
-                <div class="selected-make " >
+                <div id = "selected-make" class="form--hidden" >
                   Select Make
                 </div>
               </div>
@@ -173,10 +174,11 @@
                   
                 </div>
                 
-                <div class="selected-model">
+                <div class="selected-model form--hidden">
                   Select Model
                 </div>
                 </div>
+
                 <div class="select-box-year">
                   <div class="options-container-year">
                     <div class="option-year">
@@ -206,10 +208,37 @@
                     
                   </div>
                   
-                  <div class="selected-year">
+                  <div class="selected-year form--hidden">
                     Select year
                   </div>
                   </div>
+               
+                  
+            <div class="select-box-issue-name">
+              <div class="options-container-issue-name">
+                <div class="option-issue-name">
+                  <input type="radio" class="radio" id="Name" name="category" />
+                  <label for="Name">Name</label>
+                </div>
+            
+                <div class="option-issue-name">
+                  <input type="radio" class="radio" id="Engine" name="category" />
+                  <label for="Engine">Engine</label>
+                </div>
+            
+                <div class="option-issue-name">
+                  <input type="radio" class="radio" id="Transmission" name="category" />
+                  <label for="Transmission">Transmission</label>
+                </div>
+            
+                <div class="option-issue-name">
+                  <input type="radio" class="radio" id="Chassis" name="category" />
+                  <label for="Chassis">Chassis</label>
+                </div>
+              </div>
+            
+              <div class="selected-issue-name form--hidden">Select Issue Name</div>
+            </div>
             </div>
         <form  class="form" id="searchParts">
           

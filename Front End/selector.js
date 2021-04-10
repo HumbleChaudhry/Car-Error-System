@@ -15,7 +15,7 @@ optionsList.forEach((o) => {
 });
 
 //Make
-const selectedMake = document.querySelector(".selected-make");
+const selectedMake = document.querySelector("#selected-make");
 const optionsContainerMake = document.querySelector(".options-container-make");
 
 const optionsListMake = document.querySelectorAll(".option-make");
@@ -65,4 +65,46 @@ optionsListYear.forEach((o) => {
     selectedYear.innerHTML = o.querySelector("label").innerHTML;
     optionsContainerYear.classList.remove("active");
   });
+});
+
+// //Part Name
+const selectedPartName = document.querySelector(".selected-part-name");
+const optionsContainerPartName = document.querySelector(
+  ".options-container-part-name"
+);
+
+const optionsListPartName = document.querySelectorAll(".option-part-name");
+
+selectedPartName.addEventListener("click", () => {
+  optionsContainerPartName.classList.toggle("active");
+});
+
+optionsListPartName.forEach((o) => {
+  o.addEventListener("click", () => {
+    selectedPartName.innerHTML = o.querySelector("label").innerHTML;
+    optionsContainerPartName.classList.remove("active");
+  });
+});
+
+document.addEventListener("DOMContentLoaded", (e) => {
+  var radios = document.querySelectorAll('input[name="selectPartBy"]');
+  for (var i = 0, max = radios.length; i < max; i++) {
+    radios[i].onclick = function () {
+      if (
+        this.value == "Engine" ||
+        this.value == "Transmission" ||
+        this.value == "Chassis"
+      ) {
+        selectedPartName.classList.add("form--hidden");
+        selectedMake.classList.remove("form--hidden");
+        selectedModel.classList.remove("form--hidden");
+        selectedYear.classList.remove("form--hidden");
+      } else {
+        selectedMake.classList.add("form--hidden");
+        selectedModel.classList.add("form--hidden");
+        selectedYear.classList.add("form--hidden");
+        selectedPartName.classList.remove("form--hidden");
+      }
+    };
+  }
 });

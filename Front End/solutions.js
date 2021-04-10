@@ -11,12 +11,11 @@ optionsList.forEach((o) => {
   o.addEventListener("click", () => {
     selected.innerHTML = o.querySelector("label").innerHTML;
     optionsContainer.classList.remove("active");
-    document.getElementById("Car").checked == true;
   });
 });
 
 //Make
-const selectedMake = document.querySelector(".selected-make");
+const selectedMake = document.querySelector("#selected-make");
 const optionsContainerMake = document.querySelector(".options-container-make");
 
 const optionsListMake = document.querySelectorAll(".option-make");
@@ -68,19 +67,40 @@ optionsListYear.forEach((o) => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", (e) => {
-  //   if (document.getElementById("Car").checked) {
-  //     e.preventDefault();
-  //     selectedMake.classList.remove(".form--hidden");
-  //   } else if (document.getElementById("Issue").checked) {
-  //     e.preventDefault();
-  //     selectedMake.classList.add(".form--hidden");
-  //   }
+// //Issue Name
+const selectedIssueName = document.querySelector(".selected-issue-name");
+const optionsContainerIssueName = document.querySelector(
+  ".options-container-issue-name"
+);
 
+const optionsListIssueName = document.querySelectorAll(".option-issue-name");
+
+selectedIssueName.addEventListener("click", () => {
+  optionsContainerIssueName.classList.toggle("active");
+});
+
+optionsListIssueName.forEach((o) => {
+  o.addEventListener("click", () => {
+    selectedIssueName.innerHTML = o.querySelector("label").innerHTML;
+    optionsContainerIssueName.classList.remove("active");
+  });
+});
+
+document.addEventListener("DOMContentLoaded", (e) => {
   var radios = document.querySelectorAll('input[name="category"]');
   for (var i = 0, max = radios.length; i < max; i++) {
     radios[i].onclick = function () {
-      alert(this.value);
+      if (this.value == "Car") {
+        selectedIssueName.classList.add("form--hidden");
+        selectedMake.classList.remove("form--hidden");
+        selectedModel.classList.remove("form--hidden");
+        selectedYear.classList.remove("form--hidden");
+      } else {
+        selectedMake.classList.add("form--hidden");
+        selectedModel.classList.add("form--hidden");
+        selectedYear.classList.add("form--hidden");
+        selectedIssueName.classList.remove("form--hidden");
+      }
     };
   }
 });
