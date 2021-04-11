@@ -16,16 +16,57 @@ $issue->name = isset($_GET['name']) ? $_GET['name'] : die();
 
 $result = $issue->getGuide();
 
-extract($result);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+
+if (!$row) {
+    echo json_encode(array('message' => "No Guide Found"));
+}
+
+
+extract($row);
 
 $ish = array(
-    'rating' => $rating,
+    'rating' => $avg_rate,
     'title' => $title,
     'article' => $article,
     'video' => $video,
-    'prof_id' => $proffesional_id,
+    'prof_id' => $pro_id,
     'admin_id' => $admin_id,
-    'issue name' => $issue->name
+    'issue name' => $issue_name
 );
 
-echo (json_encode($ish));
+$steps = array();
+$steps['guide'] = array();
+$steps['steps'] = array();
+
+array_push($steps['guide'], $ish);
+
+$result->closeCursor();
+
+$result = $issue->getSteps();
+
+$num = $result->rowCount();
+
+if ($num > 0) {
+
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        extract($row);
+
+        $acc_item = array(
+            'number' => $number,
+            'title' => $title,
+            'description' => $description
+        );
+
+        // Push to 'data
+        array_push($steps['steps'], $acc_item);
+    }
+
+    //Turn to JSON & output
+    echo json_encode($steps);
+} else {
+
+    $steps['steps'] = array('message' => "No Steps Found");
+
+    echo json_encode($steps);
+}
