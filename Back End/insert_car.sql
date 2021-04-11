@@ -8,16 +8,16 @@ CREATE PROCEDURE `insert_car` ( IN `_make` varchar(50),
 
 BEGIN
 
-INSERT INTO `car`(make, model, year) 
+INSERT INTO `car` 
 VALUES(_make, _model, _year);
 
-INSERT INTO `chassis_table`(make, model, year, chassis)
+INSERT INTO `chassis_table`
 VALUES(_make, _model, _year, _chassis);
 
-INSERT INTO `transmission_table`(make, model, year, transmission, drivetrain)
+INSERT INTO `transmission_table`
 VALUES(_make, _model, _year, _transmission, _drivetrain);
 
-INSERT INTO `engine_table`(make, model, year engine)
+INSERT INTO `engine_table`
 VALUES(_make, _model, _year, _engine);
 
 END
