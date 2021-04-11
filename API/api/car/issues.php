@@ -32,7 +32,7 @@ if ($num > 0) {
         extract($row);
 
         $issue_info = array(
-            'name' => $name,
+            'name' => $issue_name,
             'description' => $description,
         );
 
@@ -42,7 +42,6 @@ if ($num > 0) {
     //Turn to JSON & output
     echo json_encode($issues);
 } else {
-    http_response_code(404);
     echo json_encode(
         array(
             'message' => 'No issues found'

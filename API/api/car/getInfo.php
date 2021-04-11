@@ -13,21 +13,21 @@ $db = $database->connect();
 //Instantiate car object
 $car = new Car($db);
 
-// Get args
+// Get Make, Model, Year
 $car->make = isset($_GET['make']) ? $_GET['make'] : die();
 $car->model = isset($_GET['model']) ? $_GET['model'] : die();
 $car->year = isset($_GET['year']) ? $_GET['year'] : die();
 $car->year = (int)$car->year;
-$car->drivetrain = isset($_GET['drivetrain']) ? $_GET['drivetrain'] : die();
-$car->transmission = isset($_GET['transmission']) ? $_GET['transmission'] : die();
-$car->engine = isset($_GET['engine']) ? $_GET['engine'] : die();
-$car->chassis = isset($_GET['chassis']) ? $_GET['chassis'] : die();
 
+$result = $car->read_single();
 
-$result = $car->insertCar();
+$num = $result->rowcount();
 
-if ($result) {
-    echo json_encode(array('Result' => 'True'));
+if ($num) {
+    //Make JSON
+    echo (json_encode($result));
 } else {
-    echo json_encode(array('Result' => 'False'));
+    echo json_encode(
+        array('message' => 'No Car Found')
+    );
 }
