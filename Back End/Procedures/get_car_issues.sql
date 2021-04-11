@@ -4,8 +4,8 @@ CREATE PROCEDURE `get_car_issues` (IN `_make` varchar(50),
 
 BEGIN
 
-SELECT i.issue_name AND i.description FROM issue AS i
+SELECT issue_name AND description FROM issue 
 WHERE 
-(SELECT h.name FROM has AS h
-WHERE h.make = _make AND h.model = _model AND h.year = _year;) = i.issue_name;
+(SELECT name FROM has 
+WHERE make = _make AND model = _model AND year = _year;) = issue_name;
 END

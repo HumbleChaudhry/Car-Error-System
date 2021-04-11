@@ -3,6 +3,6 @@ CREATE PROCEDURE `delete_car` (IN `_make` varchar(50),
                                 IN `_year` int(4))
 
 BEGIN
-DELETE FROM car AS c
-WHERE c.make = _make AND c.model = _model AND c.year = _year;
+DELETE FROM car
+WHERE make = _make AND model = _model AND year = _year;
 END

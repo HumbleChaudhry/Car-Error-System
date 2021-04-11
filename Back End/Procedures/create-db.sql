@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `category`(
     `title` varchar(50) NOT NULL,
     `parent_title` varchar(50),
     PRIMARY KEY (`title`), 
-    FOREIGN KEY (`parent_title`) REFERENCES `category` (`title`)
+    FOREIGN KEY (`parent_title`) REFERENCES `category` (`title`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `car_part` (
@@ -27,8 +27,8 @@ CREATE TABLE IF NOT EXISTS `car_part` (
     `category` varchar(20) NOT NULL,
     `retailer` varchar(50) NOT NULL,
     PRIMARY KEY (`id`, `name`),
-    FOREIGN KEY (`category`) REFERENCES `category` (`title`),
-    FOREIGN KEY (`retailer`) REFERENCES `retailer` (`name`)
+    FOREIGN KEY (`category`) REFERENCES `category` (`title`) ON DELETE CASCADE,
+    FOREIGN KEY (`retailer`) REFERENCES `retailer` (`name`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `account` (
@@ -42,14 +42,14 @@ CREATE TABLE IF NOT EXISTS `account` (
 CREATE TABLE IF NOT EXISTS `admin` (
     `id` varchar(30) NOT NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`id`) REFERENCES `account` (`id`)
+    FOREIGN KEY (`id`) REFERENCES `account` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `mechanic` (
     `id` varchar(30) NOT NULL,
     `shipping_address` varchar(255) NOT NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`id`) REFERENCES `account` (`id`)
+    FOREIGN KEY (`id`) REFERENCES `account` (`id`)  ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `professional` (
@@ -57,13 +57,13 @@ CREATE TABLE IF NOT EXISTS `professional` (
     `certification` varchar(255) NOT NULL,
     `shop_name` varchar(255) NOT NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`id`) REFERENCES `mechanic` (`id`)
+    FOREIGN KEY (`id`) REFERENCES `mechanic` (`id`)  ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `amateur` (
     `id` varchar(30) NOT NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`id`) REFERENCES `mechanic` (`id`)
+    FOREIGN KEY (`id`) REFERENCES `mechanic` (`id`)  ON DELETE CASCADE
 );
 
 
@@ -76,7 +76,8 @@ CREATE TABLE IF NOT EXISTS `issue`(
     `part_id` int(2),
     `part_name` varchar(50),
     PRIMARY KEY (`issue_name`),
-    FOREIGN KEY (`part_id`,`part_name`) REFERENCES `car_part` (`id`,`name`)
+    FOREIGN KEY (`part_id`,`part_name`) REFERENCES `car_part` (`id`,`name`)  ON DELETE CASCADE
+   
 );
 
 CREATE TABLE IF NOT EXISTS `guide` (
@@ -84,13 +85,13 @@ CREATE TABLE IF NOT EXISTS `guide` (
     `title` varchar(255) NOT NULL,
     `article` varchar(255),
     `video` varchar(255),
-    `pro_id` int(2) NOT NULL,
-    `admin_id` int(2) NOT NULL,
+    `pro_id` varchar(30) NOT NULL,
+    `admin_id` varchar(30) NOT NULL,
     `issue_name` varchar(50) NOT NULL,
     PRIMARY KEY (`title`),
-    FOREIGN KEY (`pro_id`) REFERENCES `professional` (`id`),
-    FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`),
-    FOREIGN KEY (`issue_name`) REFERENCES `issue` (`issue_name`)
+    FOREIGN KEY (`pro_id`) REFERENCES `professional` (`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`issue_name`) REFERENCES `issue` (`issue_name`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `step` (
@@ -99,15 +100,14 @@ CREATE TABLE IF NOT EXISTS `step` (
     `description` varchar(255) NOT NULL,
     `guide` varchar(50) NOT NULL,
     PRIMARY KEY (`title`),
-    FOREIGN KEY (`guide`) REFERENCES `guide` (`title`)
+    FOREIGN KEY (`guide`) REFERENCES `guide` (`title`)  ON DELETE CASCADE
 );
-
 
 CREATE TABLE IF NOT EXISTS `car`(
     `make` varchar(50) NOT NULL,
     `model` varchar(50) NOT NULL,
     `year` int(4) NOT NULL,
-    PRIMARY KEY (`make`,`model`,`year`)
+    PRIMARY KEY (`make`,`model`,`year`)  
 );
 
 CREATE TABLE IF NOT EXISTS `chassis_table`(
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `chassis_table`(
     `year` int(4) NOT NULL,
     `chassis` varchar(50) NOT NULL,
     PRIMARY KEY(`make`,`model`,`year`,`chassis`),
-    FOREIGN KEY (`make`,`model`,`year`) REFERENCES `car` (`make`,`model`,`year`)
+    FOREIGN KEY (`make`,`model`,`year`) REFERENCES `car` (`make`,`model`,`year`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `transmission_table`(
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `transmission_table`(
     `transmission` varchar(50) NOT NULL, 
     `drivetrain` varchar(50) NOT NULL,
     PRIMARY KEY(`make`,`model`,`year`,`transmission`,`drivetrain`),
-    FOREIGN KEY (`make`,`model`,`year`) REFERENCES `car` (`make`,`model`,`year`) 
+    FOREIGN KEY (`make`,`model`,`year`) REFERENCES `car` (`make`,`model`,`year`) ON DELETE CASCADE 
 );
 
 CREATE TABLE IF NOT EXISTS `engine_table`(
@@ -135,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `engine_table`(
     `year` int(4) NOT NULL,
     `engine` varchar(50) NOT NULL, 
     PRIMARY KEY(`make`,`model`,`year`,`engine`),
-    FOREIGN KEY (`make`,`model`,`year`) REFERENCES `car` (`make`,`model`,`year`) 
+    FOREIGN KEY (`make`,`model`,`year`) REFERENCES `car` (`make`,`model`,`year`) ON DELETE CASCADE 
 );
 
 CREATE TABLE IF NOT EXISTS `dtc`(
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `symptoms`(
     `name` varchar(50) NOT NULL,
     `symptom` varchar(255) NOT NULL,
     PRIMARY KEY(`name`,`symptom`),
-    FOREIGN KEY (`name`) REFERENCES `issue` (`issue_name`)
+    FOREIGN KEY (`name`) REFERENCES `issue` (`issue_name`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `purchases`(
@@ -159,9 +159,9 @@ CREATE TABLE IF NOT EXISTS `purchases`(
     `date` varchar(10),
     `tracking_no` varchar(10),
     `transaction_no` varchar(10),
-    FOREIGN KEY (`part_id`) REFERENCES `car_part` (`id`),
-    FOREIGN KEY (`retailer_name`) REFERENCES `retailer` (`name`),
-    FOREIGN KEY (`account_id`) REFERENCES `account` (`id`)
+    FOREIGN KEY (`part_id`) REFERENCES `car_part` (`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`retailer_name`) REFERENCES `retailer` (`name`) ON DELETE CASCADE,
+    FOREIGN KEY (`account_id`) REFERENCES `account` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `fits`(
@@ -169,8 +169,8 @@ CREATE TABLE IF NOT EXISTS `fits`(
     `make` varchar(50) NOT NULL,
     `model` varchar(50) NOT NULL,
     `year` int(4) NOT NULL,
-    FOREIGN KEY (`part_id`) REFERENCES `car_part` (`id`),
-    FOREIGN KEY (`make`,`model`,`year`) REFERENCES `car` (`make`,`model`,`year`) 
+    FOREIGN KEY (`part_id`) REFERENCES `car_part` (`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`make`,`model`,`year`) REFERENCES `car` (`make`,`model`,`year`) ON DELETE CASCADE 
 );
 
 CREATE TABLE IF NOT EXISTS `has`(
@@ -179,16 +179,16 @@ CREATE TABLE IF NOT EXISTS `has`(
     `year` int(4) NOT NULL,
     `code` varchar(50),
     `name` varchar(50) NOT NULL,
-    FOREIGN KEY (`make`,`model`,`year`) REFERENCES `car` (`make`,`model`,`year`), 
-    FOREIGN KEY (`code`) REFERENCES `dtc` (`code`),
-    FOREIGN KEY (`name`) REFERENCES `issue` (`issue_name`)
+    FOREIGN KEY (`make`,`model`,`year`) REFERENCES `car` (`make`,`model`,`year`) ON DELETE CASCADE, 
+    FOREIGN KEY (`code`) REFERENCES `dtc` (`code`) ON DELETE CASCADE,
+    FOREIGN KEY (`name`) REFERENCES `issue` (`issue_name`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `rate`(
     `mechanic_id` varchar(30) NOT NULL,
     `guide_title` varchar(50) NOT NULL,
-    FOREIGN KEY (`mechanic_id`) REFERENCES `mechanic` (`id`),
-    FOREIGN KEY (`guide_title`) REFERENCES `guide` (`title`)
+    FOREIGN KEY (`mechanic_id`) REFERENCES `mechanic` (`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`guide_title`) REFERENCES `guide` (`title`) ON DELETE CASCADE
 );
 
 
@@ -352,9 +352,9 @@ INSERT INTO `account` VALUES('Reus11', 'dortmund', 'marcoreus11@gmail.com', '11-
 INSERT INTO `account` VALUES('JamesBond007', 'astonmartin', 'bond007@gmail.com', '26-06-2007');
 INSERT INTO `account` VALUES('Humdizzle', 'kobe81', 'humdizzle@gmail.com', '24-06-2006');
 INSERT INTO `account` VALUES('Schumacher', 'ferrari7', 'msc@gmail.com', '13-05-2007');
-INSERT INTO `account` VALUES('Starplatinum', 'cocopuffs', 'star@gmail.com', '23-01-2008')
+INSERT INTO `account` VALUES('Starplatinum', 'cocopuffs', 'star@gmail.com', '23-01-2008');
 INSERT INTO `account` VALUES('Hamilton', 'vegan44', 'lh44@gmail.com', '16-05-2007' );
-INSERT INTO `account` VALUES('Dylan', `admin`, 'dylan@gmail.com', '17-02-2015');
+INSERT INTO `account` VALUES('Dylan', 'admin', 'dylan@gmail.com', '17-02-2015');
 INSERT INTO `account` VALUES('Roshan', 'admin2', 'rosh@gmail.com', '19-08-2004');
 
 INSERT INTO `admin` VALUES('Dylan');
@@ -382,9 +382,9 @@ INSERT INTO `purchases` VALUES(3, 'Good Air Day', 'John123', '23-07-2020', '1456
 INSERT INTO `purchases` VALUES(4, 'Fuel Me Up', 'Reus11', '12-09-2020', '34589', '0934');
 INSERT INTO `purchases` VALUES(10, 'Giver Some Gasket', 'Reus11', '03-01-2019', '56789', '8903');
 INSERT INTO `purchases` VALUES(12, 'Spark It Like Its Hot', 'Hamilton', '07-05-2020', '82343', '7245');
-INSERT INTO `purchases` VALUES(13, 'Armed Battery', 'Hamilton', '07-05-2020'. '82343', '7245');
+INSERT INTO `purchases` VALUES(13, 'Armed Battery', 'Hamilton', '07-05-2020', '82343', '7245');
 
-INSERT INTO `guide` VALUES(3, 'How To Change Brake Pads', NULL,'https://www.youtube.com/watch?v=lU6OKQxSg8U',2,1,'Worn Brakes');
+INSERT INTO `guide` VALUES(3, 'How To Change Brake Pads', NULL,'https://www.youtube.com/watch?v=lU6OKQxSg8U','Hamilton','Dylan','Worn Brakes');
 
 INSERT INTO `rate` VALUES('John123', 'How To Change Brake Pads');
 

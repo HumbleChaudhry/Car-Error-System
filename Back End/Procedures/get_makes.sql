@@ -1,4 +1,4 @@
 CREATE PROCEDURE `get_makes` ()
 BEGIN
-SELECT DISTINCT make FROM cars;
+SELECT DISTINCT make FROM car;
 END
