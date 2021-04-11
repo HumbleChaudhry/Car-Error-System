@@ -73,10 +73,10 @@ CREATE TABLE IF NOT EXISTS `issue`(
     `commoness` int(2) NOT NULL,
     `severity` int(2) NOT NULL,
     `difficulty` int(2),
-    `part_id` int(2),
-    `part_name` varchar(50),
+    `part_id` int(2), NULL
+    `part_name` varchar(50), NULL
     PRIMARY KEY (`issue_name`),
-    FOREIGN KEY (`part_id`,`part_name`) REFERENCES `car_part` (`id`,`name`)  ON DELETE CASCADE
+    FOREIGN KEY (`part_id`,`part_name`) REFERENCES `car_part` (`id`,`name`)  ON DELETE SET NULL
    
 );
 
@@ -177,11 +177,19 @@ CREATE TABLE IF NOT EXISTS `has`(
     `make` varchar(50) NOT NULL,
     `model` varchar(50) NOT NULL,
     `year` int(4) NOT NULL,
+    `engine` varchar(50) NOT NULL,
+    `transmission` varchar(50) NOT NULL,
+    `chassis` varchar(50) NOT NULL,
+    `drivetrain` varchar(50) NOT NULL,
     `code` varchar(50),
     `name` varchar(50) NOT NULL,
     FOREIGN KEY (`make`,`model`,`year`) REFERENCES `car` (`make`,`model`,`year`) ON DELETE CASCADE, 
     FOREIGN KEY (`code`) REFERENCES `dtc` (`code`) ON DELETE CASCADE,
     FOREIGN KEY (`name`) REFERENCES `issue` (`issue_name`) ON DELETE CASCADE
+    FOREIGN KEY (`engine`) REFERENCES `engine_table` (`engine`) ON DELETE CASCADE
+    FOREIGN KEY (`transmission`) REFERENCES `transmission_table` (`transmission`) ON DELETE CASCADE
+    FOREIGN KEY (`chassis`) REFERENCES `chassis_table` (`chassis`) ON DELETE CASCADE
+    FOREIGN KEY (`drivetrain`) REFERENCES `drivetrain_table` (`drivetrain`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `rate`(
