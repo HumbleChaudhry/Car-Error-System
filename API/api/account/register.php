@@ -17,14 +17,15 @@ $account = new Account($db);
 
 //Sanitize inputs
 $account->id = isset($_GET['un']) ? $_GET['un'] : die();
+$account->password = isset($_GET['pass']) ? $_GET['pass'] : die();
 $account->email = isset($_GET['email']) ? $_GET['email'] : die();
-$account->date_of_creation = date("d/m/Y");
+$account->date_of_creation = date("d-m-Y");
 $account->address = isset($_GET['address']) ? $_GET['address'] : die();
-$account->cert = isset($_GET['cert']) ? $_GET['cert'] : 'nil';
-$account->shop_name = isset($_GET['shop']) ? $_GET['shop'] : 'nil';
+$account->cert = isset($_GET['cert']) ? $_GET['cert'] : 'NULL';
+$account->shop_name = isset($_GET['shop']) ? $_GET['shop'] : 'NULL';
 
 $result = $account->createAccount();
-
+//catch duplicate entry error
 if ($result) {
     echo json_encode(array('Result' => 'True'));
 } else {

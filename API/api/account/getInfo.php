@@ -18,19 +18,40 @@ $account = new Account($db);
 //Sanitize inputs
 $account->id = isset($_GET['un']) ? $_GET['un'] : die();
 
+$result = $account->getInfo();
+
+$result1 = $result->fetch(PDO::FETCH_ASSOC);
+
+if (!$result1) {
+    echo json_encode(array('message' => "No account found"));
+    return;
+}
+
+extract($result1);
+
+$account->email = $email;
+$account->password = $password;
+$account->date_of_creation = $date_of_creation;
+
+$account->address = $shipping_address;
+
+
+$result->closeCursor();
+
 $result = $account->getPurchases();
 
 $num = $result->rowCount();
 
 if ($num > 0) {
     $purchases = array();
+    $purchases['Account'] = array();
     $purchases['data'] = array();
 
     $account_info = array(
         'username' => $account->id,
+        'password' => $account->password,
         'email' => $account->email,
-        'shipping address' => $account->address,
-        'shop name' => $account->shop_name
+        'shipping address' => $account->address
     );
 
     array_push($purchases['Account'], $account_info);
@@ -40,10 +61,9 @@ if ($num > 0) {
 
         $transaction = array(
             'part_id' => $part_id,
-            'retailer' => $retailer,
+            'retailer' => $retailer_name,
             'date' => $date,
-            'tracking num' => $tracking_num,
-            'transaction num' => $transaction_num
+            'transaction num' => $transaction_no
         );
 
         array_push($purchases['data'], $transaction);
@@ -52,13 +72,12 @@ if ($num > 0) {
     //Turn to JSON & output
     echo json_encode($purchases);
 } else {
-    http_response_code(404);
     echo json_encode(
         array(
             'username' => $account->id,
+            'password' => $account->password,
             'email' => $account->email,
             'shipping address' => $account->address,
-            'shop name' => $account->shop_name,
             'data' => "No purchases found"
         )
     );
