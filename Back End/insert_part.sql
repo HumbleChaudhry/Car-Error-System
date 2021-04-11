@@ -7,6 +7,6 @@ CREATE PROCEDURE `insert_part`(
 )
 
 BEGIN 
-INSERT INTO `car_part`(id, name, price, rating, category, retailer)
+INSERT INTO `car_part`
 VALUES( _part_id, _name, _price, -1, _category, _retailer);
 END
