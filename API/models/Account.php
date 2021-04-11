@@ -42,11 +42,12 @@ class Account
     //Create Account
     public function createAccount()
     {
-        $query = 'CALL create_account(:name, :email, :doc, :address, :cert, :shop)';
+        $query = 'CALL create_account(:name, :password, :email, :doc, :address, :cert, :shop)';
         $stmt = $this->conn->prepare($query);
 
         //Bind Params
         $stmt->bindParam(":name", $this->id);
+        $stmt->bindParam(":password", $this->password);
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":doc", $this->date_of_creation);
         $stmt->bindParam(":address", $this->address);
@@ -88,9 +89,27 @@ class Account
         return $stmt;
     }
 
+    //Make Record a purchase
+    public function makePurchase($retailer, $part_id)
+    {
+        $query = 'CALL make_purchase(?,?,?,?)';
+        $stmt = $this->conn->prepare($query);
+
+        $date = date("d-m-Y");
+        $stmt->bindParam(3, $this->id);
+        $stmt->bindParam(2, $retailer);
+        $stmt->bindParam(1, $part_id);
+        $stmt->bindParam(4, $date);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
+    }
+
     public function getInfo()
     {
-        $query = 'CALL get_info(?)';
+        $query = 'CALL get_acc_info(?)';
         $stmt = $this->conn->prepare($query);
 
         //Bind params
@@ -102,7 +121,7 @@ class Account
     }
     public function login($pass)
     {
-        $query = 'CALL get_info(?)';
+        $query = 'CALL get_acc_info(?)';
 
         $stmt = $this->conn->prepare($query);
 
@@ -112,6 +131,11 @@ class Account
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return false;
+        }
+
         extract($row);
 
         if ($password == $pass) {

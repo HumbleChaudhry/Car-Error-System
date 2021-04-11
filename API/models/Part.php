@@ -51,7 +51,7 @@ class Part
     }
     public function insertPart()
     {
-        $query = 'CALL insert_part(?,?,?,?,?,?)';
+        $query = 'CALL insert_part(?,?,?,?,?)';
 
 
         //Prepare statment
@@ -60,14 +60,14 @@ class Part
         $stmt->bindParam(1, $this->id);
         $stmt->bindParam(2, $this->name);
         $stmt->bindParam(3, $this->price);
-        $stmt->bindParam(4, $this->rating);
-        $stmt->bindParam(5, $this->cat_title);
-        $stmt->bindParam(6, $this->retailer);
+        $stmt->bindParam(4, $this->cat_title);
+        $stmt->bindParam(5, $this->retailer);
 
         //Execute query
-        $result = $stmt->execute();
-
-        return $result;
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 
     public function deletePart()

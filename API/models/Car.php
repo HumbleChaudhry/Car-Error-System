@@ -90,14 +90,6 @@ class Car
         //Execute query
         $stmt->execute();
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        //Set properties
-        $this->make = $row['make'] ?? 'nil';
-        $this->model = $row['model'] ?? 'nil';
-        $this->year = $row['year'] ?? 'nil';
-
-
         return $stmt;
     }
 

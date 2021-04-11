@@ -46,9 +46,22 @@ class Issue
 
         return $stmt;
     }
-    public function getGuide()
+    public function getGuide() //Make this get the steps
     {
         $query = 'CALL get_guide(?)';
+
+        $stmt = $this->conn->prepare($query);
+
+        //Bind inputs
+        $stmt->bindParam(1, $this->name);
+
+        $stmt->execute();
+
+        return $stmt;
+    }
+    public function getSteps() //Make this get the steps
+    {
+        $query = 'CALL get_steps(?)';
 
         $stmt = $this->conn->prepare($query);
 
