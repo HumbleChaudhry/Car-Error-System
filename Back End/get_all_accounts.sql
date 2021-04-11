@@ -1,4 +1,4 @@
-CREATE PROCEDURE `get_all_accounts` ()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_all_accounts`()
 BEGIN
-SELECT id AND email FROM account;
+SELECT id, email FROM account;
 END

@@ -1,4 +1,4 @@
-CREATE PROCEDURE `create_account` (
+CREATE DEFINER=`root`@`localhost` PROCEDURE `create_account`(
     IN `_name` varchar(30),
     IN `_password` varchar(50),
     IN `_email` varchar(50),
@@ -14,7 +14,7 @@ VALUES(_name, _password, _email, _doc);
 
 IF (_address is NOT NULL) THEN
 
-INSERT INTO `mechanic` VALUES (_name, _address)
+INSERT INTO `mechanic` VALUES (_name, _address);
 
 END IF;
 
@@ -31,4 +31,3 @@ THEN INSERT INTO `amateur`(id) VALUES (_name);
 END IF;
 
 END
-

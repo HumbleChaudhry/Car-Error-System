@@ -1,4 +1,4 @@
-CREATE PROCEDURE `delete_part`(IN `_part_id` int(2),
+CREATE DEFINER=`root`@`localhost` PROCEDURE `delete_part`(IN `_part_id` int(2),
                                 IN `_name` varchar(50) )
 BEGIN
 DELETE FROM car_part 
