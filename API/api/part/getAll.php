@@ -13,7 +13,12 @@ $db = $database->connect();
 //Instantiate part object
 $part = new Part($db);
 
-$result = $part->getParts();
+$make = isset($_GET['make']) ? $_GET['make'] : die();
+$model = isset($_GET['model']) ? $_GET['model'] : die();
+$year = isset($_GET['year']) ? $_GET['year'] : die();
+$year = (int)$year;
+
+$result = $part->getParts($make, $model, $year);
 
 $num = $result->rowCount();
 

@@ -20,12 +20,17 @@ class Part
     }
 
     //Get all
-    public function getParts()
+    public function getParts($make, $model, $year)
     {
-        $query = 'CALL read_all_parts()';
+        $query = 'CALL read_all_parts(?,?,?)';
 
         //Prepare statment
         $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(1, $make);
+        $stmt->bindParam(2, $model);
+        $stmt->bindParam(3, $year);
+
 
         //Execute query
         $stmt->execute();
