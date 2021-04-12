@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,16 +25,16 @@
     <div id="slideout-menu">
       <ul>
         <li>
-          <a href="index.html">Home</a>
+          <a href="index.php">Home</a>
         </li>
         <li>
-          <a href="Solutions.html">Solutions</a>
+          <a href="Solutions.php">Solutions</a>
         </li>
         <li>
-          <a href="Parts.html">Parts</a>
+          <a href="Parts.php">Parts</a>
         </li>
         <li>
-          <a href="Login.html">Login</a>
+          <a href="Login.php">Login</a>
         </li>
         <li>
           <input type="text" placeholder="Search Here" />
@@ -43,7 +44,7 @@
 
     <nav>
         <div id="logo-img">
-          <a href="index.html">
+          <a href="index.php">
             <img src="img/Car Error System Logo.png" alt="CES Logo" />
           </a>
         </div>
@@ -54,18 +55,18 @@
           
           <div id = "links">
           <li>
-            <a  href="index.html">Home</a>
+            <a  href="index.php">Home</a>
           </li>
           <li>
-            <a href="Solutions.html">Solutions</a>
+            <a href="Solutions.php">Solutions</a>
           </li>
           <li>
-            <a href="Parts.html">Parts</a>
+            <a href="Parts.php">Parts</a>
           </li>
         </div>
           <li >
             <div id="user-icon">
-              <a class="active" href="Login.html"><i class="glyphicon glyphicon-user"></i></a>
+              <a class="active" href="Login.php"><i class="glyphicon glyphicon-user"></i></a>
             </div>
           </li>
           <li >
@@ -86,12 +87,12 @@
             <h1 class="form__title">Login</h1>
             <div class="form__message form__message--error"></div>
             <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="AccountID">
+                <input type="text" autocapitalize="none" class="form__input" autofocus placeholder="un" name = "un" id = "un">
                 <div class="form__input-error-message"></div> 
             </div>
             <div class="form__input-group">
                 <!-- <input type="password" class="form__input form__input--error" autofocus placeholder="Password"> -->
-                <input type="password" class="form__input" autofocus placeholder="Password">
+                <input type="password" class="form__input" autofocus placeholder="pass" name = "pass" id = "pass">
                 <div class="form__input-error-message"></div> 
             </div>
             <button class="form__button" type="submit">Continue</button>
@@ -161,6 +162,56 @@
         </div>
       </footer>
 
+      <script src='jquery-3.6.0.min.js'></script>
+      <script>
+
+      const myForm = document.getElementById('login');
+      var obj;
+      myForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(myForm);
+      // var username = formData.get(un); 
+      // var password = formData.get(pass);
+
+      // var formData = new FormData();
+      var endpoint = $(myForm).serialize(); 
+
+      // formData.append("username", "Groucho");
+      // formData.append("accountnum", 123456); // number 123456 is immediately converted to a string "123456"
+
+      // let accountnum = "cocopuffs"; 
+      // let username = "StarPlatinum";
+      // let url = "../API/api/account/login.php?un=" + un + "&pass=" + pass;
+      let url = "../API/api/account/login.php?" + endpoint;
+      let urlHome = "/index.php";
+      var textResponse;
+      
+          fetch(url, {
+            method: "post",
+            body: formData,
+          }).then(function (response) {
+              return response.text();
+            }).then(function (text) {
+              
+              obj = JSON.parse(text);
+              if(obj == true){
+                document.location.replace('./index.php');
+              console.log("Its Cierto");
+          }
+          else{
+            console.log("Its Falso");
+          }
+              console.log(obj);
+            }).catch(function (error) {
+              console.error(error);
+            })
+            
+          });
+
+
+      </script>
+      
     <script src="login.js"></script>
   </body>
 </html>

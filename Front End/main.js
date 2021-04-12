@@ -24,13 +24,3 @@ menuIcon.addEventListener("click", function () {
     slideoutMenu.style.pointerEvents = "auto";
   }
 });
-
-$(document).ready(function () {
-  $(".home-slider").owlCarousel({
-    loop: true,
-    margin: 10,
-    nav: true,
-    items: 1,
-    autoplay: true,
-  });
-});

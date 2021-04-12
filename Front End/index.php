@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,16 +28,16 @@
     <div id="slideout-menu">
       <ul>
         <li>
-          <a href="index.html">Home</a>
+          <a href="index.php">Home</a>
         </li>
         <li>
-          <a href="Solutions.html">Solutions</a>
+          <a href="Solutions.php">Solutions</a>
         </li>
         <li>
-          <a href="Parts.html">Parts</a>
+          <a href="Parts.php">Parts</a>
         </li>
         <li>
-          <a href="Login.html">Login</a>
+          <a href="Login.php">Login</a>
         </li>
         <li>
           <input type="text" placeholder="Search Here" />
@@ -48,7 +47,7 @@
 
     <nav>
       <div id="logo-img">
-        <a href="index.html">
+        <a href="index.php">
           <img src="img/Car Error System Logo.png" alt="CES Logo" />
         </a>
       </div>
@@ -59,18 +58,18 @@
         
         <div id = "links">
         <li>
-          <a class="active" href="index.html">Home</a>
+          <a class="active" href="index.php">Home</a>
         </li>
         <li>
-          <a href="Solutions.html">Solutions</a>
+          <a href="Solutions.php">Solutions</a>
         </li>
         <li>
-          <a href="Parts.html">Parts</a>
+          <a href="Parts.php">Parts</a>
         </li>
       </div>
         <li >
           <div id="user-icon">
-            <a href="Login.html"><i class="glyphicon glyphicon-user"></i></a>
+            <a href="Login.php"><i class="glyphicon glyphicon-user"></i></a>
           </div>
         </li>
         <li >
@@ -133,8 +132,8 @@
   </div>
 
     <main>
-      <a href="#">
-        <h2 class="section-heading">All Parts</h2>
+      <a href="Parts.php">
+        <h2 class="section-heading">Parts</h2>
       </a>
       <section>
         <div class="card">
@@ -149,22 +148,27 @@
               <h3>Parts Descriptions</h3>
             </a>
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
-              atque error numquam dolorem dicta totam ratione recusandae
-              repudiandae quia quos excepturi, autem odit perferendis! Illo
-              veniam autem quam a porro?
+              Providing the best parts to get you back on the road. Choose from a 
+              variety of parts for your specific car. We know it is challenging 
+              for mechanics to have to deal with finding parts, so we have made it 
+              easier!
             </p>
-            <a href="#" class="btn-readmore">Read More</a>
+            <a href="Parts.php" class="btn-readmore">Take Me To Parts!</a>
           </div>
         </div>
       </section>
 
+      <a href="Solutions.php">
       <h2 class="section-heading">Solutions</h2>
-
+      </a> 
       <section id = "section-solutions">
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio illo, quas voluptas quos aliquam cupiditate maiores deserunt ipsam unde tenetur omnis voluptate ducimus nihil ex reprehenderit cumque nulla nesciunt? Totam! fswf sdf sdf sdf sdf sdf sdaf sdaf sdaf dssdgsd dsgdsgdsgdsgdsagdsagdsagsdagsdagsdagsdagsdagdsa Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate quae beatae architecto asperiores necessitatibus quo magni, eveniet ullam amet nesciunt. Ipsam, laudantium impedit. Hic, at earum porro voluptas perspiciatis minima!
+        <p>
+          The best chosen solutions around the world. We know that others have ran into the 
+          same problems, so why the hassle of trying to figure out the solution yourself? 
+          Got an issue? We've got you! Solutions will be based off of your car or your specific issue. 
+          With our elaborate and thorough guides, we ensure you will find what you need to fix that whip!  
         </p>
-        <a href="#" class="btn-readmore">More Solutions</a>
+        <a href="Solutions.php" class="btn-readmore">Take Me To Solutions!</a>
       </section>
     </main>
       <footer>
@@ -198,4 +202,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-

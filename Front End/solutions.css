@@ -111,7 +111,7 @@
   order: 1;
 }
 
-#selected-make {
+.selected-make {
   background: gold;
   border-radius: 8px;
   margin-bottom: 8px;
@@ -161,7 +161,7 @@
 }
 
 .select-box-make .option-make,
-#selected-make {
+.selected-make {
   /* padding: 12px 24px; */
   cursor: pointer;
 }

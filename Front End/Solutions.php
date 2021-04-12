@@ -1,4 +1,7 @@
-
+<?php 
+session_start();
+  $_SESSION;
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,16 +29,16 @@
     <div id="slideout-menu">
       <ul>
         <li>
-          <a href="index.html">Home</a>
+          <a href="index.php">Home</a>
         </li>
         <li>
-          <a href="Solutions.html">Solutions</a>
+          <a href="Solutions.php">Solutions</a>
         </li>
         <li>
-          <a href="Parts.html">Parts</a>
+          <a href="Parts.php">Parts</a>
         </li>
         <li>
-          <a href="Login.html">Login</a>
+          <a href="Login.php">Login</a>
         </li>
         <li>
           <input type="text" placeholder="Search Here" />
@@ -45,7 +48,7 @@
 
     <nav>
       <div id="logo-img">
-        <a href="index.html">
+        <a href="index.php">
           <img src="img/Car Error System Logo.png" alt="CES Logo" />
         </a>
       </div>
@@ -56,18 +59,18 @@
         
         <div id = "links">
         <li>
-          <a href="index.html">Home</a>
+          <a href="index.php">Home</a>
         </li>
         <li>
-          <a class="active" href="Solutions.html">Solutions</a>
+          <a class="active" href="Solutions.php">Solutions</a>
         </li>
         <li>
-          <a href="Parts.html">Parts</a>
+          <a href="Parts.php">Parts</a>
         </li>
       </div>
         <li >
           <div id="user-icon">
-            <a href="Login.html"><i class="glyphicon glyphicon-user"></i></a>
+            <a href="Login.php"><i class="glyphicon glyphicon-user"></i></a>
           </div>
         </li>
         <li >
@@ -142,7 +145,7 @@
                   
                 </div>
         
-                <div id = "selected-make" class="form--hidden" >
+                <div id = "selected-make" class="selected-make form--hidden" >
                   Select Make
                 </div>
               </div>
