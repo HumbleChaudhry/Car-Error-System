@@ -85,13 +85,12 @@ session_start();
       <input type="text" placeholder="Search Here" />
     </div>
 
-    <div id="banner">
       <div id="banner">
         <div id="parts-container">
           <div class="container-style">
             <h1 class="form__title">Solution Search</h1>
             <div class="container-selector">
-
+            <form id = "solutionForm">
               <div class="select-box">
                 <div class="options-container">
                   <div class="option">
@@ -123,24 +122,25 @@ session_start();
                       type="radio"
                       class="radio"
                       id="Honda"
-                      name="category"
+                      value="Honda"
+                      name="make"
                     />
-                    <label for="Name">Honda</label>
+                    <label for="Honda">Honda</label>
                   </div>
         
                   <div class="option-make">
-                    <input type="radio" class="radio" id="Ford" name="category" />
-                    <label for="Engine">Ford</label>
+                    <input type="radio" class="radio" id="Ford" value="Ford" name="make" />
+                    <label for="Ford">Ford</label>
                   </div>
   
                   <div class="option-make">
-                    <input type="radio" class="radio" id="Mazda" name="category" />
-                    <label for="Transmission">Mazda</label>
+                    <input type="radio" class="radio" id="Mazda" value="Mazda" name="make" />
+                    <label for="Mazda">Mazda</label>
                   </div>
   
                   <div class="option-make">
-                    <input type="radio" class="radio" id="Dodge" name="category" />
-                    <label for="Chassis">Dodge</label>
+                    <input type="radio" class="radio" id="Dodge" value="Dodge" name="make" />
+                    <label for="Dodge">Dodge</label>
                   </div>
                   
                 </div>
@@ -149,34 +149,51 @@ session_start();
                   Select Make
                 </div>
               </div>
-  
+
+
               <div class="select-box-model">
                 <div class="options-container-model">
                   <div class="option-model">
                     <input
                       type="radio"
                       class="radio"
-                      id="Name"
-                      name="category"
+                      id="Challenger"
+                      value="Challenger"
+                      name="model"
                     />
-                    <label for="Name">Name</label>
+                    <label for="Challenger">Challenger</label>
                   </div>
                 
                   <div class="option-model">
-                    <input type="radio" class="radio" id="Engine" name="category" />
-                    <label for="Engine">Engine</label>
+                    <input type="radio" class="radio" id="Escape" value="Escape" name="model" />
+                    <label for="Escape">Escape</label>
                   </div>
                 
                   <div class="option-model">
-                    <input type="radio" class="radio" id="Transmission" name="category" />
-                    <label for="Transmission">Transmission</label>
+                    <input type="radio" class="radio" id="Focus" value="Focus" name="model" />
+                    <label for="Focus">Focus</label>
                   </div>
                 
                   <div class="option-model">
-                    <input type="radio" class="radio" id="Chassis" name="category" />
-                    <label for="Chassis">Chassis</label>
+                    <input type="radio" class="radio" id="Accord" value="Accord" name="model" />
+                    <label for="Accord">Accord</label>
                   </div>
                   
+
+                  <div class="option-model">
+                    <input type="radio" class="radio" id="Civic" value="Civic" name="model" />
+                    <label for="Civic">Civic</label>
+                  </div>
+
+                  <div class="option-model">
+                    <input type="radio" class="radio" id="Prelude" value="Prelude" name="model" />
+                    <label for="Prelude">Prelude</label>
+                  </div>
+
+                  <div class="option-model">
+                    <input type="radio" class="radio" id="Mazda3" value="Mazda3" name="model" />
+                    <label for="Mazda3">Mazda3</label>
+                  </div>
                 </div>
                 
                 <div class="selected-model form--hidden">
@@ -190,71 +207,97 @@ session_start();
                       <input
                         type="radio"
                         class="radio"
-                        id="Name"
-                        name="category"
+                        id="1992".
+                        value="1992"
+                        name="year"
                       />
-                      <label for="Name">Name</label>
+                      <label for="1992">1992</label>
                     </div>
                   
                     <div class="option-year">
-                      <input type="radio" class="radio" id="Engine" name="category" />
-                      <label for="Engine">Engine</label>
+                      <input type="radio" class="radio" id="2000" value="2000" name="year" />
+                      <label for="2000">2000</label>
                     </div>
                   
                     <div class="option-year">
-                      <input type="radio" class="radio" id="Transmission" name="category" />
-                      <label for="Transmission">Transmission</label>
+                      <input type="radio" class="radio" id="2002" value="2002" name="year" />
+                      <label for="2002">2002</label>
                     </div>
                   
                     <div class="option-year">
-                      <input type="radio" class="radio" id="Chassis" name="category" />
-                      <label for="Chassis">Chassis</label>
+                      <input type="radio" class="radio" id="2007" value="2007" name="year" />
+                      <label for="2007">2007</label>
                     </div>
-                    
+                    <div class="option-year">
+                      <input type="radio" class="radio" id="2010" value="2010" name="year" />
+                      <label for="2010">2010</label>
+                    </div>
+                  
+                    <div class="option-year">
+                      <input type="radio" class="radio" id="2012" value="2012" name="year" />
+                      <label for="2012">2012</label>
+                    </div>
+                  
+                    <div class="option-year">
+                      <input type="radio" class="radio" id="2015" value="2015" name="year" />
+                      <label for="2015">2015</label>
+                    </div>              
                   </div>
                   
                   <div class="selected-year form--hidden">
                     Select year
                   </div>
                   </div>
-               
+
                   
             <div class="select-box-issue-name">
               <div class="options-container-issue-name">
+
                 <div class="option-issue-name">
-                  <input type="radio" class="radio" id="Name" name="category" />
-                  <label for="Name">Name</label>
+                  <input type="radio" class="radio" id="Dead Battery" value ="Dead Battery" name="iName" />
+                  <label for="Dead Battery">Dead Battery</label>
                 </div>
             
                 <div class="option-issue-name">
-                  <input type="radio" class="radio" id="Engine" name="category" />
-                  <label for="Engine">Engine</label>
+                  <input type="radio" class="radio" id="EVAP System Leak" name="iName" />
+                  <label for="EVAP System Leak">EVAP System Leak</label>
                 </div>
             
                 <div class="option-issue-name">
-                  <input type="radio" class="radio" id="Transmission" name="category" />
-                  <label for="Transmission">Transmission</label>
+                  <input type="radio" class="radio" id="Faulty IAC" name="iName" />
+                  <label for="Faulty IAC">Faulty IAC</label>
                 </div>
             
                 <div class="option-issue-name">
-                  <input type="radio" class="radio" id="Chassis" name="category" />
-                  <label for="Chassis">Chassis</label>
+                  <input type="radio" class="radio" id="No fuel to engine" name="iName" />
+                  <label for="No fuel to engine">No fuel to engine</label>
+                </div>
+
+                <div class="option-issue-name">
+                  <input type="radio" class="radio" id="Worn Brakes" name="iName" />
+                  <label for="Worn Brakes">Worn Brakes</label>
+                </div>
+
+                <div class="option-issue-name">
+                  <input type="radio" class="radio" id="Worn Spark Plugs" name="iName" />
+                  <label for="Worn Spark Plugs">Worn Spark Plugs</label>
+                </div>
+
+                <div class="option-issue-name">
+                  <input type="radio" class="radio" id="Worn Wheel Bearing" name="iName" />
+                  <label for="Worn Wheel Bearing">Worn Wheel Bearing</label>
                 </div>
               </div>
             
               <div class="selected-issue-name form--hidden">Select Issue Name</div>
             </div>
+            <button class="partSearch__button" type="submit">Continue</button>
+            </form>
             </div>
-        <form  class="form" id="searchParts">
-          
-          <div class="form__input-group">
-          </div>
-          <button class="partSearch__button" type="partSearchSubmit">Continue</button>
-      </form>
-    </div>
-  </div>
+            </div>
+        </div>
       </div>
-    </div>
+   
 
   
       <footer>
@@ -282,6 +325,125 @@ session_start();
         </div>
       </footer>
 
+      <script src='jquery-3.6.0.min.js'></script>     
+
+  <script>
+
+
+var flag1 = true;
+document.addEventListener("DOMContentLoaded", (e) => {
+  var radios = document.querySelectorAll('input[name="category"]');
+  for (var i = 0, max = radios.length; i < max; i++) {
+    radios[i].onclick = function () {
+      if (this.value == "Car") {
+        selectedIssueName.classList.add("form--hidden");
+        selectedMake.classList.remove("form--hidden");
+        selectedModel.classList.remove("form--hidden");
+        selectedYear.classList.remove("form--hidden");
+        flag1 = false;
+        console.log(flag1);
+      } else {
+        flag1 = true;
+        console.log(flag1);
+        selectedMake.classList.add("form--hidden");
+        selectedModel.classList.add("form--hidden");
+        selectedYear.classList.add("form--hidden");
+        selectedIssueName.classList.remove("form--hidden");
+      }
+    };
+  }
+});
+
+    const solutionForm = document.getElementById("solutionForm");
+let makeForm;
+let modelForm;
+let yearForm;
+let issueForm;
+
+
+var make = document.forms["solutionForm"].elements["make"];
+for (var i = 0, max = make.length; i < max; i++) {
+  make[i].onclick = function () {
+    makeForm = this.value;
+  };
+}
+
+var model = document.forms["solutionForm"].elements["model"];
+for (var i = 0, max = model.length; i < max; i++) {
+  model[i].onclick = function () {
+    modelForm = this.value;
+  };
+}
+
+var year = document.forms["solutionForm"].elements["year"];
+for (var i = 0, max = year.length; i < max; i++) {
+  year[i].onclick = function () {
+    yearForm = this.value;
+  };
+}
+
+var iname = document.forms["solutionForm"].elements["iName"];
+for (var i = 0, max = iname.length; i < max; i++) {
+  iname[i].onclick = function () {
+    issueForm = this.value;
+  };
+}
+
+solutionForm.addEventListener("submit", (e) => {
+  if(!flag1){
+  e.preventDefault();
+  console.log(flag1);
+  
+
+  console.log(makeForm);
+  console.log(modelForm);
+  console.log(yearForm);
+
+  let url =
+    "../API/api/part/getAll.php?make=" +
+    makeForm +
+    "&model=" +
+    modelForm +
+    "&year=" +
+    yearForm;
+  let urlHome = "/index.php";
+  var textResponse;
+  var obj;
+  var myArray = [];
+  fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (obj) {
+      console.log(obj);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+  }
+  else{
+    e.preventDefault();
+    console.log(issueForm);
+
+    // let url ="../API/api/issue/getInfo.php?name=" + decodeURI(issueForm);
+    let url ="../API/api/issue/getInfo.php?name=Dead Battery";
+    var obj;
+    
+    fetch(url).then(response => {
+          console.log(response);
+          return response.json();
+        }).then(data => {
+          // Work with JSON data here
+          console.log(data);
+        }).catch(err => {
+          // Do something for an error here
+          console.log("Error Reading data " + err);
+        });
+  }
+});
+
+  </script>
+    
     <script src="solutions.js"></script>
     <script src="main.js"></script>
   </body>

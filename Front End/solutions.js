@@ -1,3 +1,8 @@
+// var script = document.createElement("script");
+// script.src = "https://code.jquery.com/jquery-3.4.1.min.js";
+// script.type = "text/javascript";
+// document.getElementsByTagName("head")[0].appendChild(script);
+
 const selected = document.querySelector(".selected");
 const optionsContainer = document.querySelector(".options-container");
 
@@ -15,7 +20,7 @@ optionsList.forEach((o) => {
 });
 
 //Make
-const selectedMake = document.querySelector("#selected-make");
+const selectedMake = document.querySelector(".selected-make");
 const optionsContainerMake = document.querySelector(".options-container-make");
 
 const optionsListMake = document.querySelectorAll(".option-make");
@@ -84,23 +89,4 @@ optionsListIssueName.forEach((o) => {
     selectedIssueName.innerHTML = o.querySelector("label").innerHTML;
     optionsContainerIssueName.classList.remove("active");
   });
-});
-
-document.addEventListener("DOMContentLoaded", (e) => {
-  var radios = document.querySelectorAll('input[name="category"]');
-  for (var i = 0, max = radios.length; i < max; i++) {
-    radios[i].onclick = function () {
-      if (this.value == "Car") {
-        selectedIssueName.classList.add("form--hidden");
-        selectedMake.classList.remove("form--hidden");
-        selectedModel.classList.remove("form--hidden");
-        selectedYear.classList.remove("form--hidden");
-      } else {
-        selectedMake.classList.add("form--hidden");
-        selectedModel.classList.add("form--hidden");
-        selectedYear.classList.add("form--hidden");
-        selectedIssueName.classList.remove("form--hidden");
-      }
-    };
-  }
 });

@@ -1,24 +1,13 @@
-const selected = document.querySelector(".selected");
-const optionsContainer = document.querySelector(".options-container");
-
-const optionsList = document.querySelectorAll(".option");
-
-selected.addEventListener("click", () => {
-  optionsContainer.classList.toggle("active");
-});
-
-optionsList.forEach((o) => {
-  o.addEventListener("click", () => {
-    selected.innerHTML = o.querySelector("label").innerHTML;
-    optionsContainer.classList.remove("active");
-  });
-});
+// var script = document.createElement("script");
+// script.src = "https://code.jquery.com/jquery-3.4.1.min.js";
+// script.type = "text/javascript";
+// document.getElementsByTagName("head")[0].appendChild(script);
 
 //Make
-const selectedMake = document.querySelector("#selected-make");
-const optionsContainerMake = document.querySelector(".options-container-make");
+const selectedMake = document.querySelector(".selected-maker");
+const optionsContainerMake = document.querySelector(".options-container-maker");
 
-const optionsListMake = document.querySelectorAll(".option-make");
+const optionsListMake = document.querySelectorAll(".option-maker");
 
 selectedMake.addEventListener("click", () => {
   optionsContainerMake.classList.toggle("active");
@@ -65,46 +54,4 @@ optionsListYear.forEach((o) => {
     selectedYear.innerHTML = o.querySelector("label").innerHTML;
     optionsContainerYear.classList.remove("active");
   });
-});
-
-// //Part Name
-const selectedPartName = document.querySelector(".selected-part-name");
-const optionsContainerPartName = document.querySelector(
-  ".options-container-part-name"
-);
-
-const optionsListPartName = document.querySelectorAll(".option-part-name");
-
-selectedPartName.addEventListener("click", () => {
-  optionsContainerPartName.classList.toggle("active");
-});
-
-optionsListPartName.forEach((o) => {
-  o.addEventListener("click", () => {
-    selectedPartName.innerHTML = o.querySelector("label").innerHTML;
-    optionsContainerPartName.classList.remove("active");
-  });
-});
-
-document.addEventListener("DOMContentLoaded", (e) => {
-  var radios = document.querySelectorAll('input[name="selectPartBy"]');
-  for (var i = 0, max = radios.length; i < max; i++) {
-    radios[i].onclick = function () {
-      if (
-        this.value == "Engine" ||
-        this.value == "Transmission" ||
-        this.value == "Chassis"
-      ) {
-        selectedPartName.classList.add("form--hidden");
-        selectedMake.classList.remove("form--hidden");
-        selectedModel.classList.remove("form--hidden");
-        selectedYear.classList.remove("form--hidden");
-      } else {
-        selectedMake.classList.add("form--hidden");
-        selectedModel.classList.add("form--hidden");
-        selectedYear.classList.add("form--hidden");
-        selectedPartName.classList.remove("form--hidden");
-      }
-    };
-  }
 });

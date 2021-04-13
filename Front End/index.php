@@ -90,7 +90,9 @@
               <div class="slide-data">
                   <h1>We Have The SOLUTION For You</h1>
                   <p>                      </p>
+                  <a href="Solutions.php">
                   <button>SEE MORE</button>
+                  </a>
               </div>
           </div>
           <div class="slide">

@@ -88,189 +88,166 @@ session_start();
     <div id="banner">
       <div id="parts-container">
         <div class="container-style">
-          <h1 class="form__title">Part Search</h1>
-          <div class="container-selector">
+        <h1 class="form__title">Part Search</h1>
+            <div class="container-selector">
 
-            <div class="select-box">
-              <div class="options-container">
-                <div class="option">
-                  <input
-                    type="radio"
-                    class="radio"
-                    id="Name"
-                    value = "Name"
-                    name="selectPartBy"
-                  />
-                  <label for="Name">Name</label>
-                </div>
-      
-                <div class="option">
-                  <input type="radio" class="radio" id="Engine" value = "Engine" name="selectPartBy" />
-                  <label for="Engine">Engine</label>
-                </div>
+              
 
-                <div class="option">
-                  <input type="radio" class="radio" id="Transmission" value = "Transmission" name="selectPartBy" />
-                  <label for="Transmission">Transmission</label>
-                </div>
+      <form id = "partForm">
+    <div class="select-box-maker">
+    <div class="options-container-maker">
+      <div class="option-maker">
+        <input
+          type="radio"
+          class="radio"
+          id="Honda"
+          value="Honda"
+          name="maker"
+        />
+        <label for="Honda">Honda</label>
+      </div>
+    
+      <div class="option-maker">
+        <input type="radio" class="radio" id="Ford" value="Ford" name="maker" />
+        <label for="Ford">Ford</label>
+      </div>
+    
+      <div class="option-maker">
+        <input type="radio" class="radio" id="Mazda" value="Mazda" name="maker" />
+        <label for="Mazda">Mazda</label>
+      </div>
+    
+      <div class="option-maker">
+        <input type="radio" class="radio" id="Dodge" value="Dodge" name="maker" />
+        <label for="Dodge">Dodge</label>
+      </div>
+    </div>
+    
+    <div class="selected-maker">
+      Select Make
+    </div>
+  </div>
 
-                <div class="option">
-                  <input type="radio" class="radio" id="Chassis" value = "Chassis" name="selectPartBy" />
-                  <label for="Chassis">Chassis</label>
-                </div>
-                
-              </div>
-      
-              <div class="selected">
-                Select Part By
-              </div>
-            </div>
-
-            <div class="select-box-make " >
-                <div class="options-container-make">
-                  <div class="option-make">
+              <div class="select-box-model">
+                <div class="options-container-model">
+                  <div class="option-model">
                     <input
                       type="radio"
                       class="radio"
-                      id="Honda"
-                      name="category"
+                      id="Challenger"
+                      value= "Challenger"
+                      name="model"
                     />
-                    <label for="Name">Honda</label>
+                    <label for="Challenger">Challenger</label>
                   </div>
-        
-                  <div class="option-make">
-                    <input type="radio" class="radio" id="Ford" name="category" />
-                    <label for="Engine">Ford</label>
+                
+                  <div class="option-model">
+                    <input type="radio" class="radio" id="Escape"   value= "Escape" name="model" />
+                    <label for="Escape">Escape</label>
                   </div>
-  
-                  <div class="option-make">
-                    <input type="radio" class="radio" id="Mazda" name="category" />
-                    <label for="Transmission">Mazda</label>
+                
+                  <div class="option-model">
+                    <input type="radio" class="radio" id="Focus" value= "Focus" name="model" />
+                    <label for="Focus">Focus</label>
                   </div>
-  
-                  <div class="option-make">
-                    <input type="radio" class="radio" id="Dodge" name="category" />
-                    <label for="Chassis">Dodge</label>
+                
+                  <div class="option-model">
+                    <input type="radio" class="radio" id="Accord" value= "Accord" name="model" />
+                    <label for="Accord">Accord</label>
                   </div>
                   
-                </div>
-        
-                <div id = "selected-make" class="selected-make form--hidden" >
-                  Select Make
-                </div>
-              </div>
 
-            <div class="select-box-model">
-              <div class="options-container-model">
-                <div class="option-model">
-                  <input
-                    type="radio"
-                    class="radio"
-                    id="Name"
-                    name="category"
-                  />
-                  <label for="Name">Name</label>
-                </div>
-              
-                <div class="option-model">
-                  <input type="radio" class="radio" id="Engine" name="category" />
-                  <label for="Engine">Engine</label>
-                </div>
-              
-                <div class="option-model">
-                  <input type="radio" class="radio" id="Transmission" name="category" />
-                  <label for="Transmission">Transmission</label>
-                </div>
-              
-                <div class="option-model">
-                  <input type="radio" class="radio" id="Chassis" name="category" />
-                  <label for="Chassis">Chassis</label>
-                </div>
-                
-              </div>
-              
-              <div class="selected-model form--hidden">
-                Select Model
-              </div>
-              </div>
+                  <div class="option-model">
+                    <input type="radio" class="radio" id="Civic" value= "Civic" name="model" />
+                    <label for="Civic">Civic</label>
+                  </div>
 
-              <div class="select-box-year">
-                <div class="options-container-year">
-                  <div class="option-year">
-                    <input
-                      type="radio"
-                      class="radio"
-                      id="Name"
-                      name="category"
-                    />
-                    <label for="Name">Name</label>
+                  <div class="option-model">
+                    <input type="radio" class="radio" id="Prelude" value= "Prelude" name="model" />
+                    <label for="Prelude">Prelude</label>
                   </div>
-                
-                  <div class="option-year">
-                    <input type="radio" class="radio" id="Engine" name="category" />
-                    <label for="Engine">Engine</label>
+
+                  <div class="option-model">
+                    <input type="radio" class="radio" id="Mazda3" value= "Mazda3" name="model" />
+                    <label for="Mazda3">Mazda3</label>
                   </div>
+                </div>
                 
-                  <div class="option-year">
-                    <input type="radio" class="radio" id="Transmission" name="category" />
-                    <label for="Transmission">Transmission</label>
-                  </div>
-                
-                  <div class="option-year">
-                    <input type="radio" class="radio" id="Chassis" name="category" />
-                    <label for="Chassis">Chassis</label>
+                <div class="selected-model ">
+                  Select Model
+                </div>
+                </div>
+
+                <div class="select-box-year">
+                  <div class="options-container-year">
+                    <div class="option-year">
+                      <input
+                        type="radio"
+                        class="radio"
+                        id="1992"
+                        value="1992"
+                        name="year"
+                      />
+                      <label for="1992">1992</label>
+                    </div>
+                  
+                    <div class="option-year">
+                      <input type="radio" class="radio" id="2000" value="2000" name="year" />
+                      <label for="2000">2000</label>
+                    </div>
+                  
+                    <div class="option-year">
+                      <input type="radio" class="radio" id="2002" value="2002" name="year" />
+                      <label for="2002">2002</label>
+                    </div>
+                  
+                    <div class="option-year">
+                      <input type="radio" class="radio" id="2007" value="2007" name="year" />
+                      <label for="2007">2007</label>
+                    </div>
+                    <div class="option-year">
+                      <input type="radio" class="radio" id="2010" value="2010" name="year" />
+                      <label for="2010">2010</label>
+                    </div>
+                  
+                    <div class="option-year">
+                      <input type="radio" class="radio" id="2012" value="2012" name="year" />
+                      <label for="2012">2012</label>
+                    </div>
+                  
+                    <div class="option-year">
+                      <input type="radio" class="radio" id="2015" value="2015" name="year" />
+                      <label for="2015">2015</label>
+                    </div>
+
+
                   </div>
                   
-                </div>
-                
-                <div class="selected-year form--hidden">
-                  Select year
-                </div>
-                </div>
-
-                <div class="select-box-part-name">
-                  <div class="options-container-part-name">
-                    <div class="option-part-name">
-                      <input type="radio" class="radio" id="Name" name="category" />
-                      <label for="Name">Name</label>
-                    </div>
-                
-                    <div class="option-part-name">
-                      <input type="radio" class="radio" id="Engine" name="category" />
-                      <label for="Engine">Engine</label>
-                    </div>
-                
-                    <div class="option-part-name">
-                      <input type="radio" class="radio" id="Transmission" name="category" />
-                      <label for="Transmission">Transmission</label>
-                    </div>
-                
-                    <div class="option-part-name">
-                      <input type="radio" class="radio" id="Chassis" name="category" />
-                      <label for="Chassis">Chassis</label>
-                    </div>
+                  <div class="selected-year ">
+                    Select year
                   </div>
-                
-                  <div class="selected-part-name form--hidden">Select Part Name</div>
                 </div>
-                
 
+        
+                <button class="partSearch__button" type="submit">Continue</button>
+              </form>
           </div>
+        </div>
+      </div>
+   </div>
 
           
-      <form  class="form" id="searchParts">
+      <!-- <form  class="form" id="searchParts">
         
         <div class="form__input-group">
         </div>
         <button class="partSearch__button" type="partSearchSubmit">Continue</button>
-    </form>
-  </div>
-</div>
-    </div>
-  </div>
+    </form> -->
+
 
   
       <footer>
+        
         <div id="left-footer">
           <h3>Quick Links</h3>
           <p>
@@ -295,6 +272,89 @@ session_start();
         </div>
       </footer>
     
+
+    <script src='jquery-3.6.0.min.js'></script>     
+
+    <script>
+document.addEventListener("DOMContentLoaded", (e) => {
+  var radios = document.querySelectorAll('input[name="category"]');
+  for (var i = 0, max = radios.length; i < max; i++) {
+    radios[i].onclick = function () {
+      if (this.value == "Car") {
+        selectedIssueName.classList.add("form--hidden");
+        selectedMake.classList.remove("form--hidden");
+        selectedModel.classList.remove("form--hidden");
+        selectedYear.classList.remove("form--hidden");
+      } else {
+        selectedMake.classList.add("form--hidden");
+        selectedModel.classList.add("form--hidden");
+        selectedYear.classList.add("form--hidden");
+        selectedIssueName.classList.remove("form--hidden");
+  
+      }
+    };
+  }
+});
+
+
+
+var formData = new FormData();
+
+const partForm = document.getElementById("partForm");
+  let makeForm;
+  let modelForm;
+  let yearForm;
+
+  var make = document.forms["partForm"].elements["maker"];
+for(var i = 0, max = make.length; i < max; i++) {
+  make[i].onclick = function() {
+    makeForm = this.value; 
+        
+    }
+}
+
+
+  var model = document.forms["partForm"].elements["model"];
+for(var i = 0, max = model.length; i < max; i++) {
+  model[i].onclick = function() {
+    modelForm = this.value;
+    }
+}
+
+
+  var year = document.forms["partForm"].elements["year"];
+for(var i = 0, max = year.length; i < max; i++) {
+  year[i].onclick = function() {
+    yearForm = this.value;
+    }
+}
+
+
+partForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  console.log(makeForm);
+  console.log(modelForm);
+  console.log(yearForm);
+
+  let url = "../API/api/part/getAll.php?make=" + makeForm + "&model=" + modelForm + "&year=" + yearForm;
+  let urlHome = "/index.php";
+  var textResponse;
+  var obj;
+  var myArray = [];
+  fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function(obj){
+      console.log(obj);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+});
+    </script>
+
     <script src="main.js"></script>
     <script src="selector.js"></script>
   </body>
