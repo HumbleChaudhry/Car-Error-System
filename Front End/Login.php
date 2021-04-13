@@ -87,12 +87,12 @@
             <h1 class="form__title">Login</h1>
             <div class="form__message form__message--error"></div>
             <div class="form__input-group">
-                <input type="text" autocapitalize="none" class="form__input" autofocus placeholder="un" name = "un" id = "un">
+                <input type="text" autocapitalize="none" class="form__input" autofocus placeholder="un" name = "un" >
                 <div class="form__input-error-message"></div> 
             </div>
             <div class="form__input-group">
                 <!-- <input type="password" class="form__input form__input--error" autofocus placeholder="Password"> -->
-                <input type="password" class="form__input" autofocus placeholder="pass" name = "pass" id = "pass">
+                <input type="password" class="form__input" autofocus placeholder="pass" name = "pass" >
                 <div class="form__input-error-message"></div> 
             </div>
             <button class="form__button" type="submit">Continue</button>
@@ -109,23 +109,23 @@
             <h1 class="form__title">Register</h1>
             <div class="form__message form__message--error"></div>
             <div class="form__input-group">
-                <input type="text" id="signupID" class="form__input" autofocus placeholder="AccountID">
+                <input type="text" class="form__input" autofocus placeholder="AccountID" name= "un" id="un">
                 <div class="form__input-error-message"></div> 
             </div>
             <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="Email">
+                <input type="text" class="form__input" autofocus placeholder="Email" name= "email" id="email">
                 <div class="form__input-error-message"></div> 
             </div>
             <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="Shipping Address">
+                <input type="text" class="form__input" autofocus placeholder="Shipping Address" name= "address" id="address">
                 <div class="form__input-error-message"></div> 
             </div>
             <div class="form__input-group">
-                <input type="password" class="form__input form__input--error" autofocus placeholder="Password">
+                <input type="password" class="form__input form__input--error" autofocus placeholder="Password" name= "pass"  id="pass">
                 <div class="form__input-error-message"></div> 
             </div>
             <div class="form__input-group">
-                <input type="password" class="form__input form__input--error" autofocus placeholder="Confirm Password">
+                <input type="password" class="form__input form__input--error" autofocus placeholder="Confirm Password" name= "conf">
                 <div class="form__input-error-message"></div> 
             </div>
             <button class="form__button" type="submit">Continue</button>
@@ -166,7 +166,9 @@
       <script>
 
       const myForm = document.getElementById('login');
-      var obj;
+      const myRegForm = document.getElementById('register');
+
+
       myForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -186,7 +188,7 @@
       let url = "../API/api/account/login.php?" + endpoint;
       let urlHome = "/index.php";
       var textResponse;
-      
+      var obj;
           fetch(url, {
             method: "post",
             body: formData,
@@ -209,7 +211,29 @@
             
           });
 
+        myRegForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          var registerUn = document.getElementById("un").value; 
+          var registerEmail = document.getElementById("email").value; 
+          var registerAddress = document.getElementById("address").value; 
+          var registerPass = document.getElementById("pass").value; 
 
+          
+          let url = "../API/api/account/register.php?un=" +registerUn+"&pass=" + registerPass + "&email=" + registerEmail + "&address=" + registerAddress;
+          // let url = "../API/api/account/register.php?un=run&pass=run2me&email=run@gmail.com&address=78 GOBBLE cres"
+          var obj;
+          fetch(url)
+    .then(function (response) {
+      return response.text();
+    })
+    .then(function(text){
+
+      console.log(text);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+  });  
       </script>
       
     <script src="login.js"></script>
