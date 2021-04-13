@@ -259,32 +259,32 @@ session_start();
                 </div>
             
                 <div class="option-issue-name">
-                  <input type="radio" class="radio" id="EVAP System Leak" name="iName" />
+                  <input type="radio" class="radio" id="EVAP System Leak" value ="EVAP System Leak" name="iName" />
                   <label for="EVAP System Leak">EVAP System Leak</label>
                 </div>
             
                 <div class="option-issue-name">
-                  <input type="radio" class="radio" id="Faulty IAC" name="iName" />
+                  <input type="radio" class="radio" id="Faulty IAC" value ="Faulty IAC" name="iName" />
                   <label for="Faulty IAC">Faulty IAC</label>
                 </div>
             
                 <div class="option-issue-name">
-                  <input type="radio" class="radio" id="No fuel to engine" name="iName" />
+                  <input type="radio" class="radio" id="No fuel to engine" value ="No fuel to engine" name="iName" />
                   <label for="No fuel to engine">No fuel to engine</label>
                 </div>
 
                 <div class="option-issue-name">
-                  <input type="radio" class="radio" id="Worn Brakes" name="iName" />
+                  <input type="radio" class="radio" id="Worn Brakes" value ="Worn Brakes" name="iName" />
                   <label for="Worn Brakes">Worn Brakes</label>
                 </div>
 
                 <div class="option-issue-name">
-                  <input type="radio" class="radio" id="Worn Spark Plugs" name="iName" />
+                  <input type="radio" class="radio" id="Worn Spark Plugs" value ="Worn Spark Plugs" name="iName" />
                   <label for="Worn Spark Plugs">Worn Spark Plugs</label>
                 </div>
 
                 <div class="option-issue-name">
-                  <input type="radio" class="radio" id="Worn Wheel Bearing" name="iName" />
+                  <input type="radio" class="radio" id="Worn Wheel Bearing" value ="Worn Wheel Bearing" name="iName" />
                   <label for="Worn Wheel Bearing">Worn Wheel Bearing</label>
                 </div>
               </div>
@@ -425,14 +425,11 @@ solutionForm.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log(issueForm);
 
-    // let url ="../API/api/issue/getInfo.php?name=" + decodeURI(issueForm);
-    let url ="../API/api/issue/getInfo.php?name=Dead Battery";
+    let url ="../API/api/issue/getInfo.php?name=" + decodeURI(issueForm);
+    // let url ="../API/api/issue/getInfo.php?name=Worn Brakes";
     var obj;
     
-    fetch(url).then(response => {
-          console.log(response);
-          return response.json();
-        }).then(data => {
+    fetch(url).then(response => response.json()).then(data => {
           // Work with JSON data here
           console.log(data);
         }).catch(err => {
