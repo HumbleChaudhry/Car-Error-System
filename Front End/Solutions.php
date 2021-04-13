@@ -400,7 +400,7 @@ solutionForm.addEventListener("submit", (e) => {
   console.log(yearForm);
 
   let url =
-    "../API/api/part/getAll.php?make=" +
+    "../API/api/car/issues.php?make=" +
     makeForm +
     "&model=" +
     modelForm +
