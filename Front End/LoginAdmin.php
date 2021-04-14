@@ -89,12 +89,12 @@
             <h1 class="form__title">Admin Login</h1>
             <div class="form__message form__message--error"></div>
             <div class="form__input-group">
-                <input type="text" autocapitalize="none" class="form__input" autofocus placeholder="un" name = "un" >
+                <input type="text"  autocapitalize="none" class="form__input un" autofocus placeholder="un" name = "un" >
                 <div class="form__input-error-message"></div> 
             </div>
             <div class="form__input-group">
                 <!-- <input type="password" class="form__input form__input--error" autofocus placeholder="Password"> -->
-                <input type="password" class="form__input" autofocus placeholder="pass" name = "pass" >
+                <input type="password" class="form__input pass" autofocus placeholder="pass" name = "pass" >
                 <div class="form__input-error-message"></div> 
             </div>
             <button class="form__button" type="submit">Continue</button>
@@ -149,7 +149,7 @@
 
       var endpoint = $(myForm).serialize(); 
 
-      let url = "../API/api/account/login.php?" + endpoint;
+      let url = "../API/api/account/adminLogin.php?" + endpoint;
       let urlHome = "/index.php";
       var textResponse;
       var obj;
@@ -161,12 +161,13 @@
             }).then(function (text) {
               
               obj = JSON.parse(text);
-              localStorage.setItem('boolLogin', obj);
-              var taste = localStorage.getItem('boolLogin');
+              localStorage.setItem('adminLogin', obj);
+              var taste = localStorage.getItem('adminLogin');
               console.log(taste);
 
               if(obj == true){
-                document.location.replace('./index.php');
+                localStorage.setItem('adminUsername', document.querySelector(".un").value);
+                document.location.replace('./Admin.php');
               console.log("Its Cierto");
           }
           else{
