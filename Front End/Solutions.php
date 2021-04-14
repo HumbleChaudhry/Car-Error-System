@@ -431,9 +431,17 @@ solutionForm.addEventListener("submit", (e) => {
     let url ="../API/api/issue/getInfo.php?name=" + decodeURI(issueForm);
     // let url ="../API/api/issue/getInfo.php?name=Worn Brakes";
     var obj;  
+    Storage.prototype.setObj = function(key, obj) {
+    return this.setItem(key, JSON.stringify(obj))
+}
+Storage.prototype.getObj = function(key) {
+    return JSON.parse(this.getItem(key))
+}
     
     fetch(url).then(response => response.json()).then(data => {
           // Work with JSON data here
+          localStorage.setObj('myArray', data);
+          document.location.replace('./Issue.php');
           console.log(data);
         }).catch(err => {
           // Do something for an error here

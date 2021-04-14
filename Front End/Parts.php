@@ -404,7 +404,7 @@ partForm.addEventListener("submit", (e) => {
       label.setAttribute("for", "2021");
       label.appendChild(t);
 
-    var hat = document.createTextNode('The man who mistook his wife for a hat');
+    
     var element = document.createElement("div");
     element.className = "option-year";
     element.appendChild(input);

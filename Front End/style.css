@@ -157,8 +157,8 @@ nav ul {
   display: flex;
   justify-content: center;
   /* align-items: left; */
-  padding-right: 530px;
-  padding-left: 530px;
+  padding-right: 200px;
+  padding-left: 200px;
 }
 
 #logo-img {
