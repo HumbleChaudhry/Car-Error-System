@@ -19,7 +19,7 @@ class Part
         $this->conn = $db;
     }
 
-    //Get all
+    //Get all for a make model year
     public function getParts($make, $model, $year)
     {
         $query = 'CALL read_all_parts(?,?,?)';
@@ -31,6 +31,19 @@ class Part
         $stmt->bindParam(2, $model);
         $stmt->bindParam(3, $year);
 
+
+        //Execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
+    //Get all
+    public function getEvery()
+    {
+        $query = 'CALL get_every_part()';
+
+        //Prepare statment
+        $stmt = $this->conn->prepare($query);
 
         //Execute query
         $stmt->execute();
