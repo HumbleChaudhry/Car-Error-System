@@ -56,7 +56,7 @@
         
         <div id = "links">
         <li>
-          <a class="active" href="index.php">Home</a>
+          <a  href="index.php">Home</a>
         </li>
         <li>
           <a href="Solutions.php">Solutions</a>
@@ -70,7 +70,7 @@
         </li>
         <li >
           <div id="user-icon">
-            <a href="Account.php"><i class="glyphicon glyphicon-user"></i></a>
+            <a class = "active" href="Admin.php"><i class="glyphicon glyphicon-user"></i></a>
           </div>
         </li>
         <li >
@@ -89,17 +89,11 @@
           <div class="container-style">
             <h1 class="form__title">Admin Portal</h1>
 
-            <form id = "accountForm">
+            <button class="form__button" onclick = "return getParts()" >Parts</button>
+            <button class="form__button"  onclick = "return getCars()">Cars</button>
+            <button class="form__button" onclick = "return getAccounts()">All Accounts</button>
             
-
-            <button class="form__button" type="submit">Issues</button>
-            <button class="form__button" type="submit">Guides</button>
-            <button class="form__button" type="submit">Parts</button>
-            <button class="form__button" type="submit">Cars</button>
-            <button class="form__button" type="submit">All Purchases</button>
-            <button class="form__button" type="submit">All Accounts</button>
-            <button class="form__button" onclick = "return deleteAccount()">Delete Account</button>
-            </form>
+            
             </div>
         </div>
     </div>  
@@ -132,13 +126,18 @@
 
     <script>
 
+    if(localStorage.getItem('adminLogin') == "false"){
+        document.location.replace('./LoginAdmin.php');
+      }
+      function logout(){
+     localStorage.setItem('adminLogin', "false");
+     document.location.replace('./LoginAdmin.php');
+    }
 
-function deleteAccount(){
 
-let url = "../API/api/account/delete.php?id=" + localStorage.getItem('username') 
-console.log(localStorage.getItem('adminUsername'));
-// var obj;
-  fetch(url)
+function getParts(){
+    let url = "../API/api/part/getEvery.php"
+    fetch(url)
     .then(function (response) {
     return response.json();
     })
@@ -148,9 +147,69 @@ console.log(localStorage.getItem('adminUsername'));
     .catch(function (error) {
     console.error(error);
     });
-localStorage.setItem('adminLogin', "false");
-document.location.replace('./login.php');
 }
+
+function getCars(){
+    let url = "../API/api/car/getAll.php";
+    fetch(url)
+    .then(function (response) {
+    return response.json();
+    })
+    .then(function(obj){
+    console.log(obj);
+    })
+    .catch(function (error) {
+    console.error(error);
+    });
+}
+
+function getPurchases(){
+    fetch(url)
+    .then(function (response) {
+    return response.json();
+    })
+    .then(function(obj){
+    console.log(obj);
+    })
+    .catch(function (error) {
+    console.error(error);
+    });
+}
+
+function getAccounts(){
+    let url = "../API/api/account/getAll.php";
+    fetch(url)
+    .then(function (response) {
+    return response.json();
+    })
+    .then(function(obj){
+    console.log(obj);
+    })
+    .catch(function (error) {
+    console.error(error);
+    });
+}
+
+
+
+// function deleteAccount(){
+
+// let url = "../API/api/account/delete.php?id=" + localStorage.getItem('adminUsername') 
+// console.log(localStorage.getItem('adminUsername'));
+// // var obj;
+//   fetch(url)
+//     .then(function (response) {
+//     return response.json();
+//     })
+//     .then(function(obj){
+//     console.log(obj);
+//     })
+//     .catch(function (error) {
+//     console.error(error);
+//     });
+// localStorage.setItem('adminLogin', "false");
+// document.location.replace('./LoginAdmin.php');
+// }
 
     </script>
     <script src="main.js"></script>
