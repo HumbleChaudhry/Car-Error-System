@@ -68,9 +68,12 @@ session_start();
           <a href="Parts.php">Parts</a>
         </li>
       </div>
+      <li>
+          <a href="#" onclick='return logout()'>Logout</a>
+        </li>
         <li >
           <div id="user-icon">
-            <a href="Login.php"><i class="glyphicon glyphicon-user"></i></a>
+            <a href="Account.php"><i class="glyphicon glyphicon-user"></i></a>
           </div>
         </li>
         <li >
@@ -427,7 +430,7 @@ solutionForm.addEventListener("submit", (e) => {
 
     let url ="../API/api/issue/getInfo.php?name=" + decodeURI(issueForm);
     // let url ="../API/api/issue/getInfo.php?name=Worn Brakes";
-    var obj;
+    var obj;  
     
     fetch(url).then(response => response.json()).then(data => {
           // Work with JSON data here
@@ -440,7 +443,16 @@ solutionForm.addEventListener("submit", (e) => {
 });
 
   </script>
-    
+        <script>
+      if(localStorage.getItem('boolLogin') == "false"){
+        document.location.replace('./login.php');
+      }
+      function logout(){
+        localStorage.setItem('boolLogin', "false");
+        document.location.replace('./login.php');
+      }
+    </script>
+
     <script src="solutions.js"></script>
     <script src="main.js"></script>
   </body>

@@ -68,9 +68,12 @@ session_start();
           <a class="active" href="Parts.php">Parts</a>
         </li>
       </div>
+      <li>
+          <a href="#" onclick='return logout()'>Logout</a>
+        </li>
         <li >
           <div id="user-icon">
-            <a href="Login.php"><i class="glyphicon glyphicon-user"></i></a>
+            <a href="Account.php"><i class="glyphicon glyphicon-user"></i></a>
           </div>
         </li>
         <li >
@@ -179,7 +182,7 @@ session_start();
                 </div>
 
                 <div class="select-box-year">
-                  <div class="options-container-year">
+                  <div id = "yearOp" class="options-container-year">
                     <div class="option-year">
                       <input
                         type="radio"
@@ -353,8 +356,61 @@ partForm.addEventListener("submit", (e) => {
       console.error(error);
     });
 });
-    </script>
 
+
+    </script>
+    <script>
+      if(localStorage.getItem('boolLogin') == "false"){
+        document.location.replace('./login.php');
+      }
+      function logout(){
+        localStorage.setItem('boolLogin', "false");
+        document.location.replace('./login.php');
+      }
+      // var yearOption = document.getElementById('yearOp');
+      // var name = document.createElement("div");
+
+      // name.className = "option-year";
+      // name.appendChild(document.createTextNode('The man who mistook his wife for a hat'));
+      
+      // var input = document.createElement('input');
+      
+      // input.setAttribute("type", "radio");
+      // input.setAttribute("class", "radio");
+      // input.setAttribute("id", "2021");
+      // input.setAttribute("value", "2021");
+      // input.setAttribute("name", "year");
+
+      // var label = document.createElement('label');
+      // var t = document.createTextNode("2021");
+      // label.setAttribute("for", "2021");
+      // label.appendChild(t);
+
+
+      // // name.appendChild(input);
+      // // name.appendChild(label);
+
+      // yearOption.appendChild(name);
+
+    var input = document.createElement('input');
+    input.setAttribute("type", "radio");
+    input.setAttribute("class", "radio");
+    input.setAttribute("id", "2021");
+    input.setAttribute("value", "2021");
+    input.setAttribute("name", "year");
+
+      var label = document.createElement('label');
+      var t = document.createTextNode("2021");
+      label.setAttribute("for", "2021");
+      label.appendChild(t);
+
+    var hat = document.createTextNode('The man who mistook his wife for a hat');
+    var element = document.createElement("div");
+    element.className = "option-year";
+    element.appendChild(input);
+    element.appendChild(label);
+    document.getElementById('yearOp').appendChild(element);
+    </script>
     <script src="main.js"></script>
     <script src="selector.js"></script>
   </body>

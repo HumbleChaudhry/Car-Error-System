@@ -1,5 +1,7 @@
 
 
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -87,22 +89,25 @@
             <h1 class="form__title">Login</h1>
             <div class="form__message form__message--error"></div>
             <div class="form__input-group">
-                <input type="text" autocapitalize="none" class="form__input" autofocus placeholder="un" name = "un" >
+                <input type="text" autocapitalize="none" class="form__input un" autofocus placeholder="un" name = "un" >
                 <div class="form__input-error-message"></div> 
             </div>
             <div class="form__input-group">
                 <!-- <input type="password" class="form__input form__input--error" autofocus placeholder="Password"> -->
-                <input type="password" class="form__input" autofocus placeholder="pass" name = "pass" >
+                <input type="password" class="form__input pass" autofocus placeholder="pass" name = "pass" >
                 <div class="form__input-error-message"></div> 
             </div>
             <button class="form__button" type="submit">Continue</button>
             <p class="form__text">
                 <a href="#" class="form__link">Forgot your password?</a>
             </p>
+
             <p class="form__text">
                 <a  class="form__link" href="./" id="linkRegister">Don't have an account? Register</a>
             </p>
-
+            <p class="form__text">
+                <a href="LoginAdmin.php" class="form__link">Admin Login</a>
+            </p>
         </form>
 
         <form  class="form--hidden" id="register">
@@ -165,6 +170,8 @@
       <script src='jquery-3.6.0.min.js'></script>
       <script>
 
+      const loginForm = document.querySelector("#login");
+      const registerForm = document.querySelector("#register");
       const myForm = document.getElementById('login');
       const myRegForm = document.getElementById('register');
 
@@ -173,18 +180,9 @@
       e.preventDefault();
 
       const formData = new FormData(myForm);
-      // var username = formData.get(un); 
-      // var password = formData.get(pass);
 
-      // var formData = new FormData();
       var endpoint = $(myForm).serialize(); 
 
-      // formData.append("username", "Groucho");
-      // formData.append("accountnum", 123456); // number 123456 is immediately converted to a string "123456"
-
-      // let accountnum = "cocopuffs"; 
-      // let username = "StarPlatinum";
-      // let url = "../API/api/account/login.php?un=" + un + "&pass=" + pass;
       let url = "../API/api/account/login.php?" + endpoint;
       let urlHome = "/index.php";
       var textResponse;
@@ -197,7 +195,14 @@
             }).then(function (text) {
               
               obj = JSON.parse(text);
+              localStorage.setItem('boolLogin', obj);
+              
+              var taste = localStorage.getItem('boolLogin');
+              console.log(taste);
+
               if(obj == true){
+                localStorage.setItem('username', document.querySelector(".un").value);
+                localStorage.setItem('password', document.querySelector(".pass").value);
                 document.location.replace('./index.php');
               console.log("Its Cierto");
           }
@@ -227,10 +232,14 @@
       return response.text();
     })
     .then(function(text){
-
-      console.log(text);
+      obj = JSON.parse(text);
+      if(obj == true){
+      loginForm.classList.remove("form--hidden");
+      registerForm.classList.add("form--hidden");
+      }
+      console.log(obj);
     })
-    .catch(function (error) {
+    .catch(function (error) { 
       console.error(error);
     });
   });  
