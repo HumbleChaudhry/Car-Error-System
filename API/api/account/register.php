@@ -27,7 +27,7 @@ $account->shop_name = isset($_GET['shop']) ? $_GET['shop'] : 'NULL';
 $result = $account->createAccount();
 //catch duplicate entry error
 if ($result) {
-    echo json_encode(array('Result' => 'True'));
+    echo json_encode(True);
 } else {
-    echo json_encode(array('Result' => 'False'));
+    echo json_encode(False);
 }
