@@ -144,4 +144,30 @@ class Account
             return false;
         }
     }
+
+    public function loginAdmin($pass)
+    {
+        $query = 'CALL get_admin_info(?)';
+
+        $stmt = $this->conn->prepare($query);
+
+        //Bind params
+        $stmt->bindParam(1, $this->id);
+
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return false;
+        }
+
+        extract($row);
+
+        if ($password == $pass) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
