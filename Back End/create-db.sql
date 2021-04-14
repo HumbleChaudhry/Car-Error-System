@@ -73,8 +73,8 @@ CREATE TABLE IF NOT EXISTS `issue`(
     `commoness` int(2) NOT NULL,
     `severity` int(2) NOT NULL,
     `difficulty` int(2),
-    `part_id` int(2), NULL
-    `part_name` varchar(50), NULL
+    `part_id` int(2),
+    `part_name` varchar(50),
     PRIMARY KEY (`issue_name`),
     FOREIGN KEY (`part_id`,`part_name`) REFERENCES `car_part` (`id`,`name`)  ON DELETE SET NULL
    
@@ -157,12 +157,14 @@ CREATE TABLE IF NOT EXISTS `purchases`(
     `retailer_name` varchar(50) NOT NULL,
     `account_id` varchar(30) NOT NULL,
     `date` varchar(10),
-    `tracking_no` varchar(10),
-    `transaction_no` varchar(10),
+    `transaction_no` int(2) AUTO_INCREMENT,
+    PRIMARY KEY(`transaction_no`),
     FOREIGN KEY (`part_id`) REFERENCES `car_part` (`id`) ON DELETE CASCADE,
     FOREIGN KEY (`retailer_name`) REFERENCES `retailer` (`name`) ON DELETE CASCADE,
     FOREIGN KEY (`account_id`) REFERENCES `account` (`id`) ON DELETE CASCADE
 );
+
+ALTER TABLE purchases AUTO_INCREMENT = 1;
 
 CREATE TABLE IF NOT EXISTS `fits`(
     `part_id` int(2) NOT NULL,
@@ -177,19 +179,11 @@ CREATE TABLE IF NOT EXISTS `has`(
     `make` varchar(50) NOT NULL,
     `model` varchar(50) NOT NULL,
     `year` int(4) NOT NULL,
-    `engine` varchar(50) NOT NULL,
-    `transmission` varchar(50) NOT NULL,
-    `chassis` varchar(50) NOT NULL,
-    `drivetrain` varchar(50) NOT NULL,
     `code` varchar(50),
     `name` varchar(50) NOT NULL,
     FOREIGN KEY (`make`,`model`,`year`) REFERENCES `car` (`make`,`model`,`year`) ON DELETE CASCADE, 
     FOREIGN KEY (`code`) REFERENCES `dtc` (`code`) ON DELETE CASCADE,
     FOREIGN KEY (`name`) REFERENCES `issue` (`issue_name`) ON DELETE CASCADE
-    FOREIGN KEY (`engine`) REFERENCES `engine_table` (`engine`) ON DELETE CASCADE
-    FOREIGN KEY (`transmission`) REFERENCES `transmission_table` (`transmission`) ON DELETE CASCADE
-    FOREIGN KEY (`chassis`) REFERENCES `chassis_table` (`chassis`) ON DELETE CASCADE
-    FOREIGN KEY (`drivetrain`) REFERENCES `drivetrain_table` (`drivetrain`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `rate`(
@@ -384,13 +378,13 @@ INSERT INTO `amateur` VALUES('John123');
 INSERT INTO `amateur` VALUES('Reus11');
 INSERT INTO `amateur` VALUES('Starplatinum');
 
-INSERT INTO `purchases` VALUES(1, 'Fuel Me Up', 'Schumacher', '09-09-2020', '12345', '1789');
-INSERT INTO `purchases` VALUES(2, 'Fast and Fuel-ious', 'JamesBond007', '08-07-2020', '13456', '0989');
-INSERT INTO `purchases` VALUES(3, 'Good Air Day', 'John123', '23-07-2020', '14560', '0764');
-INSERT INTO `purchases` VALUES(4, 'Fuel Me Up', 'Reus11', '12-09-2020', '34589', '0934');
-INSERT INTO `purchases` VALUES(10, 'Giver Some Gasket', 'Reus11', '03-01-2019', '56789', '8903');
-INSERT INTO `purchases` VALUES(12, 'Spark It Like Its Hot', 'Hamilton', '07-05-2020', '82343', '7245');
-INSERT INTO `purchases` VALUES(13, 'Armed Battery', 'Hamilton', '07-05-2020', '82343', '7245');
+INSERT INTO `purchases` VALUES(1, 'Fuel Me Up', 'Schumacher', '09-09-2020',1);
+INSERT INTO `purchases` VALUES(2, 'Fast and Fuel-ious', 'JamesBond007', '08-07-2020',2);
+INSERT INTO `purchases` VALUES(3, 'Good Air Day', 'John123', '23-07-2020',3);
+INSERT INTO `purchases` VALUES(4, 'Fuel Me Up', 'Reus11', '12-09-2020',4);
+INSERT INTO `purchases` VALUES(10, 'Giver Some Gasket', 'Reus11', '03-01-2019',5);
+INSERT INTO `purchases` VALUES(12, 'Spark It Like Its Hot', 'Hamilton', '07-05-2020',6);
+INSERT INTO `purchases` VALUES(13, 'Armed Battery', 'Hamilton', '07-05-2020',7);
 
 INSERT INTO `guide` VALUES(3, 'How To Change Brake Pads', NULL,'https://www.youtube.com/watch?v=lU6OKQxSg8U','Hamilton','Dylan','Worn Brakes');
 
@@ -404,6 +398,17 @@ INSERT INTO `step` 	VALUES('Return Piston on Caliper', 5,'Open the cap on the br
 INSERT INTO `step` 	VALUES('Reinstall Caliper', 6,'Place the caplier back on. Tighten bolts down to the proper torque spec, and clip the ABS harness back in', 'How To Change Brake Pads');
 INSERT INTO `step` 	VALUES('Put Wheel On and Lower Car', 7, 'Place the wheel on the lugs, and hand tighten the lug nuts, in a criss-cross alternating pattern. Jack the car off the Jack stands, remove jackstands, and lower the car','How To Change Brake Pads');
 INSERT INTO `step` 	VALUES('Tighten Lug Nuts',8, 'Using a torque bar, tighten the lug nuts to torque spec, in a criss-cross alternating pattern. Remove the chalks from the other wheel', 'How To Change Brake Pads');
+
+
+
+
+
+
+
+
+
+
+
 
 
 
