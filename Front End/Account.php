@@ -169,6 +169,7 @@ Storage.prototype.getObj = function(key) {
       return response.json();
     })
     .then(function(obj){
+    
       localStorage.setObj('myPurchasesArray', obj.data);
       document.location.href = './Purchases.php';
       console.log(obj.data);
