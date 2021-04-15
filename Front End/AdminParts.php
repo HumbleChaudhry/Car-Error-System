@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="issue.css" />
     <link rel="stylesheet" href ="selector.css" />
+    
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <script src='jquery-3.6.0.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -146,8 +147,8 @@
             </table>
             <button class="partSearch__button" onclick="showAdd()">Add a part</button>
         </div>
-        <div id="add-part" class="form--hidden">
-        <h1 class="form__title">Add Part</h1>
+       
+        <!-- <h1 class="form__title">Add Part</h1>
            
             <div class="form__input-group">
                 <input type="text" autocapitalize="none" autofocus placeholder="Part ID" name = "PartID" id="partId">
@@ -165,7 +166,36 @@
                 <input type="text"  autofocus placeholder="Retailer" name = "Retailer" id="retailer">
             </div>
             
+            <button class="partSearch__button" onclick="addPart()">Add Part</button> -->
+
+
+            <div id="add-part" class="smaller form--hidden">
+            <h1 class="form__title">Add Part</h1>
+            <div class="form__message form__message--error"></div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Part ID" name= "PartID" id="partId">
+                
+            </div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Name" name= "Name" id="name">
+                
+            </div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Price Address" name= "Price" id="price">
+               
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input form__input--error" autofocus placeholder="Category" name= "Category"  id="category">
+                
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input form__input--error" autofocus placeholder="Retailer" name= "Retailer" id="retailer">
+               
+            </div>
             <button class="partSearch__button" onclick="addPart()">Add Part</button>
+
+
+    
 
         </div>
         </div>
@@ -205,7 +235,10 @@
 
       <script>
 
-
+function logout(){
+     localStorage.setItem('adminLogin', "false");
+     document.location.replace('./LoginAdmin.php');
+    }
 let url = "../API/api/part/getEvery.php"
     fetch(url)
     .then(function (response) {

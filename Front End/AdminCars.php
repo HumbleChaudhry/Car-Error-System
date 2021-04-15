@@ -207,7 +207,10 @@
 
       <script>
 
-
+function logout(){
+     localStorage.setItem('adminLogin', "false");
+     document.location.replace('./LoginAdmin.php');
+    }
 let url = "../API/api/car/getAll.php"
     fetch(url)
     .then(function (response) {
