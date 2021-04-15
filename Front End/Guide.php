@@ -88,10 +88,10 @@
           <a href="index.php">Home</a>
         </li>
         <li>
-          <a href="Solutions.php">Solutions</a>
+          <a class="active" href="Solutions.php">Solutions</a>
         </li>
         <li>
-          <a class="active" href="Parts.php">Parts</a>
+          <a href="Parts.php">Parts</a>
         </li>
       </div>
       <li>
@@ -117,6 +117,7 @@
     <div id="banner">
       <div id="parts-container">
         <div class="container-style">
+        
         <h1 class="form__title">Guide</h1>
 
         <table class="table table-striped">
@@ -216,7 +217,7 @@ function buildTable(data){
                         <td><a href ="${data[i].video}">${data[i].video}</a></td>
                         <td>${data[i].prof_id}</td>
                         <td>${data[i].admin_id}</td>
-                        <td>${data[i].issueName}</td>
+                        <td>${data[i]['issue name']}</td>
 
                    </tr>`
         table.innerHTML += row

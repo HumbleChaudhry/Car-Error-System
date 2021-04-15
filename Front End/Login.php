@@ -203,7 +203,7 @@
               if(obj == true){
                 localStorage.setItem('username', document.querySelector(".un").value);
                 localStorage.setItem('password', document.querySelector(".pass").value);
-                document.location.replace('./index.php');
+                document.location.href = './index.php';
               console.log("Its Cierto");
           }
           else{

@@ -46,6 +46,7 @@
         text-align: center;
     }
 
+
 </style>
 
 
@@ -88,10 +89,10 @@
           <a href="index.php">Home</a>
         </li>
         <li>
-          <a href="Solutions.php">Solutions</a>
+          <a class="active" href="Solutions.php">Solutions</a>
         </li>
         <li>
-          <a class="active" href="Parts.php">Parts</a>
+          <a href="Parts.php">Parts</a>
         </li>
       </div>
       <li>
@@ -117,6 +118,7 @@
     <div id="banner">
       <div id="parts-container">
         <div class="container-style">
+        
         <h1 class="form__title">Issue</h1>
 
         <table class="table table-striped">
@@ -173,31 +175,10 @@
 
 
       <script>
-// var myArray = [
-//     {'name':'Michael', 'age':'30', 'birthdate':'11/10/1989'},
-//     {'name':'Mila', 'age':'32', 'birthdate':'10/1/1989'},
-//     {'name':'Paul', 'age':'29', 'birthdate':'10/14/1990'},
-//     {'name':'Dennis', 'age':'25', 'birthdate':'11/29/1993'},
-//     {'name':'Tim', 'age':'27', 'birthdate':'3/12/1991'},
-//     {'name':'Erik', 'age':'24', 'birthdate':'10/31/1995'},
-// ]
-// Storage.prototype.setObj = function(key, obj) {
-//     return this.setItem(key, JSON.stringify(obj))
-// }
-// Storage.prototype.getObj = function(key) {
-//     return JSON.parse(this.getItem(key))
-// }
+
 
 var myArray = [JSON.parse(localStorage.getItem('myArray'))];
-// var myArray =[{"name": "Faulty IAC",
-//     "description": "Computer cannot control air intake due to faulty IAC valve",
-//     "commoness": "4",
-//     "severity": "2",
-//     "difficulty": "2",
-//     "relatedpart":'fsedfsdafsdafsadfasd',
-//     "guide": "NULL",
-//     "dtc": "P0505"}
-// ]
+
 
 buildTable(myArray)
 var guide;
@@ -220,7 +201,7 @@ function buildTable(data){
                         <td>${data[i].commoness}</td>
                         <td>${data[i].severity}</td>
                         <td>${data[i].difficulty}</td>
-                        <td>${data[i].relatedpart}</td>
+                        <td>${data[i]['related part']}</td>
                         <td><input class='guideButton' type='button' value='${data[i].guide}' onclick = 'return getGuide()'/></td>
                         <td>${data[i].dtc}</td>
                    </tr>`
@@ -233,7 +214,7 @@ Storage.prototype.setObj = function(key, obj) {
 Storage.prototype.getObj = function(key) {
     return JSON.parse(this.getItem(key))
 }
-function getGuide(string) {
+function getGuide() {
   // localStorage.getItem('password');
 //   console.log(guide);
   let url = "../API/api/issue/getGuide.php?name=" + guide;
@@ -244,7 +225,7 @@ function getGuide(string) {
     })
     .then(function (obj) {
       localStorage.setObj('myGuide', obj.guide);
-      document.location.replace('./Guide.php');
+      document.location.href = './Guide.php';
       console.log(obj.guide);
     })
     .catch(function (error) {

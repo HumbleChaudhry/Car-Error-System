@@ -1,7 +1,4 @@
-<?php 
-session_start();
-  $_SESSION;
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -334,6 +331,12 @@ for(var i = 0, max = year.length; i < max; i++) {
 
 
 partForm.addEventListener("submit", (e) => {
+  Storage.prototype.setObj = function(key, obj) {
+    return this.setItem(key, JSON.stringify(obj))
+}
+Storage.prototype.getObj = function(key) {
+    return JSON.parse(this.getItem(key))
+}
   e.preventDefault();
 
   console.log(makeForm);
@@ -343,13 +346,16 @@ partForm.addEventListener("submit", (e) => {
   let url = "../API/api/part/getAll.php?make=" + makeForm + "&model=" + modelForm + "&year=" + yearForm;
   let urlHome = "/index.php";
   var textResponse;
-  var obj;
+  
+
   var myArray = [];
   fetch(url)
     .then(function (response) {
       return response.json();
     })
     .then(function(obj){
+      localStorage.setObj('myPartsArray', obj.data);
+      document.location.href = './CarParts.php';
       console.log(obj);
     })
     .catch(function (error) {
@@ -361,36 +367,12 @@ partForm.addEventListener("submit", (e) => {
     </script>
     <script>
       if(localStorage.getItem('boolLogin') == "false"){
-        document.location.replace('./login.php');
+        document.location.href = './login.php';
       }
       function logout(){
         localStorage.setItem('boolLogin', "false");
-        document.location.replace('./login.php');
+        document.location.href ='./login.php';
       }
-      // var yearOption = document.getElementById('yearOp');
-      // var name = document.createElement("div");
-
-      // name.className = "option-year";
-      // name.appendChild(document.createTextNode('The man who mistook his wife for a hat'));
-      
-      // var input = document.createElement('input');
-      
-      // input.setAttribute("type", "radio");
-      // input.setAttribute("class", "radio");
-      // input.setAttribute("id", "2021");
-      // input.setAttribute("value", "2021");
-      // input.setAttribute("name", "year");
-
-      // var label = document.createElement('label');
-      // var t = document.createTextNode("2021");
-      // label.setAttribute("for", "2021");
-      // label.appendChild(t);
-
-
-      // // name.appendChild(input);
-      // // name.appendChild(label);
-
-      // yearOption.appendChild(name);
 
     var input = document.createElement('input');
     input.setAttribute("type", "radio");

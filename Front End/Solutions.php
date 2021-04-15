@@ -1,7 +1,4 @@
-<?php 
-session_start();
-  $_SESSION;
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -91,6 +88,7 @@ session_start();
       <div id="banner">
         <div id="parts-container">
           <div class="container-style">
+          
             <h1 class="form__title">Solution Search</h1>
             <div class="container-selector">
             <form id = "solutionForm">
@@ -393,6 +391,13 @@ for (var i = 0, max = iname.length; i < max; i++) {
 }
 
 solutionForm.addEventListener("submit", (e) => {
+  Storage.prototype.setObj = function(key, obj) {
+    return this.setItem(key, JSON.stringify(obj))
+}
+Storage.prototype.getObj = function(key) {
+    return JSON.parse(this.getItem(key))
+}
+  
   if(!flag1){
   e.preventDefault();
   console.log(flag1);
@@ -412,13 +417,16 @@ solutionForm.addEventListener("submit", (e) => {
   let urlHome = "/index.php";
   var textResponse;
   var obj;
-  var myArray = [];
+  
   fetch(url)
     .then(function (response) {
+
       return response.json();
     })
     .then(function (obj) {
-      console.log(obj);
+      localStorage.setObj('myArray', obj.data);
+      document.location.href = './CarIssues.php';
+      console.log(obj.data);
     })
     .catch(function (error) {
       console.error(error);
@@ -431,17 +439,12 @@ solutionForm.addEventListener("submit", (e) => {
     let url ="../API/api/issue/getInfo.php?name=" + decodeURI(issueForm);
     // let url ="../API/api/issue/getInfo.php?name=Worn Brakes";
     var obj;  
-    Storage.prototype.setObj = function(key, obj) {
-    return this.setItem(key, JSON.stringify(obj))
-}
-Storage.prototype.getObj = function(key) {
-    return JSON.parse(this.getItem(key))
-}
+
     
     fetch(url).then(response => response.json()).then(data => {
           // Work with JSON data here
           localStorage.setObj('myArray', data);
-          document.location.replace('./Issue.php');
+          document.location.href = './Issue.php';
           console.log(data);
         }).catch(err => {
           // Do something for an error here
@@ -453,11 +456,11 @@ Storage.prototype.getObj = function(key) {
   </script>
         <script>
       if(localStorage.getItem('boolLogin') == "false"){
-        document.location.replace('./login.php');
+        document.location.href = './login.php';
       }
       function logout(){
         localStorage.setItem('boolLogin', "false");
-        document.location.replace('./login.php');
+        document.location.href ='./login.php';
       }
     </script>
 

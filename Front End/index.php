@@ -204,11 +204,11 @@
 
     <script>
       if(localStorage.getItem('boolLogin') == "false"){
-        document.location.replace('./login.php');
+        document.location.href = './login.php';
       }
       function logout(){
         localStorage.setItem('boolLogin', "false");
-        document.location.replace('./login.php');
+        document.location.href ='./login.php';
       }
 
     </script>
