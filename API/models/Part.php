@@ -69,7 +69,7 @@ class Part
     }
     public function insertPart()
     {
-        $query = 'CALL insert_part(?,?,?,?,?)';
+        $query = 'CALL insert_part(?,?,?,?,?,?)';
 
 
         //Prepare statment
@@ -80,6 +80,7 @@ class Part
         $stmt->bindParam(3, $this->price);
         $stmt->bindParam(4, $this->cat_title);
         $stmt->bindParam(5, $this->retailer);
+        $stmt->bindParam(6, $this->rating);
 
         //Execute query
         if ($stmt->execute()) {
@@ -103,5 +104,27 @@ class Part
         $result = $stmt->execute();
 
         return $result;
+    }
+
+    public function getRetailers()
+    {
+        $query = 'call get_retailers()';
+        $stmt = $this->conn->prepare($query);
+
+        //Execute query
+        $result = $stmt->execute();
+
+        return $stmt;
+    }
+
+    public function getCategories()
+    {
+        $query = 'call get_categories()';
+        $stmt = $this->conn->prepare($query);
+
+        //Execute query
+        $result = $stmt->execute();
+
+        return $stmt;
     }
 }
