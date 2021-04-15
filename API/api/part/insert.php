@@ -19,6 +19,7 @@ $part->name = isset($_GET['name']) ? $_GET['name'] : die();
 $part->price = isset($_GET['price']) ? $_GET['price'] : die();
 $part->cat_title = isset($_GET['category']) ? $_GET['category'] : die();
 $part->retailer = isset($_GET['retailer']) ? $_GET['retailer'] : die();
+$part->rating = isset($_GET['rating']) ? $_GET['rating'] : die();
 
 $result = $part->insertPart();
 
