@@ -125,30 +125,19 @@
 
     <script>
       if(localStorage.getItem('boolLogin') == "false"){
-        document.location.replace('./login.php');
+        document.location.href = './login.php';
       }
       function logout(){
         localStorage.setItem('boolLogin', "false");
-        document.location.replace('./login.php');
+        document.location.href = './login.php';
       }
+      Storage.prototype.setObj = function(key, obj) {
+    return this.setItem(key, JSON.stringify(obj))
+}
+Storage.prototype.getObj = function(key) {
+    return JSON.parse(this.getItem(key))
+}
 
-      function purchases(){
-        
-        // localStorage.getItem('password');
-
-        let url = "../API/api/account/getInfo.php?un=" + localStorage.getItem('username') 
-
-        fetch(url)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function(obj){
-      console.log(obj.data);
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-      }
 
       function deleteAccount(){
 
@@ -166,9 +155,28 @@
             console.error(error);
             });
         localStorage.setItem('boolLogin', "false");
-        document.location.replace('./login.php');
+        document.location.href = './login.php';
       }
 
+      function purchases(){
+        
+        // localStorage.getItem('password');
+
+        let url = "../API/api/account/getInfo.php?un=" + localStorage.getItem('username') 
+
+        fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function(obj){
+      localStorage.setObj('myPurchasesArray', obj.data);
+      document.location.href = './Purchases.php';
+      console.log(obj.data);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+      }
     </script>
     <script src="main.js"></script>
     
