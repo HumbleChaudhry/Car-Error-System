@@ -140,9 +140,6 @@
       </div>
     </div>
     
-
-
-
     <footer>
         
         <div id="left-footer">
@@ -172,7 +169,10 @@
 
 
       <script>
-
+function logout(){
+        localStorage.setItem('boolLogin', "false");
+        document.location.href ='./login.php';
+      }
 var myArray = JSON.parse(localStorage.getItem('myPurchasesArray'));
 
 buildTable(myArray)
