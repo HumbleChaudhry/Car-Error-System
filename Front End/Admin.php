@@ -134,6 +134,13 @@
      document.location.replace('./LoginAdmin.php');
     }
 
+    Storage.prototype.setObj = function(key, obj) {
+    return this.setItem(key, JSON.stringify(obj))
+}
+Storage.prototype.getObj = function(key) {
+    return JSON.parse(this.getItem(key))
+}
+
 
 function getParts(){
     let url = "../API/api/part/getEvery.php"
@@ -142,7 +149,9 @@ function getParts(){
     return response.json();
     })
     .then(function(obj){
-    console.log(obj);
+    localStorage.setObj('myAdminParts', obj.data);   
+    document.location.href = './AdminParts.php'; 
+    console.log(obj.data);
     })
     .catch(function (error) {
     console.error(error);
@@ -156,20 +165,9 @@ function getCars(){
     return response.json();
     })
     .then(function(obj){
-    console.log(obj);
-    })
-    .catch(function (error) {
-    console.error(error);
-    });
-}
-
-function getPurchases(){
-    fetch(url)
-    .then(function (response) {
-    return response.json();
-    })
-    .then(function(obj){
-    console.log(obj);
+    localStorage.setObj('myAdminCars', obj.data);   
+    document.location.href = './AdminCars.php'; 
+    console.log(obj.data);
     })
     .catch(function (error) {
     console.error(error);
@@ -183,33 +181,14 @@ function getAccounts(){
     return response.json();
     })
     .then(function(obj){
-    console.log(obj);
+    localStorage.setObj('myAdminAccounts', obj.data);   
+    document.location.href = './AdminAccounts.php'; 
+    console.log(obj.data);
     })
     .catch(function (error) {
     console.error(error);
     });
 }
-
-
-
-// function deleteAccount(){
-
-// let url = "../API/api/account/delete.php?id=" + localStorage.getItem('adminUsername') 
-// console.log(localStorage.getItem('adminUsername'));
-// // var obj;
-//   fetch(url)
-//     .then(function (response) {
-//     return response.json();
-//     })
-//     .then(function(obj){
-//     console.log(obj);
-//     })
-//     .catch(function (error) {
-//     console.error(error);
-//     });
-// localStorage.setItem('adminLogin', "false");
-// document.location.replace('./LoginAdmin.php');
-// }
 
     </script>
     <script src="main.js"></script>
