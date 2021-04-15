@@ -225,7 +225,7 @@
 
           
           let url = "../API/api/account/register.php?un=" +registerUn+"&pass=" + registerPass + "&email=" + registerEmail + "&address=" + registerAddress;
-          // let url = "../API/api/account/register.php?un=run&pass=run2me&email=run@gmail.com&address=78 GOBBLE cres"
+          
           var obj;
           fetch(url)
     .then(function (response) {
