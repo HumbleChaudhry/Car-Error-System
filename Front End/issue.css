@@ -499,6 +499,19 @@ footer #left-footer ul {
   background: gold;
 }
 
+/* .smaller {
+  width: 500px;
+  max-height: 1000px;
+  margin: 1rem;
+  padding: 20px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  border: var(--border-radius);
+  background: #ffffff;
+  padding: 20px;
+  overflow-y: auto;
+} */
+
 #parts-container button:hover {
   background: orangered;
   text-decoration: none;
