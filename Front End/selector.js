@@ -20,25 +20,26 @@ optionsListMake.forEach((o) => {
   });
 });
 
-//Model
-const selectedModel = document.querySelector(".selected-model");
-const optionsContainerModel = document.querySelector(
-  ".options-container-model"
-);
+// //Model
+// const selectedModel = document.querySelector(".selected-model");
+// const optionsContainerModel = document.querySelector(
+//   ".options-container-model"
+// );
 
-const optionsListModel = document.querySelectorAll(".option-model");
+// const optionsListModel = document.querySelectorAll(".option-model");
 
-selectedModel.addEventListener("click", () => {
-  optionsContainerModel.classList.toggle("active");
-});
+// selectedModel.addEventListener("click", () => {
+//   optionsContainerModel.classList.toggle("active");
+// });
 
-optionsListModel.forEach((o) => {
-  o.addEventListener("click", () => {
-    selectedModel.innerHTML = o.querySelector("label").innerHTML;
-    optionsContainerModel.classList.remove("active");
-  });
-});
-
+// if (optionsListModel.length != 0) {
+//   optionsListModel.forEach((o) => {
+//     o.addEventListener("click", () => {
+//       selectedModel.innerHTML = o.querySelector("label").innerHTML;
+//       optionsContainerModel.classList.remove("active");
+//     });
+//   });
+// }
 //Year
 const selectedYear = document.querySelector(".selected-year");
 const optionsContainerYear = document.querySelector(".options-container-year");
