@@ -120,7 +120,7 @@
         <div class="container-style">
         
         <h1 class="form__title">My Purchases</h1>
-
+    <div id="purchaseTable">
         <table class="table table-striped">
     <tr  class="bg-warning">
         <th   data-colname="name" data-order="desc">Part ID </th>
@@ -136,6 +136,11 @@
 </table>
     </table>
     <button class="partSearch__button" onclick="myAccount()">My Account</button>
+            </div>
+        <div id="noPurchases" class= "form--hidden">
+            <h3>No Purchases Found!</h3>
+        </div>
+
         </div>
       </div>
     </div>
@@ -175,7 +180,18 @@ function logout(){
       }
 var myArray = JSON.parse(localStorage.getItem('myPurchasesArray'));
 
-buildTable(myArray)
+const purchaseTable = document.querySelector("#purchaseTable");
+const noPurchase = document.querySelector("#noPurchases");
+
+
+if(myArray == "No purchases found"){
+    noPurchase.classList.remove("form--hidden");
+    purchaseTable.classList.add("form--hidden");
+}
+
+else{
+buildTable(myArray);
+}
 var guide;
 function buildTable(data){
     console.log(myArray);
