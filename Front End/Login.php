@@ -93,7 +93,7 @@
                 <div class="form__input-error-message"></div> 
             </div>
             <div class="form__input-group">
-                <!-- <input type="password" class="form__input form__input--error" autofocus placeholder="Password"> -->
+                
                 <input type="password" class="form__input pass" autofocus placeholder="pass" name = "pass" >
                 <div class="form__input-error-message"></div> 
             </div>
