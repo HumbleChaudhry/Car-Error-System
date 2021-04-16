@@ -118,7 +118,7 @@
       <div id="parts-container">
         <div class="container-style">
         
-        <h1 class="form__title">Selected Car Issues</h1>
+        <h1 class="form__title">Car Parts</h1>
 
         <table class="table table-striped">
     <tr  class="bg-warning">
