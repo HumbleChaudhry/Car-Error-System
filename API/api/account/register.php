@@ -24,6 +24,11 @@ $account->address = isset($_GET['address']) ? $_GET['address'] : die();
 $account->cert = isset($_GET['cert']) ? $_GET['cert'] : 'NULL';
 $account->shop_name = isset($_GET['shop']) ? $_GET['shop'] : 'NULL';
 
+if (strcmp($account->password, "") == 0) {
+    echo json_encode(array('Result' => 'False'));
+    die();
+}
+
 $result = $account->createAccount();
 //catch duplicate entry error
 if ($result) {
