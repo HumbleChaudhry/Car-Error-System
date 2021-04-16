@@ -283,7 +283,7 @@ Storage.prototype.getObj = function(key) {
     return JSON.parse(this.getItem(key))
 }
 
-
+    var myBool = false; 
     let url = "../API/api/car/getMakes.php"
     fetch(url)
     .then(function (response) {
@@ -325,10 +325,10 @@ Storage.prototype.getObj = function(key) {
                   </div>`
         table.innerHTML += row
     }
+
 }
 
 
-var formData = new FormData();
 
 const partForm = document.getElementById("partForm");
   let makeForm;
@@ -339,7 +339,7 @@ const partForm = document.getElementById("partForm");
 for(var i = 0, max = make.length; i < max; i++) {
   make[i].onclick = function() {
     makeForm = this.value; 
-    alert(this.value);
+    // alert(this.value);
     getModel();    
     }
 }
@@ -411,7 +411,7 @@ function buildModels(data){
     
     var element = document.createElement("div");
     element.className = "option-model";
-    element.appendChild(input);
+    element.appendChild(input); 
     element.appendChild(label);
     document.getElementById('modelOp').appendChild(element);
     }
@@ -438,7 +438,7 @@ selectedModel.addEventListener("click", () => {
     o.addEventListener("click", () => {
       selectedModel.innerHTML = o.querySelector("label").innerHTML;
       optionsContainerModel.classList.remove("active");
-      alert(o.querySelector("label").innerHTML);
+      // alert(o.querySelector("label").innerHTML);
       modelForm = o.querySelector("label").innerHTML;
       getYear();
     });
@@ -520,7 +520,7 @@ function yearEvent() {
       o.addEventListener("click", () => {
         selectedYear.innerHTML = o.querySelector("label").innerHTML;
         optionsContainerYear.classList.remove("active");
-        alert(o.querySelector("label").innerHTML);
+        // alert(o.querySelector("label").innerHTML);
         yearForm = o.querySelector("label").innerHTML;
       });
     });
