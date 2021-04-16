@@ -117,8 +117,8 @@
               </div>
 
               <div class="select-box-make " >
-                <div class="options-container-make">
-                  <div class="option-make">
+                <div id="makeOp" class="options-container-make">
+                  <!-- <div class="option-make">
                     <input
                       type="radio"
                       class="radio"
@@ -142,7 +142,7 @@
                   <div class="option-make">
                     <input type="radio" class="radio" id="Dodge" value="Dodge" name="make" />
                     <label for="Dodge">Dodge</label>
-                  </div>
+                  </div> -->
                   
                 </div>
         
@@ -153,8 +153,8 @@
 
 
               <div class="select-box-model">
-                <div class="options-container-model">
-                  <div class="option-model">
+                <div id="modelOp" class="options-container-model">
+                  <!-- <div class="option-model">
                     <input
                       type="radio"
                       class="radio"
@@ -194,7 +194,7 @@
                   <div class="option-model">
                     <input type="radio" class="radio" id="Mazda3" value="Mazda3" name="model" />
                     <label for="Mazda3">Mazda3</label>
-                  </div>
+                  </div> -->
                 </div>
                 
                 <div class="selected-model form--hidden">
@@ -203,8 +203,8 @@
                 </div>
 
                 <div class="select-box-year">
-                  <div class="options-container-year">
-                    <div class="option-year">
+                  <div id="yearOp" class="options-container-year">
+                    <!-- <div class="option-year">
                       <input
                         type="radio"
                         class="radio"
@@ -242,7 +242,7 @@
                     <div class="option-year">
                       <input type="radio" class="radio" id="2015" value="2015" name="year" />
                       <label for="2015">2015</label>
-                    </div>              
+                    </div>               -->
                   </div>
                   
                   <div class="selected-year form--hidden">
@@ -356,32 +356,312 @@ document.addEventListener("DOMContentLoaded", (e) => {
 });
 
     const solutionForm = document.getElementById("solutionForm");
-let makeForm;
-let modelForm;
-let yearForm;
+// let makeForm;
+// let modelForm;
+// let yearForm;
 let issueForm;
 
 
-var make = document.forms["solutionForm"].elements["make"];
-for (var i = 0, max = make.length; i < max; i++) {
-  make[i].onclick = function () {
-    makeForm = this.value;
-  };
+// var make = document.forms["solutionForm"].elements["make"];
+// for (var i = 0, max = make.length; i < max; i++) {
+//   make[i].onclick = function () {
+//     makeForm = this.value;
+//   };
+// }
+
+// var model = document.forms["solutionForm"].elements["model"];
+// for (var i = 0, max = model.length; i < max; i++) {
+//   model[i].onclick = function () {
+//     modelForm = this.value;
+//   };
+// }
+
+// var year = document.forms["solutionForm"].elements["year"];
+// for (var i = 0, max = year.length; i < max; i++) {
+//   year[i].onclick = function () {
+//     yearForm = this.value;
+//   };
+// }
+
+Storage.prototype.setObj = function(key, obj) {
+    return this.setItem(key, JSON.stringify(obj))
+}
+Storage.prototype.getObj = function(key) {
+    return JSON.parse(this.getItem(key))
+}
+let url = "../API/api/car/getMakes.php"
+    fetch(url)
+    .then(function (response) {
+    return response.json();
+    })
+    .then(function(obj){
+    localStorage.setObj('myMakes', obj.data);    
+    console.log(obj.data);
+    })
+    .catch(function (error) {
+    console.error(error);
+    });
+
+    var myArray = JSON.parse(localStorage.getItem('myMakes'));
+
+    buildMakes(myArray);
+
+    function buildMakes(data){
+    console.log(myArray);
+    var table = document.getElementById('makeOp')
+    table.innerHTML = ''
+    for (var i = 0; i < data.length; i++){
+        var colname = `name-${i}`
+        var colage = `age-${i}`
+        var colbirth = `birth-${i}`
+
+
+        make = data[i].make;
+        model = data[i].model;
+        year = data[i].year;
+
+        if (data[i].guide == "NULL"){
+            data[i].guide = "none";
+        }
+        var row =
+                  `<div class="option-make">
+                  <input type="radio" class="radio" id="${data[i].make}" value="${data[i].make}" name="make" />
+                  <label for="${data[i].make}">${data[i].make}</label>
+                  </div>`
+        table.innerHTML += row
+    }
 }
 
-var model = document.forms["solutionForm"].elements["model"];
-for (var i = 0, max = model.length; i < max; i++) {
-  model[i].onclick = function () {
-    modelForm = this.value;
-  };
+
+var formData = new FormData();
+
+
+  let makeForm;
+  let modelForm;
+  let yearForm;
+
+  var make = document.forms["solutionForm"].elements["make"];
+for(var i = 0, max = make.length; i < max; i++) {
+  make[i].onclick = function() {
+    makeForm = this.value; 
+    // alert(this.value);
+    getModel();    
+    }
 }
 
-var year = document.forms["solutionForm"].elements["year"];
-for (var i = 0, max = year.length; i < max; i++) {
-  year[i].onclick = function () {
-    yearForm = this.value;
-  };
+function getModel(){
+let urlModel = "../API/api/car/getModels.php?make=" + makeForm;
+    fetch(urlModel)
+    .then(function (response) {
+    return response.json();
+    })
+    .then(function(obj){
+    
+    buildModels(obj.data);
+    console.log(obj.data);
+    })
+    .catch(function (error) {
+    console.error(error);
+    });
+
+
+ 
+
+// var model = document.forms["solutionForm"].elements["model"];
+// for(var i = 0, max = model.length; i < max; i++) {
+//   model[i].onclick = function() {
+//     modelForm = this.value;
+//     alert(this.value);
+//     getYear();
+//     }
+// }
 }
+var myBool = false; 
+function buildModels(data){
+    console.log(data);
+    var table = document.getElementById('modelOp')
+    table.innerHTML = ''
+    for (var i = 0; i < data.length; i++){
+        var colname = `name-${i}`
+        var colage = `age-${i}`
+        var colbirth = `birth-${i}`
+
+
+        make = data[i].make;
+        model = data[i].model;
+        year = data[i].year;
+
+        if (data[i].guide == "NULL"){
+            data[i].guide = "none";
+        }
+        // var row =
+        //           `<div class="option-model">
+        //             <input type="radio" class="radio" id="${data[i].model}" value= "${data[i].model}" name="model" />
+        //             <label for="${data[i].model}">${data[i].model}</label>
+        //           </div>`
+        // table.innerHTML += row
+
+    var input = document.createElement('input');
+    input.setAttribute("type", "radio");
+    input.setAttribute("class", "radio");
+    input.setAttribute("id", data[i].model);
+    input.setAttribute("value", data[i].model);
+    input.setAttribute("name", "model");
+
+      var label = document.createElement('label');
+      var t = document.createTextNode(data[i].model);
+      label.setAttribute("for", data[i].model);
+      label.appendChild(t);
+
+    
+    var element = document.createElement("div");
+    element.className = "option-model";
+    element.appendChild(input);
+    element.appendChild(label);
+    document.getElementById('modelOp').appendChild(element);
+    }
+    myBool = true; 
+    modelEvent();
+}
+    
+//Model
+function modelEvent(){
+if (myBool) {
+const selectedModel = document.querySelector(".selected-model");
+const optionsContainerModel = document.querySelector(
+  ".options-container-model"
+);
+
+const optionsListModel = document.querySelectorAll(".option-model");
+
+selectedModel.addEventListener("click", () => {
+  optionsContainerModel.classList.toggle("active");
+});
+
+
+  optionsListModel.forEach((o) => {
+    o.addEventListener("click", () => {
+      selectedModel.innerHTML = o.querySelector("label").innerHTML;
+      optionsContainerModel.classList.remove("active");
+      // alert(o.querySelector("label").innerHTML);
+      modelForm = o.querySelector("label").innerHTML;
+      getYear();
+    });
+  });
+}
+}
+
+function getYear() {
+  let urlYear = "../API/api/car/getYears.php?make=" + makeForm + "&model=" + modelForm;
+  fetch(urlYear)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (obj) {
+      buildYears(obj.data);
+      console.log(obj.data);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+
+}
+var myBool = false;
+function buildYears(data) {
+  console.log(data);
+  var table = document.getElementById("yearOp");
+  table.innerHTML = "";
+  for (var i = 0; i < data.length; i++) {
+    var colname = `name-${i}`;
+    var colage = `age-${i}`;
+    var colbirth = `birth-${i}`;
+
+    make = data[i].make;
+    year = data[i].year;
+    year = data[i].year;
+
+    if (data[i].guide == "NULL") {
+      data[i].guide = "none";
+    }
+
+
+    var input = document.createElement("input");
+    input.setAttribute("type", "radio");
+    input.setAttribute("class", "radio");
+    input.setAttribute("id", data[i].year);
+    input.setAttribute("value", data[i].year);
+    input.setAttribute("name", "year");
+
+    var label = document.createElement("label");
+    var t = document.createTextNode(data[i].year);
+    label.setAttribute("for", data[i].year);
+    label.appendChild(t);
+
+    var element = document.createElement("div");
+    element.className = "option-year";
+    element.appendChild(input);
+    element.appendChild(label);
+    document.getElementById("yearOp").appendChild(element);
+  }
+  myBool = true;
+  yearEvent();
+}
+
+//Year
+function yearEvent() {
+  if (myBool) {
+    const selectedYear = document.querySelector(".selected-year");
+    const optionsContainerYear = document.querySelector(
+      ".options-container-year"
+    );
+
+    const optionsListYear = document.querySelectorAll(".option-year");
+
+    selectedYear.addEventListener("click", () => {
+      optionsContainerYear.classList.toggle("active");
+    });
+
+    optionsListYear.forEach((o) => {
+      o.addEventListener("click", () => {
+        selectedYear.innerHTML = o.querySelector("label").innerHTML;
+        optionsContainerYear.classList.remove("active");
+        // alert(o.querySelector("label").innerHTML);
+        yearForm = o.querySelector("label").innerHTML;
+      });
+    });
+  }
+}
+
+
+solutionForm.addEventListener("submit", (e) => {
+  
+  e.preventDefault();
+
+  console.log(makeForm);
+  console.log(modelForm);
+  console.log(yearForm);
+
+  let url = "../API/api/car/issues.php?make=" + makeForm + "&model=" + modelForm + "&year=" + yearForm;
+  let urlHome = "/index.php";
+  var textResponse;
+  
+
+  var myArray = [];
+  fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function(obj){
+      localStorage.setObj('myPartsArray', obj.data);
+      document.location.href = './CarIssues.php';
+      console.log(obj.data);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+});
+
+
 
 var iname = document.forms["solutionForm"].elements["iName"];
 for (var i = 0, max = iname.length; i < max; i++) {
