@@ -54,7 +54,319 @@
   justify-content: space-between;
 }
 
+.select-box-category-name {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+}
 
+.select-box-category-name .options-container-category-name {
+  background: gold;
+  color: black;
+  border: 3px solid black;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 1s;
+  border-radius: 8px;
+  overflow: hidden;
+
+  order: 1;
+}
+
+.selected-category-name {
+  background: gold;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  color: black;
+  position: relative;
+  border: 3px solid black;
+  order: 0;
+  font-weight: bold;
+}
+
+.selected-category-name::after {
+  content: "";
+  background: url("img/arrow-down.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: black;
+  position: absolute;
+  height: 100%;
+  width: 20px;
+  right: 10px;
+  top: 20px;
+  transition: all 0.8s;
+}
+
+.select-box-category-name .options-container-category-name.active {
+  max-height: 240px;
+  opacity: 1;
+  overflow-y: scroll;
+}
+
+.select-box-category-name
+  .options-container-category-name.active
+  + .selected-category-name::after {
+  transform: rotateX(180deg);
+  top: -20px;
+}
+
+.select-box-category-name .options-container-category-name::-webkit-scrollbar {
+  width: 8px;
+  background: black;
+  color: black;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box-category-name
+  .options-container-category-name::-webkit-scrollbar-thumb {
+  background: black;
+  color: black;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box-category-name .option-category-name,
+.selected-category-name {
+  /* padding: 12px 24px; */
+  cursor: pointer;
+}
+
+.select-box-category-name .option-category-name:hover {
+  background: yellow;
+}
+
+.select-box-category-name label {
+  cursor: pointer;
+  display: block;
+  padding: 12px 24px;
+}
+
+.select-box-category-name .option-category-name .radio {
+  display: none;
+}
+
+
+  .container-selector {
+  padding: 32px;
+}
+.selected-category-name {
+  padding: 12px 24px;
+} 
+
+.select-box-retailer-name {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+}
+
+.select-box-retailer-name .options-container-retailer-name {
+  background: gold;
+  color: black;
+  border: 3px solid black;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 1s;
+  border-radius: 8px;
+  overflow: hidden;
+
+  order: 1;
+}
+
+.selected-retailer-name {
+  background: gold;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  color: black;
+  position: relative;
+  border: 3px solid black;
+  order: 0;
+  font-weight: bold;
+}
+
+.selected-retailer-name::after {
+  content: "";
+  background: url("img/arrow-down.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: black;
+  position: absolute;
+  height: 100%;
+  width: 20px;
+  right: 10px;
+  top: 20px;
+  transition: all 0.8s;
+}
+
+.select-box-retailer-name .options-container-retailer-name.active {
+  max-height: 240px;
+  opacity: 1;
+  overflow-y: scroll;
+}
+
+.select-box-retailer-name
+  .options-container-retailer-name.active
+  + .selected-retailer-name::after {
+  transform: rotateX(180deg);
+  top: -20px;
+}
+
+.select-box-retailer-name .options-container-retailer-name::-webkit-scrollbar {
+  width: 8px;
+  background: black;
+  color: black;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box-retailer-name
+  .options-container-retailer-name::-webkit-scrollbar-thumb {
+  background: black;
+  color: black;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box-retailer-name .option-retailer-name,
+.selected-retailer-name {
+  /* padding: 12px 24px; */
+  cursor: pointer;
+}
+
+.select-box-retailer-name .option-retailer-name:hover {
+  background: yellow;
+}
+
+.select-box-retailer-name label {
+  cursor: pointer;
+  display: block;
+  padding: 12px 24px;
+}
+
+.select-box-retailer-name .option-retailer-name .radio {
+  display: none;
+}
+
+.selected-retailer-name {
+  padding: 12px 24px;
+}
+
+.select-box-rating-name {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+}
+
+.select-box-rating-name .options-container-rating-name {
+  background: gold;
+  color: black;
+  border: 3px solid black;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 1s;
+  border-radius: 8px;
+  overflow: hidden;
+
+  order: 1;
+}
+
+.selected-rating-name {
+  background: gold;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  color: black;
+  position: relative;
+  border: 3px solid black;
+  order: 0;
+  font-weight: bold;
+}
+
+.selected-rating-name::after {
+  content: "";
+  background: url("img/arrow-down.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: black;
+  position: absolute;
+  height: 100%;
+  width: 20px;
+  right: 10px;
+  top: 20px;
+  transition: all 0.8s;
+}
+
+.select-box-rating-name .options-container-rating-name.active {
+  max-height: 240px;
+  opacity: 1;
+  overflow-y: scroll;
+}
+
+.select-box-rating-name
+  .options-container-rating-name.active
+  + .selected-rating-name::after {
+  transform: rotateX(180deg);
+  top: -20px;
+}
+
+.select-box-rating-name .options-container-rating-name::-webkit-scrollbar {
+  width: 8px;
+  background: black;
+  color: black;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box-rating-name
+  .options-container-rating-name::-webkit-scrollbar-thumb {
+  background: black;
+  color: black;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box-rating-name .option-rating-name,
+.selected-rating-name {
+  /* padding: 12px 24px; */
+  cursor: pointer;
+}
+
+.select-box-rating-name .option-rating-name:hover {
+  background: yellow;
+}
+
+.select-box-rating-name label {
+  cursor: pointer;
+  display: block;
+  padding: 12px 24px;
+}
+
+.select-box-rating-name .option-rating-name .radio {
+  display: none;
+}
+
+.selected-rating-name {
+  padding: 12px 24px;
+}
+
+
+
+.container2-style {
+  width: 500px;
+  /* max-width: 1500px; */
+  max-height: 1000px;
+  margin: 1rem;
+  padding: 20px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  border: var(--border-radius);
+  background: #ffffff;
+  padding: 20px;
+  overflow-y: auto;
+}
+.container2-style,
+ {
+  font: 500 1rem "Roboto Condensed", sans-serif;
+  font-size: 22px;
+  text-transform: none;
+}
 </style>
 
 
@@ -125,7 +437,7 @@
     
     <div id="banner" >
       <div id="parts-container" >
-        <div class="container-style">
+        <div id= "containerStyles" class="container-style">
         <div id ="part-list">
             <h1 class="form__title">Admin Parts</h1>
 
@@ -148,61 +460,180 @@
             <button class="partSearch__button" onclick="showAdd()">Add a part</button>
         </div>
        
-        <!-- <h1 class="form__title">Add Part</h1>
-           
-            <div class="form__input-group">
-                <input type="text" autocapitalize="none" autofocus placeholder="Part ID" name = "PartID" id="partId">
-            </div>
-            <div class="form__input-group">
-                <input type="text"  autofocus placeholder="Name" name = "Name" id="name">
-            </div>
-            <div class="form__input-group">
-                <input type="text"  autofocus placeholder="Price" name = "Price" id="price">
-            </div>
-            <div class="form__input-group">
-                <input type="text"  autofocus placeholder="Category" name = "Category" id="category">
-            </div>
-            <div class="form__input-group">
-                <input type="text"  autofocus placeholder="Retailer" name = "Retailer" id="retailer">
-            </div>
-            
-            <button class="partSearch__button" onclick="addPart()">Add Part</button> -->
 
 
             <div id="add-part" class="smaller form--hidden">
-            <h1 class="form__title">Add Part</h1>
-            <div class="form__message form__message--error"></div>
-            <div class="form__input-group">
+                <h1 class="form__title">Add Part</h1>
+                <div class="form__message form__message--error"></div>
+                <div class="form__input-group">
                 <input type="text" class="form__input" autofocus placeholder="Part ID" name= "PartID" id="partId">
                 
-            </div>
-            <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="Name" name= "Name" id="name">
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Name" name= "Name" id="name">
+                    
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Price" name= "Price" id="price">
                 
-            </div>
-            <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="Price Address" name= "Price" id="price">
-               
-            </div>
-            <div class="form__input-group">
-                <input type="password" class="form__input form__input--error" autofocus placeholder="Category" name= "Category"  id="category">
-                
-            </div>
-            <div class="form__input-group">
-                <input type="password" class="form__input form__input--error" autofocus placeholder="Retailer" name= "Retailer" id="retailer">
-               
-            </div>
+                </div>
+                <div class="container-selector">
+
+                <form id = "partForm">
+                <div class="select-box-category-name">
+                <div id="categoryOp" class="options-container-category-name">
+
+                <!-- <div class="option-category-name">
+                  <input type="radio" class="radio" id="Dead Battery" value ="Dead Battery" name="categories" />
+                  <label for="Dead Battery">Dead Battery</label>
+                </div>
+            
+                <div class="option-category-name">
+                  <input type="radio" class="radio" id="EVAP System Leak" value ="EVAP System Leak" name="categories" />
+                  <label for="EVAP System Leak">EVAP System Leak</label>
+                </div>
+            
+                <div class="option-category-name">
+                  <input type="radio" class="radio" id="Faulty IAC" value ="Faulty IAC" name="categories" />
+                  <label for="Faulty IAC">Faulty IAC</label>
+                </div>
+            
+                <div class="option-category-name">
+                  <input type="radio" class="radio" id="No fuel to engine" value ="No fuel to engine" name="categories" />
+                  <label for="No fuel to engine">No fuel to engine</label>
+                </div>
+
+                <div class="option-category-name">
+                  <input type="radio" class="radio" id="Worn Brakes" value ="Worn Brakes" name="categories" />
+                  <label for="Worn Brakes">Worn Brakes</label>
+                </div>
+
+                <div class="option-category-name">
+                  <input type="radio" class="radio" id="Worn Spark Plugs" value ="Worn Spark Plugs" name="categories" />
+                  <label for="Worn Spark Plugs">Worn Spark Plugs</label>
+                </div>
+
+                <div class="option-category-name">
+                  <input type="radio" class="radio" id="Worn Wheel Bearing" value ="Worn Wheel Bearing" name="categories" />
+                  <label for="Worn Wheel Bearing">Worn Wheel Bearing</label>
+                </div> -->
+              </div>
+            
+              
+              <div class="selected-category-name">Select Category Name</div>
+                </div>
+                    
+                <div  class="select-box-retailer-name">
+  <div id="retailersOp" class="options-container-retailer-name">
+    <!-- <div class="option-retailer-name">
+      <input type="radio" class="radio" id="Dead Battery" value ="Dead Battery" name="retailers" />
+      <label for="Dead Battery">Dead Battery</label>
+    </div>
+
+    <div class="option-retailer-name">
+      <input type="radio" class="radio" id="EVAP System Leak" value ="EVAP System Leak" name="retailers" />
+      <label for="EVAP System Leak">EVAP System Leak</label>
+    </div>
+
+    <div class="option-retailer-name">
+      <input type="radio" class="radio" id="Faulty IAC" value ="Faulty IAC" name="retailers" />
+      <label for="Faulty IAC">Faulty IAC</label>
+    </div>
+
+    <div class="option-retailer-name">
+      <input type="radio" class="radio" id="No fuel to engine" value ="No fuel to engine" name="retailers" />
+      <label for="No fuel to engine">No fuel to engine</label>
+    </div>
+
+    <div class="option-retailer-name">
+      <input type="radio" class="radio" id="Worn Brakes" value ="Worn Brakes" name="retailers" />
+      <label for="Worn Brakes">Worn Brakes</label>
+    </div>
+
+    <div class="option-retailer-name">
+      <input type="radio" class="radio" id="Worn Spark Plugs" value ="Worn Spark Plugs" name="retailers" />
+      <label for="Worn Spark Plugs">Worn Spark Plugs</label>
+    </div>
+
+    <div class="option-retailer-name">
+      <input type="radio" class="radio" id="Worn Wheel Bearing" value ="Worn Wheel Bearing" name="retailers" />
+      <label for="Worn Wheel Bearing">Worn Wheel Bearing</label>
+    </div> -->
+  </div>
+
+  <div class="selected-retailer-name">Select Retailer Name</div>
+</div>
+
+
+<div  class="select-box-rating-name">
+    <div id="ratingsOp" class="options-container-rating-name">
+
+
+    <div class="option-rating-name">
+        <input type="radio" class="radio" id="One" value ="1" name="ratings" />
+        <label for="One">1</label>
+      </div>
+
+      <div class="option-rating-name">
+        <input type="radio" class="radio" id="Two" value ="2" name="ratings" />
+        <label for="Two">2</label>
+      </div>
+
+
+      <div class="option-rating-name">
+        <input type="radio" class="radio" id="Three" value ="3" name="ratings" />
+        <label for="Three">3</label>
+      </div>
+
+      <div class="option-rating-name">
+        <input type="radio" class="radio" id="Four" value ="4" name="ratings" />
+        <label for="Four">4</label>
+      </div>
+  
+      <div class="option-rating-name">
+        <input type="radio" class="radio" id="Five" value ="5" name="ratings" />
+        <label for="Five">5</label>
+      </div>
+  
+      <div class="option-rating-name">
+        <input type="radio" class="radio" id="Six" value ="6" name="ratings" />
+        <label for="Six">6</label>
+      </div>
+  
+      <div class="option-rating-name">
+        <input type="radio" class="radio" id="Seven" value ="7" name="ratings" />
+        <label for="Seven">7</label>
+      </div>
+  
+      <div class="option-rating-name">
+        <input type="radio" class="radio" id="Eight" value ="8" name="ratings" />
+        <label for="Eight">8</label>
+      </div>
+  
+      <div class="option-rating-name">
+        <input type="radio" class="radio" id="Nine" value ="9" name="ratings" />
+        <label for="Nine">9</label>
+      </div>
+  
+      <div class="option-rating-name">
+        <input type="radio" class="radio" id="Ten" value ="10" name="ratings" />
+        <label for="Ten">10</label>
+      </div>
+    </div>
+  
+    <div class="selected-rating-name">Select Rating</div>
+  </div>
+
+                </div>
             <button class="partSearch__button" onclick="addPart()">Add Part</button>
-
-
-    
-
+            <br>
+            <button class="partSearch__button" onclick="cancelPart()">Cancel</button>
+            </form>
         </div>
+
         </div>
       </div>
     </div>
-
-
 
 
     <footer>
@@ -292,6 +723,113 @@ Storage.prototype.getObj = function(key) {
     return JSON.parse(this.getItem(key))
 }
 
+    let urlCategories = "../API/api/part/getCategories.php"
+    fetch(urlCategories)
+    .then(function (response) {
+    return response.json();
+    })
+    .then(function(obj){
+    localStorage.setObj('myCategories', obj.data);    
+    console.log(obj.data);
+    })
+    .catch(function (error) {
+    console.error(error);
+    });
+
+    var myCategoriesArray = JSON.parse(localStorage.getItem('myCategories'));
+
+    buildCategories(myCategoriesArray);
+    console.log(myCategoriesArray);
+    function buildCategories(data){
+    
+    var table = document.getElementById('categoryOp')
+    table.innerHTML = ''
+    for (var i = 0; i < data.length; i++){
+        var colname = `name-${i}`
+        var colage = `age-${i}`
+        var colbirth = `birth-${i}`
+
+        var row =
+                  `<div class="option-category-name">
+                  <input type="radio" class="radio" id="${data[i].title}" value="${data[i].title}" name="categories" />
+                  <label for="${data[i].title}">${data[i].title}</label>
+                  </div>`
+        table.innerHTML += row
+    }
+}
+
+
+const partForm = document.getElementById("partForm");
+  let categoryForm;
+
+
+  var category = document.forms["partForm"].elements["categories"];
+for(var i = 0, max = category.length; i < max; i++) {
+    category[i].onclick = function() {
+    categoryForm = this.value; 
+    // alert(this.value);
+       
+    }
+}
+
+let ratingForm;
+
+
+var ratings = document.forms["partForm"].elements["ratings"];
+for(var i = 0, max = ratings.length; i < max; i++) {
+    ratings[i].onclick = function() {
+    ratingForm = this.value; 
+//   alert(this.value);
+     
+  }
+}
+
+
+
+let urlRetailers = "../API/api/part/getRetailers.php";
+fetch(urlRetailers)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (obj) {
+    localStorage.setObj("myRetailers", obj.data);
+    console.log(obj.data);
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
+
+var myRetailersArray = JSON.parse(localStorage.getItem("myRetailers"));
+
+buildRetailers(myRetailersArray);
+console.log(myRetailersArray);
+function buildRetailers(data) {
+  var table = document.getElementById("retailersOp");
+  table.innerHTML = "";
+  for (var i = 0; i < data.length; i++) {
+    var colname = `name-${i}`;
+    var colage = `age-${i}`;
+    var colbirth = `birth-${i}`;
+
+    var row = `<div class="option-retailer-name">
+              <input type="radio" class="radio" id="${data[i].name}" value="${data[i].name}" name="retailers" />
+              <label for="${data[i].name}">${data[i].name}</label>
+              </div>`;
+    table.innerHTML += row;
+  }
+}
+
+let retailersForm;
+
+var retailers = document.forms["partForm"].elements["retailers"];
+for (var i = 0, max = retailers.length; i < max; i++) {
+  retailers[i].onclick = function () {
+    retailersForm = this.value;
+    // alert(this.value);
+  };
+}
+
+
 
 function deletePart(string, string2) {
   // localStorage.getItem('password');
@@ -339,35 +877,41 @@ function showAdd(){
 
     addList.classList.remove("form--hidden");
     partList.classList.add("form--hidden");
+
+    const containerStyles = document.querySelector("#containerStyles");
+
+    containerStyles.classList.remove("container-style");
+    containerStyles.classList.add("container2-style");
+
 }
 
 function addPart(){
 
         const partList = document.querySelector("#part-list");
         const addList = document.querySelector("#add-part");
-        
+        const containerStyles = document.querySelector("#containerStyles");
 
         var partId = document.getElementById("partId").value; 
         var name = document.getElementById("name").value; 
         var price = document.getElementById("price").value; 
-        var category = document.getElementById("category").value; 
-        var retailer = document.getElementById("retailer").value; 
-        
+        // var category = document.getElementById("category").value; 
+        // var retailer = document.getElementById("retailer").value; 
+        var retailer = "Your Big Brake";
 
 
-        let url = "../API/api/part/insert.php?id="  + partId + "&name=" + name + "&price=" + price + "&category=" + category + "&retailer=" + retailer;
+        let url = "../API/api/part/insert.php?id="  + partId + "&name=" + name + "&price=" + price + "&category=" + categoryForm + "&retailer=" + retailersForm + "&rating=" + ratingForm;
 
         fetch(url).then(response => response.json()).then(data => {
         // Work with JSON data here
-      //   localStorage.setObj('myArray', data);
-      //   document.location.href = './Issue.php';
         console.log(data.Result);
         if(data.Result == "True"){
           console.log("Part Added");
           addList.classList.add("form--hidden");
           partList.classList.remove("form--hidden");
+          containerStyles.classList.add("container-style");
+          containerStyles.classList.remove("container2-style");
           getParts();
-          buildTable(myArray);
+          buildTable(JSON.parse(localStorage.getItem('myAdminParts')));
         }
       }).catch(err => {
         // Do something for an error here
@@ -375,8 +919,24 @@ function addPart(){
       });
 
 }
+
+function cancelPart(){
+    const partList = document.querySelector("#part-list");
+    const addList = document.querySelector("#add-part");
+    addList.classList.add("form--hidden");
+    partList.classList.remove("form--hidden");
+
+    const containerStyles = document.querySelector("#containerStyles");
+
+    containerStyles.classList.add("container-style");
+    containerStyles.classList.remove("container2-style");
+}
+
+
 </script>
-      <script src="main.js"></script>
+
+    <script src="selectorAdminPart.js"></script>
+    <script src="main.js"></script>
     
   </body>
 </html>

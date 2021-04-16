@@ -23,6 +23,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
     th{ 
         cursor: pointer;
         color:black;
@@ -51,6 +52,26 @@
   min-height: 100vh;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.container2-style {
+  width: 500px;
+  /* max-width: 1500px; */
+  max-height: 1000px;
+  margin: 1rem;
+  padding: 20px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  border: var(--border-radius);
+  background: #ffffff;
+  padding: 20px;
+  overflow-y: auto;
+}
+.container2-style,
+ {
+  font: 500 1rem "Roboto Condensed", sans-serif;
+  font-size: 22px;
+  text-transform: none;
 }
 
 
@@ -124,7 +145,7 @@
     
     <div id="banner" >
       <div id="parts-container" >
-        <div class="container-style">
+        <div id="containerStyles" class="container-style">
         <div id ="car-list">
             <h1 class="form__title">Admin Cars</h1>
 
@@ -142,9 +163,41 @@
             </table>
             </table>
             <button class="partSearch__button" onclick="showAdd()">Add a Car</button>
+            
         </div>
         <div id="add-car" class="form--hidden">
+
         <h1 class="form__title">Add Car</h1>
+                
+                <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Make" name= "Make" id="make">
+                
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Model" name= "Model" id="model">
+                    
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Year" name= "Year" id="year">
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Drive Train" name= "Drive Train" id="driveTrain">
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Transmission" name= "Transmission" id="transmission">
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Engine" name= "Engine" id="engine">
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Chassis" name= "Chassis" id="chassis">
+                </div>
+               
+                <button class="partSearch__button" onclick="addCar()">Add Car</button>
+                <br>
+                <button class="partSearch__button" onclick="cancelCar()">Cancel</button>
+                </div>
+            <!-- <h1 class="form__title">Add Car</h1>
            
             <div class="form__input-group">
                 <input type="text" autocapitalize="none" autofocus placeholder="Make" name = "Make" id="make">
@@ -168,8 +221,15 @@
                 <input type="text"  autofocus placeholder="Chassis" name = "Chassis" id="chassis">
             </div>
             <button class="partSearch__button" onclick="addCar()">Add Car</button>
+            </div> -->
 
-        </div>
+
+
+
+
+
+
+            
         </div>
       </div>
     </div>
@@ -315,13 +375,19 @@ function showAdd(){
 
     addList.classList.remove("form--hidden");
     carList.classList.add("form--hidden");
+
+    const containerStyles = document.querySelector("#containerStyles");
+
+    containerStyles.classList.remove("container-style");
+    containerStyles.classList.add("container2-style");
+
 }
 
 function addCar(){
 
         const carList = document.querySelector("#car-list");
         const addList = document.querySelector("#add-car");
-        
+        const containerStyles = document.querySelector("#containerStyles");
 
 
         var make = document.getElementById("make").value; 
@@ -351,6 +417,8 @@ function addCar(){
           console.log("Car Added");
           addList.classList.add("form--hidden");
           carList.classList.remove("form--hidden");
+          containerStyles.classList.add("container-style");
+          containerStyles.classList.remove("container2-style");
           getCars();
           buildTable(myArray);
         }
@@ -359,6 +427,18 @@ function addCar(){
         console.log("Error Reading data " + err);
       });
 
+}
+
+function cancelCar(){
+    const partList = document.querySelector("#car-list");
+    const addList = document.querySelector("#add-car");
+    addList.classList.add("form--hidden");
+    partList.classList.remove("form--hidden");
+
+    const containerStyles = document.querySelector("#containerStyles");
+
+    containerStyles.classList.add("container-style");
+    containerStyles.classList.remove("container2-style");
 }
 </script>
       <script src="main.js"></script>
