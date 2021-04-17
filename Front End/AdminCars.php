@@ -163,6 +163,8 @@
             </table>
             </table>
             <button class="partSearch__button" onclick="showAdd()">Add a Car</button>
+            <br>
+            <button class="partSearch__button" onclick="myAdmin()">Admin Portal</button>
             
         </div>
         <div id="add-car" class="form--hidden">
@@ -266,6 +268,11 @@
 
 
       <script>
+
+if(localStorage.getItem('adminLogin') == "false"){
+        document.location.replace('./LoginAdmin.php');
+      }
+
 
 function logout(){
      localStorage.setItem('adminLogin', "false");
@@ -439,6 +446,10 @@ function cancelCar(){
 
     containerStyles.classList.add("container-style");
     containerStyles.classList.remove("container2-style");
+}
+
+function myAdmin(){
+    location.href = "./Admin.php";
 }
 </script>
       <script src="main.js"></script>

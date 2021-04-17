@@ -114,23 +114,23 @@
             <h1 class="form__title">Register</h1>
             <div class="form__message form__message--error"></div>
             <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="AccountID" name= "un" id="un">
+                <input type="text" class="form__input" autofocus placeholder="AccountID" name= "un" id="un" required>
                 <div class="form__input-error-message"></div> 
             </div>
             <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="Email" name= "email" id="email">
+                <input type="text" class="form__input" autofocus placeholder="Email" name= "email" id="email" required>
                 <div class="form__input-error-message"></div> 
             </div>
             <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="Shipping Address" name= "address" id="address">
+                <input type="text" class="form__input" autofocus placeholder="Shipping Address" name= "address" id="address" required>
                 <div class="form__input-error-message"></div> 
             </div>
             <div class="form__input-group">
-                <input type="password" class="form__input form__input--error" autofocus placeholder="Password" name= "pass"  id="pass">
+                <input type="password" class="form__input form__input--error" autofocus placeholder="Password" name= "pass"  id="pass" required>
                 <div class="form__input-error-message"></div> 
             </div>
             <div class="form__input-group">
-                <input type="password" class="form__input form__input--error" autofocus placeholder="Confirm Password" name= "conf">
+                <input type="password" class="form__input form__input--error" autofocus placeholder="Confirm Password" name= "conf" id="conf"required>
                 <div class="form__input-error-message"></div> 
             </div>
             <button class="form__button" type="submit">Continue</button>
@@ -175,7 +175,47 @@
       const myForm = document.getElementById('login');
       const myRegForm = document.getElementById('register');
 
+      function setFormMessage(formElement, type, message) {
+  const messageElement = formElement.querySelector(".form__message");
 
+  messageElement.textContent = message;
+  messageElement.classList.remove(
+    "form__message--success",
+    "form__message--error"
+  );
+  messageElement.classList.add(`form__message--${type}`);
+}
+
+function setInputError(inputElement, message) {
+  inputElement.classList.add("form__input--error");
+  inputElement.parentElement.querySelector(
+    ".form__input-error-message"
+  ).textContent = message;
+}
+
+function clearInputError(inputElement) {
+  inputElement.classList.remove("form__input--error");
+  inputElement.parentElement.querySelector(
+    ".form__input-error-message"
+  ).textContent = "";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.querySelector("#login");
+  const registerForm = document.querySelector("#register");
+
+  document.querySelector("#linkRegister").addEventListener("click", (e) => {
+    e.preventDefault();
+    loginForm.classList.add("form--hidden");
+    registerForm.classList.remove("form--hidden");
+  });
+
+  document.querySelector("#linkLogin").addEventListener("click", (e) => {
+    e.preventDefault();
+    loginForm.classList.remove("form--hidden");
+    registerForm.classList.add("form--hidden");
+  });
+});
       myForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -208,6 +248,7 @@
           }
           else{
             console.log("Its Falso");
+            setFormMessage(loginForm, "error", "Invalid ID/password combination");
           }
               console.log(obj);
             }).catch(function (error) {
@@ -216,14 +257,23 @@
             
           });
 
+
+
         myRegForm.addEventListener("submit", (e) => {
           e.preventDefault();
           var registerUn = document.getElementById("un").value; 
           var registerEmail = document.getElementById("email").value; 
           var registerAddress = document.getElementById("address").value; 
           var registerPass = document.getElementById("pass").value; 
-
           
+          const password1 = document.querySelector("#pass").value;
+          const password2 = document.querySelector("#conf").value;
+
+
+          if(password1 != password2){
+            setFormMessage(registerForm, "error", "Passwords Do Not Match!");
+          }
+          else{
           let url = "../API/api/account/register.php?un=" +registerUn+"&pass=" + registerPass + "&email=" + registerEmail + "&address=" + registerAddress;
           
           var obj;
@@ -242,7 +292,9 @@
     .catch(function (error) { 
       console.error(error);
     });
+  }
   });  
+
       </script>
       
     <script src="login.js"></script>

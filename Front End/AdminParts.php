@@ -458,6 +458,8 @@
             </table>
             </table>
             <button class="partSearch__button" onclick="showAdd()">Add a part</button>
+            <br>
+            <button class="partSearch__button" onclick="myAdmin()">Admin Portal</button>
         </div>
        
 
@@ -625,10 +627,11 @@
   </div>
 
                 </div>
+                </form>
             <button class="partSearch__button" onclick="addPart()">Add Part</button>
             <br>
             <button class="partSearch__button" onclick="cancelPart()">Cancel</button>
-            </form>
+            
         </div>
 
         </div>
@@ -665,6 +668,10 @@
 
 
       <script>
+    if(localStorage.getItem('adminLogin') == "false"){
+        document.location.replace('./LoginAdmin.php');
+      }
+
 
 function logout(){
      localStorage.setItem('adminLogin', "false");
@@ -854,6 +861,16 @@ function deletePart(string, string2) {
 
 }
 
+
+function getSuccess(){
+
+    
+    document.location.href = './SuccessfulAddPart.php'; 
+
+}
+
+
+
 function getParts(){
     let url = "../API/api/part/getEvery.php"
     fetch(url)
@@ -896,7 +913,7 @@ function addPart(){
         var price = document.getElementById("price").value; 
         // var category = document.getElementById("category").value; 
         // var retailer = document.getElementById("retailer").value; 
-        var retailer = "Your Big Brake";
+        
 
 
         let url = "../API/api/part/insert.php?id="  + partId + "&name=" + name + "&price=" + price + "&category=" + categoryForm + "&retailer=" + retailersForm + "&rating=" + ratingForm;
@@ -906,12 +923,13 @@ function addPart(){
         console.log(data.Result);
         if(data.Result == "True"){
           console.log("Part Added");
-          addList.classList.add("form--hidden");
-          partList.classList.remove("form--hidden");
-          containerStyles.classList.add("container-style");
-          containerStyles.classList.remove("container2-style");
-          getParts();
-          buildTable(JSON.parse(localStorage.getItem('myAdminParts')));
+        //   addList.classList.add("form--hidden");
+        //   partList.classList.remove("form--hidden");
+        //   containerStyles.classList.add("container-style");
+        //   containerStyles.classList.remove("container2-style");
+
+          getSuccess();
+        //   buildTable(JSON.parse(localStorage.getItem('myAdminParts')));
         }
       }).catch(err => {
         // Do something for an error here
@@ -931,7 +949,9 @@ function cancelPart(){
     containerStyles.classList.add("container-style");
     containerStyles.classList.remove("container2-style");
 }
-
+function myAdmin(){
+    location.href = "./Admin.php";
+}
 
 </script>
 

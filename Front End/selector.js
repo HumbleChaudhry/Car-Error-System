@@ -40,19 +40,19 @@ optionsListMake.forEach((o) => {
 //     });
 //   });
 // }
-// //Year
-// const selectedYear = document.querySelector(".selected-year");
-// const optionsContainerYear = document.querySelector(".options-container-year");
+//Year
+const selectedYear = document.querySelector(".selected-year");
+const optionsContainerYear = document.querySelector(".options-container-year");
 
-// const optionsListYear = document.querySelectorAll(".option-year");
+const optionsListYear = document.querySelectorAll(".option-year");
 
-// selectedYear.addEventListener("click", () => {
-//   optionsContainerYear.classList.toggle("active");
-// });
+selectedYear.addEventListener("click", () => {
+  optionsContainerYear.classList.toggle("active");
+});
 
-// optionsListYear.forEach((o) => {
-//   o.addEventListener("click", () => {
-//     selectedYear.innerHTML = o.querySelector("label").innerHTML;
-//     optionsContainerYear.classList.remove("active");
-//   });
-// });
+optionsListYear.forEach((o) => {
+  o.addEventListener("click", () => {
+    selectedYear.innerHTML = o.querySelector("label").innerHTML;
+    optionsContainerYear.classList.remove("active");
+  });
+});

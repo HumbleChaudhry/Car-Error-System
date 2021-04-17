@@ -140,6 +140,8 @@
             </tbody>
             </table>
             </table>
+            <br>
+            <button class="partSearch__button" onclick="myAdmin()">Admin Portal</button>
         </div>
       </div>
     </div>
@@ -176,6 +178,12 @@
 
 
       <script>
+    if(localStorage.getItem('adminLogin') == "false"){
+        document.location.replace('./LoginAdmin.php');
+      }
+
+
+
 function logout(){
      localStorage.setItem('adminLogin', "false");
      document.location.replace('./LoginAdmin.php');
@@ -266,7 +274,9 @@ function getAccounts(){
     console.error(error);
     });
 }
-
+function myAdmin(){
+    location.href = "./Admin.php";
+}
 
 </script>
       <script src="main.js"></script>

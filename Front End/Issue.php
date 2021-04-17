@@ -175,7 +175,13 @@
 
 
       <script>
-
+      if(localStorage.getItem('boolLogin') == "false"){
+        document.location.href = './login.php';
+      }
+      function logout(){
+        localStorage.setItem('boolLogin', "false");
+        document.location.href ='./login.php';
+      }
 
 var myArray = [JSON.parse(localStorage.getItem('myArray'))];
 

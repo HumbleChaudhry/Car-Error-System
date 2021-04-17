@@ -174,31 +174,18 @@
 
 
       <script>
-// var myArray = [
-//     {'name':'Michael', 'age':'30', 'birthdate':'11/10/1989'},
-//     {'name':'Mila', 'age':'32', 'birthdate':'10/1/1989'},
-//     {'name':'Paul', 'age':'29', 'birthdate':'10/14/1990'},
-//     {'name':'Dennis', 'age':'25', 'birthdate':'11/29/1993'},
-//     {'name':'Tim', 'age':'27', 'birthdate':'3/12/1991'},
-//     {'name':'Erik', 'age':'24', 'birthdate':'10/31/1995'},
-// ]
-// Storage.prototype.setObj = function(key, obj) {
-//     return this.setItem(key, JSON.stringify(obj))
-// }
-// Storage.prototype.getObj = function(key) {
-//     return JSON.parse(this.getItem(key))
-// }
+                if(localStorage.getItem('boolLogin') == "false"){
+        document.location.href = './login.php';
+      }
+      function logout(){
+        localStorage.setItem('boolLogin', "false");
+        document.location.href ='./login.php';
+      }
+
+
 
 var myArray = JSON.parse(localStorage.getItem('myGuide'));
-// var myArray =[{"name": "Faulty IAC",
-//     "description": "Computer cannot control air intake due to faulty IAC valve",
-//     "commoness": "4",
-//     "severity": "2",
-//     "difficulty": "2",
-//     "relatedpart":'fsedfsdafsdafsadfasd',
-//     "guide": "NULL",
-//     "dtc": "P0505"}
-// ]
+
 
 buildTable(myArray)
 var guide;
