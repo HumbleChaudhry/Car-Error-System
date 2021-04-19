@@ -26,16 +26,16 @@
     <div id="slideout-menu">
       <ul>
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a href="Solutions.php">Solutions</a>
+          <a href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a href="Parts.php">Parts</a>
+          <a href="Parts.html">Parts</a>
         </li>
         <li>
-          <a href="Login.php">Login</a>
+          <a href="Login.html">Login</a>
         </li>
         <li>
           <input type="text" placeholder="Search Here" />
@@ -45,7 +45,7 @@
 
     <nav>
       <div id="logo-img">
-        <a href="index.php">
+        <a href="index.html">
           <img src="img/Car Error System Logo.png" alt="CES Logo" />
         </a>
       </div>
@@ -56,13 +56,13 @@
         
         <div id = "links">
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a class="active" href="Solutions.php">Solutions</a>
+          <a class="active" href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a href="Parts.php">Parts</a>
+          <a href="Parts.html">Parts</a>
         </li>
       </div>
       <li>
@@ -70,7 +70,7 @@
         </li>
         <li >
           <div id="user-icon">
-            <a href="Account.php"><i class="glyphicon glyphicon-user"></i></a>
+            <a href="Account.html"><i class="glyphicon glyphicon-user"></i></a>
           </div>
         </li>
         <li >
@@ -362,32 +362,11 @@ document.addEventListener("DOMContentLoaded", (e) => {
 });
 
     const solutionForm = document.getElementById("solutionForm");
-// let makeForm;
-// let modelForm;
-// let yearForm;
+
 let issueForm;
 
 
-// var make = document.forms["solutionForm"].elements["make"];
-// for (var i = 0, max = make.length; i < max; i++) {
-//   make[i].onclick = function () {
-//     makeForm = this.value;
-//   };
-// }
 
-// var model = document.forms["solutionForm"].elements["model"];
-// for (var i = 0, max = model.length; i < max; i++) {
-//   model[i].onclick = function () {
-//     modelForm = this.value;
-//   };
-// }
-
-// var year = document.forms["solutionForm"].elements["year"];
-// for (var i = 0, max = year.length; i < max; i++) {
-//   year[i].onclick = function () {
-//     yearForm = this.value;
-//   };
-// }
 
 Storage.prototype.setObj = function(key, obj) {
     return this.setItem(key, JSON.stringify(obj))
@@ -438,10 +417,6 @@ let url = "../API/api/car/getMakes.php"
     }
 }
 
-
-
-
-
 var formData = new FormData();
 
 
@@ -474,16 +449,6 @@ let urlModel = "../API/api/car/getModels.php?make=" + makeForm;
     });
 
 
- 
-
-// var model = document.forms["solutionForm"].elements["model"];
-// for(var i = 0, max = model.length; i < max; i++) {
-//   model[i].onclick = function() {
-//     modelForm = this.value;
-//     alert(this.value);
-//     getYear();
-//     }
-// }
 }
 var myBool = false; 
 function buildModels(data){
@@ -503,12 +468,7 @@ function buildModels(data){
         if (data[i].guide == "NULL"){
             data[i].guide = "none";
         }
-        // var row =
-        //           `<div class="option-model">
-        //             <input type="radio" class="radio" id="${data[i].model}" value= "${data[i].model}" name="model" />
-        //             <label for="${data[i].model}">${data[i].model}</label>
-        //           </div>`
-        // table.innerHTML += row
+
 
     var input = document.createElement('input');
     input.setAttribute("type", "radio");
@@ -651,7 +611,7 @@ solutionForm.addEventListener("submit", (e) => {
   console.log(yearForm);
 
   let url = "../API/api/car/issues.php?make=" + makeForm + "&model=" + modelForm + "&year=" + yearForm;
-  let urlHome = "/index.php";
+  let urlHome = "/index.html";
   var textResponse;
   
 
@@ -662,7 +622,7 @@ solutionForm.addEventListener("submit", (e) => {
     })
     .then(function(obj){
       localStorage.setObj('myPartsArray', obj.data);
-      document.location.href = './CarIssues.php';
+      document.location.href = './CarIssues.html';
       console.log(obj.data);
     })
     .catch(function (error) {
@@ -704,7 +664,7 @@ console.log(flag1);
     modelForm +
     "&year=" +
     yearForm;
-  let urlHome = "/index.php";
+  let urlHome = "/index.html";
   var textResponse;
   var obj;
   
@@ -715,7 +675,7 @@ console.log(flag1);
     })
     .then(function (obj) {
       localStorage.setObj('myArray', obj.data);
-      document.location.href = './CarIssues.php';
+      document.location.href = './CarIssues.html';
       console.log(obj.data);
     })
     .catch(function (error) {
@@ -727,14 +687,14 @@ console.log(flag1);
     console.log(issueForm);
 
     let url ="../API/api/issue/getInfo.php?name=" + issueForm;
-    // let url ="../API/api/issue/getInfo.php?name=Worn Brakes";
+    
     var obj;  
 
     
     fetch(url).then(response => response.json()).then(data => {
           // Work with JSON data here
           localStorage.setObj('myIssueArray', data);
-          document.location.href = './Issue.php';
+          document.location.href = './Issue.html';
           console.log(data);
         }).catch(err => {
           // Do something for an error here
@@ -746,11 +706,11 @@ console.log(flag1);
   </script>
         <script>
       if(localStorage.getItem('boolLogin') == "false"){
-        document.location.href = './login.php';
+        document.location.href = './login.html';
       }
       function logout(){
         localStorage.setItem('boolLogin', "false");
-        document.location.href ='./login.php';
+        document.location.href ='./login.html';
       }
     </script>
 

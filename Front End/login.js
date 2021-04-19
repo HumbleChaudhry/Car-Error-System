@@ -39,37 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
     registerForm.classList.add("form--hidden");
   });
 
-  // loginForm.addEventListener("submit", (e) => {
-  //   e.preventDefault();
-
-  //   // Perform your AJAX/Fetch login
-  //   const formData = new FormData(loginForm);
-
-  //   let textResult = "";
-  //   fetch("../API/api/account/login.php", {
-  //     method: "post",
-  //     body: formData,
-  //   })
-  //     .then(function (response) {
-  //       return response.text();
-  //     })
-  //     .then(function (text) {
-  //       textResult = text;
-  //       console.log(text);
-  //     })
-  //     .catch(function (error) {
-  //       console.error(error);
-  //     });
-
-  //   // if (textResult == "True") {
-  //   //   fetch("/index.php", {
-  //   //     method: "get",
-  //   //     body: formData,
-  //   //   });
-  //   // }
-  //   setFormMessage(loginForm, "error", "Invalid ID/password combination");
-  // });
-
   document.querySelectorAll(".form__input").forEach((inputElement) => {
     inputElement.addEventListener("blur", (e) => {
       if (

@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="issue.css" />
     <link rel="stylesheet" href ="selector.css" />
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <script src='jquery-3.6.0.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
@@ -50,22 +49,22 @@
 </style>
 
 
-    <title>My Purchases</title>
+    <title>Issue</title>
   </head>
   <body>
     <div id="slideout-menu">
       <ul>
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a href="Solutions.php">Solutions</a>
+          <a href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a href="Parts.php">Parts</a>
+          <a href="Parts.html">Parts</a>
         </li>
         <li>
-          <a href="Login.php">Login</a>
+          <a href="Login.html">Login</a>
         </li>
         <li>
           <input type="text" placeholder="Search Here" />
@@ -75,7 +74,7 @@
 
     <nav>
       <div id="logo-img">
-        <a href="index.php">
+        <a href="index.html">
           <img src="img/Car Error System Logo.png" alt="CES Logo" />
         </a>
       </div>
@@ -86,13 +85,13 @@
         
         <div id = "links">
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a  href="Solutions.php">Solutions</a>
+          <a class="active" href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a href="Parts.php">Parts</a>
+          <a href="Parts.html">Parts</a>
         </li>
       </div>
       <li>
@@ -100,7 +99,7 @@
         </li>
         <li >
           <div id="user-icon">
-            <a class="active" href="Account.php"><i class="glyphicon glyphicon-user"></i></a>
+            <a href="Account.html"><i class="glyphicon glyphicon-user"></i></a>
           </div>
         </li>
         <li >
@@ -119,15 +118,19 @@
       <div id="parts-container">
         <div class="container-style">
         
-        <h1 class="form__title">My Purchases</h1>
-    <div id="purchaseTable">
+        <h1 class="form__title">Issue</h1>
+
         <table class="table table-striped">
     <tr  class="bg-warning">
-        <th   data-colname="name" data-order="desc">Part ID </th>
-        <th   data-colname="name" data-order="desc">Retailer </th>
-        <th  data-colname="age" data-order="desc">Date </th>
-        <th  data-colname="age" data-order="desc">Transaction Number </th>
-
+        <th   data-colname="name" data-order="desc">Name </th>
+        <th   data-colname="name" data-order="desc">Description </th>
+        <th  data-colname="age" data-order="desc">Commoness </th>
+        <th  data-colname="age" data-order="desc">severity </th>
+        <th  data-colname="age" data-order="desc">difficulty </th>
+        <!-- <th  data-colname="birthdate" data-order="desc">Birthday </th> -->
+        <th   data-colname="name" data-order="desc">related part </th>
+        <th  data-colname="name" data-order="desc">guide </th>
+        <th   data-colname="name" data-order="desc">dtc </th>
 
     </tr>
     <tbody id="myTable">
@@ -135,16 +138,13 @@
     </tbody>
 </table>
     </table>
-    <button class="partSearch__button" onclick="myAccount()">My Account</button>
-            </div>
-        <div id="noPurchases" class= "form--hidden">
-            <h3>No Purchases Found!</h3>
-        </div>
-
         </div>
       </div>
     </div>
-    
+
+
+
+
     <footer>
         
         <div id="left-footer">
@@ -174,24 +174,18 @@
 
 
       <script>
-function logout(){
-        localStorage.setItem('boolLogin', "false");
-        document.location.href ='./login.php';
+      if(localStorage.getItem('boolLogin') == "false"){
+        document.location.href = './login.html';
       }
-var myArray = JSON.parse(localStorage.getItem('myPurchasesArray'));
+      function logout(){
+        localStorage.setItem('boolLogin', "false");
+        document.location.href ='./login.html';
+      }
 
-const purchaseTable = document.querySelector("#purchaseTable");
-const noPurchase = document.querySelector("#noPurchases");
+var myArray = [JSON.parse(localStorage.getItem('myIssueArray'))];
 
 
-if(myArray == "No purchases found"){
-    noPurchase.classList.remove("form--hidden");
-    purchaseTable.classList.add("form--hidden");
-}
-
-else{
-buildTable(myArray);
-}
+buildTable(myArray)
 var guide;
 function buildTable(data){
     console.log(myArray);
@@ -207,18 +201,48 @@ function buildTable(data){
             data[i].guide = "none";
         }
         var row = `<tr>
-                        <td>${data[i].part_id}</td>
-                        <td>${data[i].retailer}</td>
-                        <td>${data[i].date}</td>
-                        <td>${data[i]['transaction num']}</td>
+                        <td>${data[i].name}</td>
+                        <td>${data[i].description}</td>
+                        <td>${data[i].commoness}</td>
+                        <td>${data[i].severity}</td>
+                        <td>${data[i].difficulty}</td>
+                        <td>${data[i]['related part']}</td>
+                        <td><input class='guideButton' type='button' value='${data[i].guide}' onclick = 'return getGuide()'/></td>
+                        <td>${data[i].dtc}</td>
                    </tr>`
         table.innerHTML += row
     }
 }
-
-function myAccount(){
-    location.href = "./Account.php";
+Storage.prototype.setObj = function(key, obj) {
+    return this.setItem(key, JSON.stringify(obj))
 }
+Storage.prototype.getObj = function(key) {
+    return JSON.parse(this.getItem(key))
+}
+function getGuide() {
+  // localStorage.getItem('password');
+//   console.log(guide);
+  let url = "../API/api/issue/getGuide.php?name=" + guide;
+
+  fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (obj) {
+      localStorage.setObj('myGuide', obj.guide);
+      localStorage.setObj('mySteps', obj.steps);
+      document.location.href = './Guide.html';
+      console.log(obj.guide);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+
+
+    
+
+
 </script>
       <script src="main.js"></script>
     

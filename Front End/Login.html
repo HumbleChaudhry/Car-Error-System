@@ -27,16 +27,16 @@
     <div id="slideout-menu">
       <ul>
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a href="Solutions.php">Solutions</a>
+          <a href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a href="Parts.php">Parts</a>
+          <a href="Parts.html">Parts</a>
         </li>
         <li>
-          <a href="Login.php">Login</a>
+          <a href="Login.html">Login</a>
         </li>
         <li>
           <input type="text" placeholder="Search Here" />
@@ -46,7 +46,7 @@
 
     <nav>
         <div id="logo-img">
-          <a href="index.php">
+          <a href="index.html">
             <img src="img/Car Error System Logo.png" alt="CES Logo" />
           </a>
         </div>
@@ -57,18 +57,18 @@
           
           <div id = "links">
           <li>
-            <a  href="index.php">Home</a>
+            <a  href="index.html">Home</a>
           </li>
           <li>
-            <a href="Solutions.php">Solutions</a>
+            <a href="Solutions.html">Solutions</a>
           </li>
           <li>
-            <a href="Parts.php">Parts</a>
+            <a href="Parts.html">Parts</a>
           </li>
         </div>
           <li >
             <div id="user-icon">
-              <a class="active" href="Login.php"><i class="glyphicon glyphicon-user"></i></a>
+              <a class="active" href="Login.html"><i class="glyphicon glyphicon-user"></i></a>
             </div>
           </li>
           <li >
@@ -106,7 +106,7 @@
                 <a  class="form__link" href="./" id="linkRegister">Don't have an account? Register</a>
             </p>
             <p class="form__text">
-                <a href="LoginAdmin.php" class="form__link">Admin Login</a>
+                <a href="LoginAdmin.html" class="form__link">Admin Login</a>
             </p>
         </form>
 
@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
       var endpoint = $(myForm).serialize(); 
 
       let url = "../API/api/account/login.php?" + endpoint;
-      let urlHome = "/index.php";
+      let urlHome = "/index.html";
       var textResponse;
       var obj;
           fetch(url, {
@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
               if(obj == true){
                 localStorage.setItem('username', document.querySelector(".un").value);
                 localStorage.setItem('password', document.querySelector(".pass").value);
-                document.location.href = './index.php';
+                document.location.href = './index.html';
               console.log("Its Cierto");
           }
           else{

@@ -27,16 +27,16 @@
     <div id="slideout-menu">
       <ul>
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a href="Solutions.php">Solutions</a>
+          <a href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a href="Parts.php">Parts</a>
+          <a href="Parts.html">Parts</a>
         </li>
         <li>
-          <a href="Login.php">Login</a>
+          <a href="Login.html">Login</a>
         </li>
         <li>
           <input type="text" placeholder="Search Here" />
@@ -46,7 +46,7 @@
 
     <nav>
         <div id="logo-img">
-          <a href="index.php">
+          <a href="index.html">
             <img src="img/Car Error System Logo.png" alt="CES Logo" />
           </a>
         </div>
@@ -57,18 +57,18 @@
           
           <div id = "links">
           <li>
-            <a  href="index.php">Home</a>
+            <a  href="index.html">Home</a>
           </li>
           <li>
-            <a href="Solutions.php">Solutions</a>
+            <a href="Solutions.html">Solutions</a>
           </li>
           <li>
-            <a href="Parts.php">Parts</a>
+            <a href="Parts.html">Parts</a>
           </li>
         </div>
           <li >
             <div id="user-icon">
-              <a class="active" href="Login.php"><i class="glyphicon glyphicon-user"></i></a>
+              <a class="active" href="Login.html"><i class="glyphicon glyphicon-user"></i></a>
             </div>
           </li>
           <li >
@@ -102,7 +102,7 @@
                 <a href="#" class="form__link">Forgot your password?</a>
             </p>
             <p class="form__text">
-                <a href="Login.php" class="form__link">Mechanic Login</a>
+                <a href="Login.html" class="form__link">Mechanic Login</a>
             </p>
         </form>
 
@@ -179,7 +179,7 @@ function clearInputError(inputElement) {
       var endpoint = $(myForm).serialize(); 
 
       let url = "../API/api/account/adminLogin.php?" + endpoint;
-      let urlHome = "/index.php";
+      let urlHome = "/index.html";
       var textResponse;
       var obj;
           fetch(url, {
@@ -196,7 +196,7 @@ function clearInputError(inputElement) {
 
               if(obj == true){
                 localStorage.setItem('adminUsername', document.querySelector(".un").value);
-                document.location.replace('./Admin.php');
+                document.location.replace('./Admin.html');
               console.log("Its Cierto");
           }
           else{

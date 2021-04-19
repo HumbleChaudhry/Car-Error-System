@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="issue.css" />
     <link rel="stylesheet" href ="selector.css" />
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <script src='jquery-3.6.0.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
@@ -55,16 +54,16 @@
     <div id="slideout-menu">
       <ul>
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a href="Solutions.php">Solutions</a>
+          <a href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a href="Parts.php">Parts</a>
+          <a href="Parts.html">Parts</a>
         </li>
         <li>
-          <a href="Login.php">Login</a>
+          <a href="Login.html">Login</a>
         </li>
         <li>
           <input type="text" placeholder="Search Here" />
@@ -74,7 +73,7 @@
 
     <nav>
       <div id="logo-img">
-        <a href="index.php">
+        <a href="index.html">
           <img src="img/Car Error System Logo.png" alt="CES Logo" />
         </a>
       </div>
@@ -85,13 +84,13 @@
         
         <div id = "links">
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a  href="Solutions.php">Solutions</a>
+          <a  href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a class="active" href="Parts.php">Parts</a>
+          <a class="active" href="Parts.html">Parts</a>
         </li>
       </div>
       <li>
@@ -99,7 +98,7 @@
         </li>
         <li >
           <div id="user-icon">
-            <a href="Account.php"><i class="glyphicon glyphicon-user"></i></a>
+            <a href="Account.html"><i class="glyphicon glyphicon-user"></i></a>
           </div>
         </li>
         <li >
@@ -174,11 +173,11 @@
       <script>
 
 if(localStorage.getItem('boolLogin') == "false"){
-        document.location.href = './login.php';
+        document.location.href = './login.html';
       }
       function logout(){
         localStorage.setItem('boolLogin', "false");
-        document.location.href ='./login.php';
+        document.location.href ='./login.html';
       }
 var myArray = JSON.parse(localStorage.getItem('myPartsArray'));
 
@@ -220,17 +219,15 @@ Storage.prototype.getObj = function(key) {
     return JSON.parse(this.getItem(key))
 }
 function makePurchase(string, string2) {
-  // localStorage.getItem('password');
-//   console.log(guide);
+
   let url = "../API/api/account/purchase.php?un=" + localStorage.getItem('username') + "&retailer=" + string + "&part=" + string2;
 
   fetch(url).then(response => response.json()).then(data => {
           // Work with JSON data here
-        //   localStorage.setObj('myArray', data);
-        //   document.location.href = './Issue.php';
+
           console.log(data.Result);
           if(data.Result == "True"){
-            document.location.href = './SuccessfulPurchase.php';
+            document.location.href = './SuccessfulPurchase.html';
           }
         }).catch(err => {
           // Do something for an error here

@@ -26,16 +26,16 @@
     <div id="slideout-menu">
       <ul>
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a href="Solutions.php">Solutions</a>
+          <a href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a href="Parts.php">Parts</a>
+          <a href="Parts.html">Parts</a>
         </li>
         <li>
-          <a href="Login.php">Login</a>
+          <a href="Login.html">Login</a>
         </li>
         <li>
           <input type="text" placeholder="Search Here" />
@@ -45,7 +45,7 @@
 
     <nav>
       <div id="logo-img">
-        <a href="index.php">
+        <a href="index.html">
           <img src="img/Car Error System Logo.png" alt="CES Logo" />
         </a>
       </div>
@@ -56,13 +56,13 @@
         
         <div id = "links">
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a href="Solutions.php">Solutions</a>
+          <a href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a class="active" href="Parts.php">Parts</a>
+          <a class="active" href="Parts.html">Parts</a>
         </li>
       </div>
       <li>
@@ -70,7 +70,7 @@
         </li>
         <li >
           <div id="user-icon">
-            <a href="Account.php"><i class="glyphicon glyphicon-user"></i></a>
+            <a href="Account.html"><i class="glyphicon glyphicon-user"></i></a>
           </div>
         </li>
         <li >
@@ -236,13 +236,6 @@
       </div>
    </div>
 
-          
-      <!-- <form  class="form" id="searchParts">
-        
-        <div class="form__input-group">
-        </div>
-        <button class="partSearch__button" type="partSearchSubmit">Continue</button>
-    </form> -->
 
 
   
@@ -360,16 +353,6 @@ let urlModel = "../API/api/car/getModels.php?make=" + makeForm;
     });
 
 
- 
-
-// var model = document.forms["partForm"].elements["model"];
-// for(var i = 0, max = model.length; i < max; i++) {
-//   model[i].onclick = function() {
-//     modelForm = this.value;
-//     alert(this.value);
-//     getYear();
-//     }
-// }
 }
 var myBool = false; 
 function buildModels(data){
@@ -389,12 +372,6 @@ function buildModels(data){
         if (data[i].guide == "NULL"){
             data[i].guide = "none";
         }
-        // var row =
-        //           `<div class="option-model">
-        //             <input type="radio" class="radio" id="${data[i].model}" value= "${data[i].model}" name="model" />
-        //             <label for="${data[i].model}">${data[i].model}</label>
-        //           </div>`
-        // table.innerHTML += row
 
     var input = document.createElement('input');
     input.setAttribute("type", "radio");
@@ -537,7 +514,7 @@ partForm.addEventListener("submit", (e) => {
   console.log(yearForm);
 
   let url = "../API/api/part/getAll.php?make=" + makeForm + "&model=" + modelForm + "&year=" + yearForm;
-  let urlHome = "/index.php";
+  let urlHome = "/index.html";
   var textResponse;
   
 
@@ -548,7 +525,7 @@ partForm.addEventListener("submit", (e) => {
     })
     .then(function(obj){
       localStorage.setObj('myPartsArray', obj.data);
-      document.location.href = './CarParts.php';
+      document.location.href = './CarParts.html';
       console.log(obj.data);
     })
     .catch(function (error) {
@@ -560,32 +537,13 @@ partForm.addEventListener("submit", (e) => {
     </script>
     <script>
       if(localStorage.getItem('boolLogin') == "false"){
-        document.location.href = './login.php';
+        document.location.href = './login.html';
       }
       function logout(){
         localStorage.setItem('boolLogin', "false");
-        document.location.href ='./login.php';
+        document.location.href ='./login.html';
       }
 
-
-    // var input = document.createElement('input');
-    // input.setAttribute("type", "radio");
-    // input.setAttribute("class", "radio");
-    // input.setAttribute("id", "2021");
-    // input.setAttribute("value", "2021");
-    // input.setAttribute("name", "year");
-
-    //   var label = document.createElement('label');
-    //   var t = document.createTextNode("2021");
-    //   label.setAttribute("for", "2021");
-    //   label.appendChild(t);
-
-    
-    // var element = document.createElement("div");
-    // element.className = "option-year";
-    // element.appendChild(input);
-    // element.appendChild(label);
-    // document.getElementById('yearOp').appendChild(element);
     </script>
     <script src="main.js"></script>
     <script src="selector.js"></script>

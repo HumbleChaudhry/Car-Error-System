@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="issue.css" />
     <link rel="stylesheet" href ="selector.css" />
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <script src='jquery-3.6.0.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
@@ -63,16 +62,16 @@
     <div id="slideout-menu">
       <ul>
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a href="Solutions.php">Solutions</a>
+          <a href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a href="Parts.php">Parts</a>
+          <a href="Parts.html">Parts</a>
         </li>
         <li>
-          <a href="Login.php">Login</a>
+          <a href="Login.html">Login</a>
         </li>
         <li>
           <input type="text" placeholder="Search Here" />
@@ -82,7 +81,7 @@
 
     <nav>
       <div id="logo-img">
-        <a href="index.php">
+        <a href="index.html">
           <img src="img/Car Error System Logo.png" alt="CES Logo" />
         </a>
       </div>
@@ -93,13 +92,13 @@
         
         <div id = "links">
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a  href="Solutions.php">Solutions</a>
+          <a  href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a href="Parts.php">Parts</a>
+          <a href="Parts.html">Parts</a>
         </li>
       </div>
       <li>
@@ -107,7 +106,7 @@
         </li>
         <li >
           <div id="user-icon">
-            <a class="active" href="Admin.php"><i class="glyphicon glyphicon-user"></i></a>
+            <a class="active" href="Admin.html"><i class="glyphicon glyphicon-user"></i></a>
           </div>
         </li>
         <li >
@@ -179,14 +178,14 @@
 
       <script>
     if(localStorage.getItem('adminLogin') == "false"){
-        document.location.replace('./LoginAdmin.php');
+        document.location.replace('./LoginAdmin.html');
       }
 
 
 
 function logout(){
      localStorage.setItem('adminLogin', "false");
-     document.location.replace('./LoginAdmin.php');
+     document.location.replace('./LoginAdmin.html');
     }
 
 let url = "../API/api/account/getAll.php"
@@ -248,7 +247,7 @@ function deleteAccount(string) {
           // Work with JSON data here
           console.log(data);
           
-          if(data== true){
+          if(data== true || data.Result == "True"){
             console.log("Account Deleted");
             getAccounts();
             buildTable(myArray);
@@ -267,7 +266,7 @@ function getAccounts(){
     })
     .then(function(obj){
     localStorage.setObj('myAdminAccounts', obj.data);   
-    document.location.href = './AdminAccounts.php'; 
+    document.location.href = './AdminAccounts.html'; 
     console.log(obj.data);
     })
     .catch(function (error) {
@@ -275,7 +274,7 @@ function getAccounts(){
     });
 }
 function myAdmin(){
-    location.href = "./Admin.php";
+    location.href = "./Admin.html";
 }
 
 </script>

@@ -67,7 +67,7 @@
   padding: 20px;
   overflow-y: auto;
 }
-.container2-style,
+.container2-style
  {
   font: 500 1rem "Roboto Condensed", sans-serif;
   font-size: 22px;
@@ -84,16 +84,16 @@
     <div id="slideout-menu">
       <ul>
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a href="Solutions.php">Solutions</a>
+          <a href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a href="Parts.php">Parts</a>
+          <a href="Parts.html">Parts</a>
         </li>
         <li>
-          <a href="Login.php">Login</a>
+          <a href="Login.html">Login</a>
         </li>
         <li>
           <input type="text" placeholder="Search Here" />
@@ -103,7 +103,7 @@
 
     <nav>
       <div id="logo-img">
-        <a href="index.php">
+        <a href="index.html">
           <img src="img/Car Error System Logo.png" alt="CES Logo" />
         </a>
       </div>
@@ -114,13 +114,13 @@
         
         <div id = "links">
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a  href="Solutions.php">Solutions</a>
+          <a  href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a href="Parts.php">Parts</a>
+          <a href="Parts.html">Parts</a>
         </li>
       </div>
       <li>
@@ -128,7 +128,7 @@
         </li>
         <li >
           <div id="user-icon">
-            <a class="active" href="Admin.php"><i class="glyphicon glyphicon-user"></i></a>
+            <a class="active" href="Admin.html"><i class="glyphicon glyphicon-user"></i></a>
           </div>
         </li>
         <li >
@@ -270,13 +270,13 @@
       <script>
 
 if(localStorage.getItem('adminLogin') == "false"){
-        document.location.replace('./LoginAdmin.php');
+        document.location.replace('./LoginAdmin.html');
       }
 
 
 function logout(){
      localStorage.setItem('adminLogin', "false");
-     document.location.replace('./LoginAdmin.php');
+     document.location.replace('./LoginAdmin.html');
     }
 let url = "../API/api/car/getAll.php"
     fetch(url)
@@ -345,8 +345,7 @@ function deleteCar(string, string2) {
 
   fetch(url).then(response => response.json()).then(data => {
           // Work with JSON data here
-        //   localStorage.setObj('myArray', data);
-        //   document.location.href = './Issue.php';
+
           console.log(data.Result);
           if(data.Result == "True"){
             console.log("Part Deleted");
@@ -367,7 +366,7 @@ function getCars(){
     })
     .then(function(obj){
     localStorage.setObj('myAdminCars', obj.data);   
-    document.location.href = './AdminCars.php'; 
+    document.location.href = './AdminCars.html'; 
     console.log(obj.data);
     })
     .catch(function (error) {
@@ -417,8 +416,7 @@ function addCar(){
 
         fetch(url).then(response => response.json()).then(data => {
         // Work with JSON data here
-      //   localStorage.setObj('myArray', data);
-      //   document.location.href = './Issue.php';
+
         console.log(data.Result);
         if(data.Result == "True"){
           console.log("Car Added");
@@ -449,7 +447,7 @@ function cancelCar(){
 }
 
 function myAdmin(){
-    location.href = "./Admin.php";
+    location.href = "./Admin.html";
 }
 </script>
       <script src="main.js"></script>

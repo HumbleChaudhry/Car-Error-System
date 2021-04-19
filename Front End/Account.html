@@ -26,16 +26,16 @@
     <div id="slideout-menu">
       <ul>
         <li>
-          <a href="index.php">Home</a>
+          <a href="index.html">Home</a>
         </li>
         <li>
-          <a href="Solutions.php">Solutions</a>
+          <a href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a href="Parts.php">Parts</a>
+          <a href="Parts.html">Parts</a>
         </li>
         <li>
-          <a href="Login.php">Login</a>
+          <a href="Login.html">Login</a>
         </li>
         <li>
           <input type="text" placeholder="Search Here" />
@@ -45,7 +45,7 @@
 
     <nav>
       <div id="logo-img">
-        <a href="index.php">
+        <a href="index.html">
           <img src="img/Car Error System Logo.png" alt="CES Logo" />
         </a>
       </div>
@@ -56,13 +56,13 @@
         
         <div id = "links">
         <li>
-          <a  href="index.php">Home</a>
+          <a  href="index.html">Home</a>
         </li>
         <li>
-          <a href="Solutions.php">Solutions</a>
+          <a href="Solutions.html">Solutions</a>
         </li>
         <li>
-          <a href="Parts.php">Parts</a>
+          <a href="Parts.html">Parts</a>
         </li>
       </div>
       <li>
@@ -70,7 +70,7 @@
         </li>
         <li >
           <div id="user-icon">
-            <a class="active" href="Account.php"><i class="glyphicon glyphicon-user"></i></a>
+            <a class="active" href="Account.html"><i class="glyphicon glyphicon-user"></i></a>
           </div>
         </li>
         <li >
@@ -125,11 +125,11 @@
 
     <script>
       if(localStorage.getItem('boolLogin') == "false"){
-        document.location.href = './login.php';
+        document.location.href = './login.html';
       }
       function logout(){
         localStorage.setItem('boolLogin', "false");
-        document.location.href = './login.php';
+        document.location.href = './login.html';
       }
       Storage.prototype.setObj = function(key, obj) {
     return this.setItem(key, JSON.stringify(obj))
@@ -155,12 +155,12 @@ Storage.prototype.getObj = function(key) {
             console.error(error);
             });
         localStorage.setItem('boolLogin', "false");
-        document.location.href = './login.php';
+        document.location.href = './login.html';
       }
 
       function purchases(){
         
-        // localStorage.getItem('password');
+       
 
         let url = "../API/api/account/getInfo.php?un=" + localStorage.getItem('username') 
 
@@ -171,7 +171,7 @@ Storage.prototype.getObj = function(key) {
     .then(function(obj){
     
       localStorage.setObj('myPurchasesArray', obj.data);
-      document.location.href = './Purchases.php';
+      document.location.href = './Purchases.html';
       console.log(obj.data);
     })
     .catch(function (error) {
